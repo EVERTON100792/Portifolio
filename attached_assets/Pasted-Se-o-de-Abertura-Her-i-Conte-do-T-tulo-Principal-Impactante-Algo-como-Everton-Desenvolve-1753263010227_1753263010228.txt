@@ -1,0 +1,92 @@
+Seção de Abertura (Herói)
+
+Conteúdo:
+
+Título Principal (Impactante): Algo como "Everton | Desenvolvedor Web Criativo" ou "Transformando Ideias em Realidade Digital".
+
+Subtítulo: "Crio sites modernos e responsivos com HTML, CSS e JavaScript. Vamos construir algo incrível juntos?"
+
+Animação de Destaque:
+
+Ideia 1 (Partículas Interativas): Utilize bibliotecas como particles.js ou tsParticles para criar um fundo com partículas que reagem ao movimento do mouse.
+
+Ideia 2 (Texto Animado): Use CSS Animations ou bibliotecas como Typed.js para fazer seu nome ou o título principal aparecerem de forma animada, como se estivessem sendo digitados.
+
+Ideia 3 (Ilustração Vetorial Animada): Se tiver noções de design, crie ou utilize uma ilustração SVG (Scalable Vector Graphics) que represente o desenvolvimento web e anime seus elementos com CSS ou JavaScript.
+
+2. Seção "Sobre Mim"
+
+Conteúdo:
+
+Sua Foto: Uma foto profissional e amigável.
+
+Texto Breve: Um parágrafo curto e objetivo sobre você.
+
+"Olá, sou o Everton! Um apaixonado por tecnologia e programação, atualmente finalizando meu curso de desenvolvimento web. Meu foco é na criação de interfaces bonitas, funcionais e que proporcionem uma ótima experiência ao usuário. Estou sempre em busca de novos desafios e aprendizados na área de front-end."
+
+Animação: Efeitos de fade-in ou slide-in para a sua foto e o texto quando o usuário rolar a página até esta seção.
+
+3. Seção "Meus Estudos" (Linha do Tempo)
+
+Conteúdo: Uma linha do tempo visual e interativa que mostre sua jornada de aprendizado.
+
+Fevereiro de 2025: Início dos estudos em Desenvolvimento Web.
+
+Marco: "Fundamentos de HTML5 e CSS3: Aprendendo a estruturar e estilizar páginas web."
+
+Março de 2025: Aprofundamento em CSS.
+
+Marco: "Dominando Flexbox, Grid Layout e criando layouts responsivos."
+
+Abril/Maio de 2025: Imersão em JavaScript.
+
+Marco: "Manipulação do DOM, eventos e lógica de programação para web."
+
+Junho de 2025: Controle de Versão.
+
+Marco: "Início dos estudos em Git e GitHub para gerenciamento de projetos."
+
+Perspectivas de Crescimento (Futuro):
+
+Próximos Passos: "Aprofundar em frameworks como React ou Vue.js e explorar o desenvolvimento back-end com Node.js."
+
+Animação:
+
+A linha do tempo pode ser horizontal ou vertical.
+
+Utilize animações para revelar cada marco à medida que o usuário rola a página. Efeitos de "aparecimento" ou linhas que se "desenham" sozinhas são muito eficazes.
+
+4. Seção "Projetos"
+
+Conteúdo: Aqui você vai exibir os sites que já criou (mesmo que sejam projetos de estudo).
+
+Para cada projeto, inclua:
+
+Uma imagem ou GIF do site.
+
+Nome do Projeto.
+
+Uma breve descrição das tecnologias utilizadas (HTML, CSS, JavaScript).
+
+Dois botões: "Ver Site" (link para o site no ar) e "Ver Código" (link para o repositório no GitHub).
+
+Animação:
+
+Use um efeito de card que "vira" ou se expande ao passar o mouse, revelando os botões e a descrição.
+
+Um carrossel de projetos também é uma ótima opção se você tiver vários para mostrar.
+
+Elemento Fixo
+Botão Flutuante do WhatsApp
+
+Design:
+
+Deve ficar fixo em um dos cantos inferiores da tela (geralmente o direito).
+
+Utilize o ícone oficial do WhatsApp.
+
+Animação: Adicione uma sutil animação de "pulso" para chamar a atenção do usuário. O botão pode expandir ligeiramente e voltar ao tamanho normal a cada poucos segundos. Ao passar o mouse, a animação pode se intensificar ou o botão pode exibir uma pequena mensagem como "Fale Comigo!".
+
+Funcionalidade:
+
+Ao ser clicado, deve abrir diretamente uma conversa no WhatsApp com uma mensagem pré-definida. Exemplo: https://api.whatsapp.com/send?phone=SEUNUMERO&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20fazer%20um%20orçamento.
