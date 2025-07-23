@@ -1665,3 +1665,95 @@ body {
         radial-gradient(circle at 40% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 50%);
     z-index: 1;
 }
+/* ==========================================================================
+   SEÇÃO DE OFERTA ESPECIAL
+   ========================================================================== */
+
+.offer-section {
+    padding: 6rem 0;
+    background: var(--primary-bg);
+}
+
+.offer-card {
+    background: linear-gradient(145deg, #1e1e2f, #1a1a2e);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    box-shadow: 0 0 50px rgba(74, 144, 226, 0.1);
+    transition: all var(--transition-medium);
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-glow);
+}
+
+.offer-icon {
+    font-size: 4rem;
+    color: var(--primary-blue);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-right: 2rem;
+    border-right: 2px solid rgba(74, 144, 226, 0.2);
+}
+
+.offer-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.offer-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.offer-benefits {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.offer-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.offer-benefits li i {
+    color: var(--whatsapp-green);
+    font-size: 1.2rem;
+}
+
+.offer-cta .cta-button {
+    font-size: 1rem;
+    padding: 14px 28px;
+}
+
+@media (max-width: 767px) {
+    .offer-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .offer-icon {
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+        border-right: none;
+        border-bottom: 2px solid rgba(74, 144, 226, 0.2);
+    }
+    .offer-benefits li {
+        justify-content: center;
+    }
+}
