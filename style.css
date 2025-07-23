@@ -1732,4 +1732,122 @@ body {
     width: var(--skill-level, 0%);
 }
 
+/* ==========================================================================
+   ESTILOS DO CABEÇALHO HORIZONTAL (DESKTOP)
+   ========================================================================== */
 
+.main-header {
+    background-color: #1a1a2e; /* Cor de fundo escura, ajuste se necessário */
+    padding: 0 40px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s ease-in-out;
+}
+
+.main-header .header-logo .logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos da Navegação Principal */
+.main-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90e2, #8b5cf6);
+    transition: width 0.3s ease;
+}
+
+.main-nav-link:hover,
+.main-nav-link.active {
+    color: #ffffff;
+}
+
+.main-nav-link:hover::after,
+.main-nav-link.active::after {
+    width: 100%;
+}
+
+/* Botão de Orçamento no Desktop */
+.whatsapp-cta-desktop {
+    background: linear-gradient(90deg, #4a90e2, #357abd);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-cta-desktop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES - A MÁGICA DA RESPONSIVIDADE
+   ========================================================================== */
+
+/* Regras para DESKTOP (telas maiores que 992px) */
+@media (min-width: 993px) {
+    /* Esconde o menu sidebar e seu botão */
+    .sidebar,
+    .sidebar-toggle,
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    /* Empurra o conteúdo principal para baixo do cabeçalho fixo */
+    #hero {
+        padding-top: 70px;
+    }
+}
+
+
+/* Regras para MOBILE (telas de até 992px) */
+@media (max-width: 992px) {
+    /* Esconde o cabeçalho horizontal */
+    .main-header {
+        display: none !important;
+    }
+
+    /* Garante que o menu sidebar e seu botão fiquem visíveis */
+    .sidebar-toggle {
+        display: flex; /* ou block, dependendo do seu estilo original */
+    }
+}
