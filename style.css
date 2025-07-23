@@ -471,7 +471,7 @@ body {
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -1527,6 +1527,22 @@ body {
     .projects-cta p {
         font-size: 1rem;
     }
+
+    .offer-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem; /* ALTERAÇÃO: Padding aumentado para mais respiro no mobile */
+        gap: 2rem;
+    }
+    .offer-icon {
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+        border-right: none;
+        border-bottom: 2px solid rgba(74, 144, 226, 0.2);
+    }
+    .offer-benefits li {
+        justify-content: center;
+    }
 }
 
 /* Dispositivos muito pequenos */
@@ -1665,6 +1681,7 @@ body {
         radial-gradient(circle at 40% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 50%);
     z-index: 1;
 }
+
 /* ==========================================================================
    SEÇÃO DE OFERTA ESPECIAL
    ========================================================================== */
@@ -1672,6 +1689,7 @@ body {
 .offer-section {
     padding: 6rem 0;
     background: var(--primary-bg);
+    margin-bottom: 4rem; /* ALTERAÇÃO: Adicionada margem inferior */
 }
 
 .offer-card {
@@ -1738,22 +1756,4 @@ body {
 .offer-cta .cta-button {
     font-size: 1rem;
     padding: 14px 28px;
-}
-
-@media (max-width: 767px) {
-    .offer-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-        gap: 2rem;
-    }
-    .offer-icon {
-        padding-right: 0;
-        padding-bottom: 1.5rem;
-        border-right: none;
-        border-bottom: 2px solid rgba(74, 144, 226, 0.2);
-    }
-    .offer-benefits li {
-        justify-content: center;
-    }
 }
