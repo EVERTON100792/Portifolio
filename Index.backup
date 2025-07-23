@@ -1,1 +1,361 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everton | Desenvolvedor Web Criativo</title>
+    <meta name="description" content="Portfólio de Everton - Desenvolvedor Web especializado em criar experiências digitais incríveis. Solicite seu orçamento!">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">
+            <i class="fas fa-code"></i>
+        </div>
+    </div>
+
+    <header class="main-header" id="mainHeader">
+        <div class="header-container">
+            <a href="#hero" class="logo-link">
+                <div class="logo-icon">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                </div>
+                <div class="logo-content">
+                    <span class="logo-text">Everton</span>
+                    <span class="logo-subtitle">Dev Criativo</span>
+                </div>
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul class="desktop-menu">
+                    <li><a href="#hero" class="desktop-link">Início</a></li>
+                    <li><a href="#about" class="desktop-link">Sobre</a></li>
+                    <li><a href="#timeline" class="desktop-link">Jornada</a></li>
+                    <li><a href="#curriculo" class="desktop-link">Currículo</a></li>
+                    <li><a href="#projects" class="desktop-link">Projetos</a></li>
+                </ul>
+                <a href="https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20fazer%20um%20orçamento." class="header-cta" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Orçamento
+                </a>
+            </nav>
+
+            <div class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="#hero" class="logo-link">
+                <div class="logo-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                <div class="logo-content">
+                    <span class="logo-text">Everton</span>
+                    <span class="logo-subtitle">Dev Criativo</span>
+                </div>
+            </a>
+        </div>
+        
+        <ul class="mobile-menu">
+            <li class="mobile-item"><a href="#hero" class="mobile-link"><i class="fas fa-home"></i><span>Início</span></a></li>
+            <li class="mobile-item"><a href="#about" class="mobile-link"><i class="fas fa-user"></i><span>Sobre</span></a></li>
+            <li class="mobile-item"><a href="#timeline" class="mobile-link"><i class="fas fa-road"></i><span>Jornada</span></a></li>
+            <li class="mobile-item"><a href="#curriculo" class="mobile-link"><i class="fas fa-file-alt"></i><span>Currículo</span></a></li>
+            <li class="mobile-item"><a href="#projects" class="mobile-link"><i class="fas fa-laptop-code"></i><span>Projetos</span></a></li>
+        </ul>
+        
+        <div class="mobile-nav-cta">
+            <a href="https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20fazer%20um%20orçamento." class="whatsapp-cta" target="_blank">
+                <i class="fab fa-whatsapp"></i> <span>Fazer Orçamento</span>
+            </a>
+        </div>
+        
+        <div class="mobile-nav-social">
+            <a href="https://github.com" target="_blank" class="social-link" aria-label="Visite meu perfil no GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="Visite meu perfil no LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main class="main-content">
+        <section id="hero" class="hero-section">
+            <div id="particles-js"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="typing-text">Everton | Desenvolvedor Web Criativo</span>
+                        <span class="cursor">|</span>
+                    </h1>
+                    <p class="hero-subtitle fade-up-animation">
+                        Transformo suas ideias em sites rápidos e modernos que geram resultados.
+                        <strong>Aproveite a oferta especial de lançamento!</strong>
+                    </p>
+                    <div class="hero-cta fade-up-animation">
+                        <a href="https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20fazer%20um%20orçamento." class="cta-button pulse-animation" target="_blank">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow bounce-animation">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-animation">Sobre Mim</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="about-content">
+                    <div class="about-image fade-in-animation">
+                        <div class="image-container">
+                            <div class="profile-photo">
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="profileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#357abd;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="100" cy="100" r="90" fill="url(#profileGradient)"/>
+                                    <circle cx="100" cy="80" r="30" fill="#ffffff"/>
+                                    <path d="M 60 140 Q 100 120 140 140 L 140 180 Q 100 160 60 180 Z" fill="#ffffff"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text fade-in-animation">
+                        <p class="about-description">
+                            Olá! Sou <strong>Everton</strong>, um desenvolvedor web focado em criar soluções digitais para autônomos e pequenos negócios. Minha missão é transformar sua visão em um site profissional, rápido e que atraia clientes.
+                        </p>
+                        <p class="about-description">
+                            Com as tecnologias mais modernas, eu não apenas crio um design bonito, mas também construo uma base sólida para que seu site seja bem ranqueado no Google e funcione perfeitamente em qualquer dispositivo.
+                        </p>
+                        <div class="tech-stack">
+                            <h3>Tecnologias que domino:</h3>
+                            <div class="tech-icons">
+                                <div class="tech-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                                <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                                <div class="tech-item"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+                                <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-animation">Minha Jornada de Conquistas</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-line" id="timeline-progress"></div>
+                    <div class="timeline-item fade-in-animation" data-date="1º Sem/2024">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>A Base Sólida: HTML5 e CSS3</h3>
+                            <p>Iniciei minha jornada construindo a estrutura fundamental da web. Aprendi a criar sites semanticamente corretos, o que é essencial para um bom posicionamento no Google (SEO).</p>
+                            <div class="timeline-tech">
+                                <span class="tech-tag">HTML5 Semântico</span><span class="tech-tag">CSS3</span><span class="tech-tag">SEO Básico</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in-animation" data-date="2º Sem/2024">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Dando Vida às Páginas: JavaScript e Interatividade</h3>
+                            <p>Fui além do estático, aprendendo a criar interações que engajam o usuário, como animações, menus interativos e validação de formulários, tornando a experiência mais fluida e moderna.</p>
+                            <div class="timeline-tech">
+                                <span class="tech-tag">JavaScript ES6+</span><span class="tech-tag">DOM</span><span class="tech-tag">Eventos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in-animation" data-date="Início de 2025">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Design que se Adapta: Layouts Responsivos</h3>
+                            <p>Dominei Flexbox e CSS Grid para garantir que os sites que construo sejam perfeitos em qualquer dispositivo, do celular ao desktop, um requisito indispensável hoje em dia.</p>
+                            <div class="timeline-tech">
+                                <span class="tech-tag">Flexbox</span><span class="tech-tag">CSS Grid</span><span class="tech-tag">Mobile-First</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in-animation" data-date="Meados de 2025">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Entregando Resultados: Meu Primeiro Projeto Real</h3>
+                            <p>Apliquei todo o meu conhecimento no projeto "Prof Vane PDFs", uma plataforma real e funcional. Essa experiência provou minha capacidade de ir do conceito ao lançamento.</p>
+                            <div class="timeline-tech">
+                                <span class="tech-tag">Projeto Completo</span><span class="tech-tag">Prazo</span><span class="tech-tag">Cliente Satisfeito</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item future-item fade-in-animation" data-date="Sempre">
+                        <div class="timeline-marker future-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Aprendizado Contínuo</h3>
+                            <p>A tecnologia evolui, e eu também. Estou sempre estudando novas formas de otimizar a performance (sites mais rápidos) e a acessibilidade, para entregar o melhor resultado para você.</p>
+                            <div class="timeline-tech">
+                                <span class="tech-tag future-tag">Performance</span><span class="tech-tag future-tag">Acessibilidade</span><span class="tech-tag future-tag">React.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="curriculo" class="curriculo-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-animation">Currículo & Habilidades</h2>
+                    <p class="section-subtitle fade-in-animation">Minhas qualificações técnicas, formação e como entrar em contato para oportunidades de trabalho.</p>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="curriculo-grid">
+                    <div class="curriculo-coluna fade-in-animation">
+                        <div class="curriculo-bloco">
+                            <h3 class="bloco-titulo"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h3>
+                            <ul class="info-list">
+                                <li><h4>Análise e Desenvolvimento de Sistemas (Exemplo)</h4><p>Universidade Exemplo (2023 - 2025)</p></li>
+                                <li><h4>Desenvolvimento Web Full-Stack (Exemplo)</h4><p>Curso Online de Renome (2024)</p></li>
+                            </ul>
+                        </div>
+                        <div class="curriculo-bloco">
+                            <h3 class="bloco-titulo"><i class="fas fa-paper-plane"></i> Contato Profissional</h3>
+                            <ul class="info-list">
+                                <li><h4>E-mail</h4><p>seu.email@exemplo.com</p></li>
+                                <li><h4>Telefone</h4><p>(11) 99999-9999</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="curriculo-coluna fade-in-animation">
+                        <div class="curriculo-bloco">
+                            <h3 class="bloco-titulo"><i class="fas fa-cogs"></i> Hard Skills</h3>
+                            <ul class="skills-list">
+                                <li data-skill-level="95%"><span class="skill-nome">HTML5 & CSS3</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
+                                <li data-skill-level="85%"><span class="skill-nome">JavaScript (ES6+)</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
+                                <li data-skill-level="90%"><span class="skill-nome">Design Responsivo (Mobile-First)</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
+                                <li data-skill-level="75%"><span class="skill-nome">Git & GitHub</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
+                                <li data-skill-level="70%"><span class="skill-nome">Lógica de Programação</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-cta fade-in-animation">
+                    <a href="seu-curriculo.pdf" class="cta-button" download>
+                        <i class="fas fa-download"></i> Baixar CV em PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="offer" class="offer-section">
+            <div class="container">
+                <div class="offer-card fade-in-animation">
+                    <div class="offer-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Oferta de Lançamento do Portfólio</h3>
+                        <p class="offer-description">Para celebrar o início da minha jornada como freelancer, os <strong>5 primeiros clientes</strong> que fecharem um site institucional ou landing page comigo receberão um pacote de otimização completo, totalmente <strong>gratuito</strong>!</p>
+                        <ul class="offer-benefits">
+                            <li><i class="fas fa-check-circle"></i>Análise e Otimização de Performance</li>
+                            <li><i class="fas fa-check-circle"></i>Configuração de SEO Inicial</li>
+                            <li><i class="fas fa-check-circle"></i>Design 100% Responsivo para Celulares</li>
+                        </ul>
+                        <div class="offer-cta">
+                            <a href="https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20Everton!%20Vi%20sua%20oferta%20de%20lançamento%20e%20quero%20garantir%20meu%20bônus!" class="cta-button pulse-animation" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Quero Meu Bônus!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-animation">Meus Projetos</h2>
+                    <p class="section-subtitle fade-in-animation">Cada projeto é uma oportunidade de criar algo incrível</p>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card fade-in-animation">
+                        <div class="project-image">
+                            <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                <defs><linearGradient id="profVaneGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" /><stop offset="50%" style="stop-color:#c44569;stop-opacity:1" /><stop offset="100%" style="stop-color:#f8b500;stop-opacity:1" /></linearGradient></defs>
+                                <rect width="100%" height="100%" fill="url(#profVaneGradient)"/><circle cx="200" cy="100" r="35" fill="rgba(255,255,255,0.3)"/><path d="M200 75 Q185 85 185 100 Q185 120 200 125 Q215 120 215 100 Q215 85 200 75 Z" fill="rgba(255,255,255,0.6)"/><path d="M200 70 Q195 65 195 72" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/><rect x="120" y="150" width="50" height="35" fill="rgba(255,255,255,0.4)" rx="3"/><rect x="125" y="145" width="50" height="35" fill="rgba(255,255,255,0.5)" rx="3"/><rect x="130" y="140" width="50" height="35" fill="rgba(255,255,255,0.6)" rx="3"/><rect x="230" y="150" width="50" height="35" fill="rgba(255,255,255,0.4)" rx="3"/><rect x="235" y="145" width="50" height="35" fill="rgba(255,255,255,0.5)" rx="3"/><rect x="240" y="140" width="50" height="35" fill="rgba(255,255,255,0.6)" rx="3"/><text x="200" y="210" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="20" font-weight="bold" font-family="Arial">PDFs</text>
+                            </svg>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://prof-vane-pdfs-everton.replit.app/" class="btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Site ao Vivo</a>
+                                    <a href="https://github.com/everton-dev/prof-vane-pdfs" class="btn-secondary" target="_blank"><i class="fab fa-github"></i> Ver o Código</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Prof Vane PDFs</h3>
+                            <p class="project-description">Plataforma educacional completa para venda de materiais pedagógicos em PDF. Site com design vibrante, animações atrativas e integração com WhatsApp e Hotmart.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span><span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span><span class="tech-badge"><i class="fab fa-js-square"></i> JavaScript</span><span class="tech-badge"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-cta fade-in-animation">
+                    <h3>Pronto para ter um site como esses?</h3>
+                    <p>Vamos conversar sobre seu projeto e criar algo incrível juntos!</p>
+                    <a href="https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20Everton!%20Vi%20seus%20projetos%20e%20quero%20um%20site%20assim%20para%20meu%20negócio!" class="cta-button pulse-animation" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Fazer Orçamento Agora
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="whatsapp-float">
+        <a href="https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="whatsapp-button pulse-animation" aria-label="Fazer orçamento pelo WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span class="whatsapp-tooltip">Faça seu orçamento!</span>
+        </a>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <div class="back-to-top-button" role="button" aria-label="Voltar ao topo">
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+            <span class="back-to-top-text">Topo</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Everton - Desenvolvedor Web Criativo. Transformando ideias em realidade digital.</p>
+                <div class="footer-social">
+                    <a href="https://api.whatsapp.com/send?phone=5511999999999" target="_blank" aria-label="Contato via WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" aria-label="Visite meu perfil no GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" aria-label="Visite meu perfil no LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
