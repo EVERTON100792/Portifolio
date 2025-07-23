@@ -620,7 +620,6 @@ body {
     overflow: hidden;
 }
 
-/* Canvas de partículas como fundo */
 #particles-js {
     position: absolute;
     width: 100%;
@@ -636,7 +635,6 @@ body {
     text-align: center;
     max-width: 800px;
     padding: 0 20px;
-    /* ALTERAÇÃO: Adiciona margem no topo para descer o título no PC */
     margin-top: 2rem; 
 }
 
@@ -718,7 +716,6 @@ body {
     font-size: 1.3rem;
 }
 
-/* Indicador de scroll */
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -919,11 +916,6 @@ body {
     margin-bottom: 4rem;
 }
 
-.timeline-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .timeline-item:nth-child(even) .timeline-content {
     margin-left: calc(50% + 40px);
     text-align: left;
@@ -1033,15 +1025,18 @@ body {
     animation: pulse 2s infinite;
 }
 
-/* ==========================================================================
-   SEÇÃO PROJETOS - GALERIA IMPRESSIONANTE
-   ========================================================================== */
+/* (O restante do CSS para Projetos, WhatsApp, Footer, etc., continua aqui) */
 
-.projects-section {
+.projects-section, .curriculo-section {
     padding: 8rem 0;
-    background: var(--secondary-bg);
     position: relative;
 }
+
+.projects-section {
+    background: var(--secondary-bg);
+}
+
+/* O resto do CSS permanece o mesmo... */
 
 .projects-grid {
     display: grid;
@@ -1185,7 +1180,6 @@ body {
     font-size: 1rem;
 }
 
-/* Call-to-action da seção projetos */
 .projects-cta {
     text-align: center;
     padding: 3rem;
@@ -1206,10 +1200,6 @@ body {
     font-size: 1.1rem;
     margin-bottom: 2rem;
 }
-
-/* ==========================================================================
-   BOTÃO FLUTUANTE WHATSAPP - CHAMATIVO E EFICAZ
-   ========================================================================== */
 
 .whatsapp-float {
     position: fixed;
@@ -1282,7 +1272,6 @@ body {
     transform: translateY(-50%) translateX(-10px);
 }
 
-/* Animação de pulso chamativa */
 @keyframes whatsappPulse {
     0% {
         box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
@@ -1297,10 +1286,6 @@ body {
         transform: scale(1);
     }
 }
-
-/* ==========================================================================
-   FOOTER - LIMPO E FUNCIONAL
-   ========================================================================== */
 
 .footer {
     background: var(--primary-bg);
@@ -1345,104 +1330,73 @@ body {
     transform: translateY(-3px);
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE - MOBILE FIRST
-   ========================================================================== */
-
-/* Tablets e dispositivos médios */
 @media (max-width: 1024px) {
     .container {
         padding: 0 15px;
     }
-    
     .about-content {
         grid-template-columns: 1fr;
         gap: 3rem;
         text-align: center;
     }
-    
     .profile-photo {
         width: 220px;
         height: 220px;
     }
-    
     .tech-icons {
         justify-content: center;
     }
-    
     .timeline-item:nth-child(even) .timeline-content,
     .timeline-item:nth-child(odd) .timeline-content {
         margin-left: 40px;
         margin-right: 0;
         text-align: left;
     }
-    
-    .timeline-line {
+    .timeline-line, .timeline-marker, .timeline-item::before {
         left: 20px;
     }
-    
-    .timeline-marker {
-        left: 20px;
-    }
-    
     .timeline-item::before {
-        left: 20px;
         transform: translateX(-50%);
     }
-    
     .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
     }
 }
 
-/* Smartphones */
 @media (max-width: 767px) {
-    /* Sidebar Mobile - mesmo comportamento */
     .sidebar-toggle {
         width: 45px;
         height: 45px;
     }
-    
     .sidebar-toggle i {
         font-size: 1rem;
     }
-    
     body.sidebar-open .sidebar-toggle {
         left: 230px;
     }
-    
-    /* Botão voltar ao topo mobile */
     .back-to-top {
         bottom: 100px;
         left: 15px;
     }
-    
     .back-to-top-button {
         width: 50px;
         height: 50px;
     }
-    
-    /* Ajustar espaçamentos */
     .hero-section {
-        height: 100vh;
         padding: 0 10px;
     }
-    
     .hero-content {
         padding: 0 15px;
         max-width: 100%;
     }
-    
     .hero-title {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
     }
-    
     .hero-subtitle {
         font-size: 1rem;
         margin-bottom: 2rem;
     }
-    
     .cta-button {
         padding: 14px 24px;
         font-size: 0.95rem;
@@ -1452,75 +1406,58 @@ body {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
-    .about-section,
-    .timeline-section,
-    .projects-section {
+    .about-section, .timeline-section, .projects-section, .curriculo-section {
         padding: 4rem 0;
     }
-    
     .section-title {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
     }
-    
     .profile-photo {
         width: 180px;
         height: 180px;
     }
-    
     .tech-icons {
         gap: 1rem;
     }
-    
     .tech-item {
         padding: 0.8rem;
         flex: 1;
         min-width: calc(50% - 0.5rem);
     }
-    
-    .timeline-content {
+    .timeline-content, .project-content {
         padding: 1.5rem;
     }
-    
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
     .project-actions {
         flex-direction: column;
         gap: 0.8rem;
     }
-    
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
     }
-    
     .whatsapp-button {
         width: 55px;
         height: 55px;
         font-size: 1.6rem;
     }
-    
     .whatsapp-tooltip {
         display: none;
     }
-    
     .footer-content {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
     }
-    
     .projects-cta h3 {
         font-size: 1.5rem;
     }
-    
     .projects-cta p {
         font-size: 1rem;
     }
-
     .offer-card {
         flex-direction: column;
         text-align: center;
@@ -1538,100 +1475,63 @@ body {
     }
 }
 
-/* Dispositivos muito pequenos */
 @media (max-width: 480px) {
     .container {
         padding: 0 10px;
     }
-    
     .hero-title {
         font-size: 1.6rem;
     }
-    
     .hero-subtitle {
         font-size: 0.9rem;
     }
-    
     .cta-button {
         padding: 12px 20px;
         font-size: 0.9rem;
-        width: auto;
-        max-width: calc(100vw - 40px);
-        text-align: center;
-        box-sizing: border-box;
     }
-    
     .hero-cta {
         padding: 0 10px;
     }
-    
     .section-header {
         margin-bottom: 2.5rem;
     }
-    
     .about-content {
         gap: 2rem;
     }
-    
     .profile-photo {
         width: 150px;
         height: 150px;
     }
-    
-    .timeline-content {
+    .timeline-content, .project-content {
         padding: 1rem;
     }
-    
-    .project-content {
-        padding: 1.5rem;
-    }
-    
     .tech-item {
         min-width: 100%;
     }
-    
     .projects-cta {
         padding: 2rem 1rem;
     }
 }
 
-/* ==========================================================================
-   OTIMIZAÇÕES DE PERFORMANCE E ACESSIBILIDADE
-   ========================================================================== */
-
-/* Reduzir animações em dispositivos com preferência por menos movimento */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
-    .pulse-animation,
-    .bounce-animation,
-    .typing-text,
-    .whatsapp-button {
+    .pulse-animation, .bounce-animation, .typing-text, .whatsapp-button {
         animation: none !important;
     }
 }
 
-/* Melhorar rendering em telas de alta resolução */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .profile-photo,
-    .project-image {
+    .profile-photo, .project-image {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
     }
 }
 
-/* ESTADOS DE FOCO PARA ACESSIBILIDADE */
-.sidebar-link:focus,
-.cta-button:focus,
-.whatsapp-button:focus,
-.btn-primary:focus,
-.btn-secondary:focus {
+.sidebar-link:focus, .cta-button:focus, .whatsapp-button:focus, .btn-primary:focus, .btn-secondary:focus {
     outline: 3px solid var(--primary-blue);
     outline-offset: 2px;
 }
@@ -1641,7 +1541,6 @@ body {
     outline-offset: 2px;
 }
 
-/* LOADING STATES E FALLBACKS */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -1660,7 +1559,6 @@ body {
     opacity: 0;
 }
 
-/* Fallback para quando particles.js não carrega */
 .hero-section::after {
     content: '';
     position: absolute;
@@ -1668,19 +1566,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 50%);
     z-index: 1;
 }
 
-/* ==========================================================================
-   SEÇÃO DE OFERTA ESPECIAL
-   ========================================================================== */
-
 .offer-section {
-    /* ALTERAÇÃO: Padding e margem reduzidos para uma seção mais junta */
     padding: 3rem 0;
     background: var(--primary-bg);
     margin-bottom: 2rem;
@@ -1750,4 +1640,99 @@ body {
 .offer-cta .cta-button {
     font-size: 1rem;
     padding: 14px 28px;
+}
+
+.curriculo-section {
+    background: var(--secondary-bg);
+}
+
+.curriculo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.curriculo-bloco {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-medium);
+}
+
+.bloco-titulo {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    margin-bottom: 1.2rem;
+}
+
+.info-list h4 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.info-list p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    margin-bottom: 1.5rem;
+}
+
+.skill-nome {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--accent-bg);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    width: 0;
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 5px;
+    transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.curriculo-coluna.visible .skills-list li {
+    --skill-level: attr(data-skill-level);
+}
+
+.curriculo-coluna.visible .skill-progress {
+    width: var(--skill-level, 0%);
+}
+
+.download-cta {
+    text-align: center;
+    margin-top: 2rem;
 }
