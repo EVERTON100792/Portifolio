@@ -471,7 +471,7 @@ body {
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -544,7 +544,7 @@ body {
     }
 }
 
-/* Animação de fade-up */
+/* Animação de fade-up (para a seção Hero) */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -579,17 +579,24 @@ body {
 }
 
 /* Classes de animação aplicadas via JavaScript */
+
+/* ===========================================================
+   ALTERAÇÃO PRINCIPAL: Nova animação de scroll mais elegante 
+   ===========================================================
+*/
 .fade-in-animation {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
+    transform: scale(0.95); /* Começa um pouco menor */
+    transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Transição suave */
 }
 
 .fade-in-animation.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1); /* Volta ao tamanho normal */
 }
 
+/* Mantemos a animação fade-up apenas para a seção Hero, que é mais específica */
 .fade-up-animation {
     opacity: 0;
     transform: translateY(30px);
@@ -914,9 +921,6 @@ body {
 .timeline-item {
     position: relative;
     margin-bottom: 4rem;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
 }
 
 .timeline-item.visible {
@@ -1057,13 +1061,6 @@ body {
     box-shadow: var(--shadow-medium);
     transition: all var(--transition-medium);
     position: relative;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-.project-card.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .project-card:hover {
@@ -1531,7 +1528,7 @@ body {
     .offer-card {
         flex-direction: column;
         text-align: center;
-        padding: 3rem; /* ALTERAÇÃO: Padding aumentado para mais respiro no mobile */
+        padding: 3rem; 
         gap: 2rem;
     }
     .offer-icon {
@@ -1689,7 +1686,7 @@ body {
 .offer-section {
     padding: 6rem 0;
     background: var(--primary-bg);
-    margin-bottom: 4rem; /* ALTERAÇÃO: Adicionada margem inferior */
+    margin-bottom: 4rem; 
 }
 
 .offer-card {
