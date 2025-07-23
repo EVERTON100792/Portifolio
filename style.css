@@ -611,6 +611,8 @@ body {
    ========================================================================== */
 
 .hero-section {
+    position: relative; /* Essencial para o z-index funcionar corretamente */
+    z-index: 1;         /* Coloca a seção hero ACIMA das outras seções, mas ABAIXO do menu */
     height: 100vh;
     position: relative;
     display: flex;
