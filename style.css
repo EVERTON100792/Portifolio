@@ -1305,14 +1305,6 @@ body {
     }
 }
 
-/* Garantir que o botão seja sempre visível */
-.whatsapp-float {
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    display: block !important;
-}
-
 /* ==========================================================================
    FOOTER - LIMPO E FUNCIONAL
    ========================================================================== */
@@ -1595,7 +1587,7 @@ body {
 }
 
 /* ==========================================================================
-   OTIMIZAÇÕES DE PERFORMANCE
+   OTIMIZAÇÕES DE PERFORMANCE E ACESSIBILIDADE
    ========================================================================== */
 
 /* Reduzir animações em dispositivos com preferência por menos movimento */
@@ -1610,7 +1602,8 @@ body {
     
     .pulse-animation,
     .bounce-animation,
-    .typing-text {
+    .typing-text,
+    .whatsapp-button {
         animation: none !important;
     }
 }
@@ -1624,10 +1617,8 @@ body {
     }
 }
 
-/* ==========================================================================
-   ESTADOS DE FOCO PARA ACESSIBILIDADE
-   ========================================================================== */
-
+/* ESTADOS DE FOCO PARA ACESSIBILIDADE */
+.sidebar-link:focus,
 .cta-button:focus,
 .whatsapp-button:focus,
 .btn-primary:focus,
@@ -1641,10 +1632,7 @@ body {
     outline-offset: 2px;
 }
 
-/* ==========================================================================
-   LOADING STATES E FALLBACKS
-   ========================================================================== */
-
+/* LOADING STATES E FALLBACKS */
 .hero-section::before {
     content: '';
     position: absolute;
