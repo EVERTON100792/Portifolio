@@ -321,39 +321,62 @@ function initWhatsAppButton() {
 // SIDEBAR NAVIGATION INTERATIVO
 // ==========================================================================
 
+// ==========================================================================
+// SIDEBAR NAVIGATION INTERATIVO (VERSÃO ATUALIZADA)
+// ==========================================================================
+
 function initSidebarNavigation() {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    
+    // Seleciona os links dos DOIS menus (horizontal e lateral)
+    const navLinks = document.querySelectorAll('.sidebar-link, .main-nav-link'); 
+    
     if (!sidebar || !sidebarToggle) return;
 
+    // Função para fechar o menu lateral
     const closeSidebar = () => {
         sidebar.classList.remove('open');
         sidebarOverlay.classList.remove('active');
         document.body.classList.remove('sidebar-open');
     };
     
+    // Abre e fecha o menu lateral no clique do ícone
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('open');
         sidebarOverlay.classList.toggle('active');
         document.body.classList.toggle('sidebar-open');
     });
     
+    // Fecha o menu lateral ao clicar no overlay
     sidebarOverlay.addEventListener('click', closeSidebar);
     
-    sidebarLinks.forEach(link => {
+    // Adiciona eventos de clique para todos os links de navegação
+    navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            closeSidebar(); // Fecha a sidebar ao clicar em qualquer link
+            // Fecha a sidebar APENAS se o link clicado for da sidebar
+            if (link.closest('.sidebar')) {
+                closeSidebar();
+            }
+
             const href = link.getAttribute('href');
             if (href.startsWith('#')) {
-                sidebarLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
+                // Remove a classe 'active' de todos os links de navegação
+                navLinks.forEach(l => l.classList.remove('active'));
+
+                // Adiciona a classe 'active' em todos os links correspondentes
+                // (tanto no desktop quanto no mobile)
+                document.querySelectorAll(`.sidebar-link[href="${href}"], .main-nav-link[href="${href}"]`).forEach(activeLink => {
+                    activeLink.classList.add('active');
+                });
             }
         });
     });
     
     const sections = document.querySelectorAll('section[id]');
+    
+    // Função que destaca o link ativo durante a rolagem da página
     const highlightSidebarNavigation = debounce(() => {
         let currentSectionId = '';
         sections.forEach(section => {
@@ -363,7 +386,8 @@ function initSidebarNavigation() {
             }
         });
 
-        sidebarLinks.forEach(link => {
+        // Este loop agora funciona para os dois menus
+        navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${currentSectionId}`) {
                 link.classList.add('active');
@@ -373,13 +397,13 @@ function initSidebarNavigation() {
     
     window.addEventListener('scroll', highlightSidebarNavigation);
     
+    // Fecha o menu lateral com a tecla 'Escape'
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && sidebar.classList.contains('open')) {
             closeSidebar();
         }
     });
 }
-
 // ==========================================================================
 // BOTÃO VOLTAR AO TOPO
 // ==========================================================================
