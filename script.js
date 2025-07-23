@@ -1,3 +1,4 @@
+
 /**
  * PORTFOLIO EVERTON - SCRIPT PRINCIPAL
  * Desenvolvedor Web Criativo
@@ -183,10 +184,16 @@ function initTimelineAnimation() {
 // INTERAÇÕES DOS CARDS DE PROJETO
 // ==========================================================================
 
+/**
+ * Adiciona interatividade avançada aos cards de projeto
+ */
 function initProjectCards() {
     const projectCards = document.querySelectorAll('.project-card');
     
     projectCards.forEach(card => {
+        // ===============================================================
+        // ALTERAÇÃO AQUI: Efeito 3D restaurado para o original
+        // ===============================================================
         if (!isMobile()) {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -199,6 +206,7 @@ function initProjectCards() {
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
                 
+                // Aplica a transformação 3D diretamente no estilo do card
                 card.style.transform = `
                     perspective(1000px) 
                     rotateX(${rotateX}deg) 
@@ -208,10 +216,12 @@ function initProjectCards() {
             });
             
             card.addEventListener('mouseleave', () => {
+                // Remove a transformação ao tirar o mouse, permitindo a transição suave do CSS
                 card.style.transform = '';
             });
         }
         
+        // Efeito ripple no clique (mantido)
         card.addEventListener('click', (e) => {
             if (e.target.closest('.btn-primary, .btn-secondary')) return;
             
@@ -235,6 +245,7 @@ function initProjectCards() {
         });
     });
     
+    // Adicionar CSS para ripple effect, se ainda não existir
     if (!document.querySelector('#ripple-styles')) {
         const style = document.createElement('style');
         style.id = 'ripple-styles';
@@ -306,9 +317,8 @@ function initWhatsAppButton() {
     document.head.appendChild(style);
 }
 
-
 // ==========================================================================
-// SIDEBAR NAVIGATION INTERATIVO (CÓDIGO ATUALIZADO)
+// SIDEBAR NAVIGATION INTERATIVO
 // ==========================================================================
 
 function initSidebarNavigation() {
@@ -316,19 +326,17 @@ function initSidebarNavigation() {
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
-    if (!sidebar || !sidebarToggle || !sidebarOverlay) return;
+    if (!sidebar || !sidebarToggle) return;
 
     const closeSidebar = () => {
         sidebar.classList.remove('open');
-        // ALTERAÇÃO: Unificando a classe para 'open' para ser compatível com o CSS.
-        sidebarOverlay.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
         document.body.classList.remove('sidebar-open');
     };
     
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('open');
-        // ALTERAÇÃO: Unificando a classe para 'open'.
-        sidebarOverlay.classList.toggle('open');
+        sidebarOverlay.classList.toggle('active');
         document.body.classList.toggle('sidebar-open');
     });
     
@@ -336,11 +344,7 @@ function initSidebarNavigation() {
     
     sidebarLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            // Só fecha o menu no mobile
-            if (window.innerWidth < 992) {
-                closeSidebar();
-            }
-            // Lógica de highlight do link continua a mesma
+            closeSidebar(); // Fecha a sidebar ao clicar em qualquer link
             const href = link.getAttribute('href');
             if (href.startsWith('#')) {
                 sidebarLinks.forEach(l => l.classList.remove('active'));
@@ -352,11 +356,9 @@ function initSidebarNavigation() {
     const sections = document.querySelectorAll('section[id]');
     const highlightSidebarNavigation = debounce(() => {
         let currentSectionId = '';
-        const offset = window.innerHeight * 0.4; // 40% da altura da tela como margem
-        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - offset) {
+            if (window.scrollY >= sectionTop - 150) {
                 currentSectionId = section.getAttribute('id');
             }
         });
@@ -377,7 +379,6 @@ function initSidebarNavigation() {
         }
     });
 }
-
 
 // ==========================================================================
 // BOTÃO VOLTAR AO TOPO
