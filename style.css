@@ -1810,23 +1810,37 @@ body {
     visibility: hidden;
 }
 
+/* CSS PARA OPÇÃO 2: ÁTOMO DE CÓDIGO */
 .logo-animado {
-    width: 120px; /* Tamanho do logo */
-    animation: pulsar-logo 2.5s infinite ease-in-out;
+    width: 120px;
+    height: 120px;
+    animation: girar-fundo 12s linear infinite;
 }
 
-/* Animação de pulsação para o logo */
-@keyframes pulsar-logo {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
+.logo-animado .orbita:nth-child(2) {
+    animation: girar-orbita-1 4s linear infinite;
+}
+.logo-animado .orbita:nth-child(3) {
+    animation: girar-orbita-2 4s linear infinite reverse;
+}
+.logo-animado .orbita:nth-child(4) {
+    animation: girar-orbita-3 6s linear infinite;
+}
+
+@keyframes girar-fundo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes girar-orbita-1 {
+    from { transform: rotate(45deg) scale(1); }
+    to { transform: rotate(405deg) scale(1); }
+}
+@keyframes girar-orbita-2 {
+    from { transform: rotate(-45deg) scale(1); }
+    to { transform: rotate(315deg) scale(1); }
+}
+@keyframes girar-orbita-3 {
+    from { transform: rotate(90deg) scale(1); }
+    to { transform: rotate(450deg) scale(1); }
 }
