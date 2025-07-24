@@ -1736,3 +1736,53 @@ body {
     text-align: center;
     margin-top: 2rem;
 }
+
+/* ==========================================================================
+   CORREÇÃO DA LINHA DO TEMPO PARA CELULAR
+   ========================================================================== */
+@media (max-width: 767px) {
+    /* Ajusta o container da linha do tempo para usar melhor o espaço */
+    .timeline-section .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Move a linha e o marcador para a borda esquerda */
+    .timeline-line, .timeline-marker {
+        left: 15px; /* Um pouco de espaço da borda */
+    }
+
+    /* Reposiciona cada item da linha do tempo */
+    .timeline-item {
+        position: relative;
+        /* Adiciona um espaço à esquerda para a linha não ficar colada no texto */
+        padding-left: 45px;
+        margin-bottom: 2.5rem;
+    }
+
+    /* A MUDANÇA PRINCIPAL: A DATA/TÍTULO (Ex: "1º Sem/2024") */
+    .timeline-item::before {
+        position: relative;      /* Remove o posicionamento absoluto */
+        display: block;          /* Faz com que a data ocupe sua própria linha */
+        left: auto;              /* Reseta a posição horizontal */
+        top: auto;               /* Reseta a posição vertical */
+        transform: none;         /* Remove a transformação que causava o problema */
+        text-align: left;        /* Alinha o texto da data à esquerda */
+        margin-bottom: 10px;     /* Cria espaço entre a data e o texto de conteúdo */
+        margin-left: -45px;      /* Puxa a data para o espaço criado pelo padding */
+        width: fit-content;      /* Faz o fundo da data se ajustar ao tamanho do texto */
+    }
+
+    /* Remove a margem do conteúdo para que ele se alinhe corretamente */
+    .timeline-item:nth-child(even) .timeline-content,
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    /* Ajusta a bolinha (marcador) para alinhar com a data */
+    .timeline-marker {
+        top: 8px; /* Alinha o marcador verticalmente com a caixa da data */
+    }
+}
