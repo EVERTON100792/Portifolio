@@ -1295,10 +1295,10 @@ body {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column; /* Coloca os itens em coluna (um em cima do outro) */
+    align-items: center;   /* Centraliza tudo horizontalmente */
+    gap: 1rem;             /* Cria um espaço entre o texto e os ícones sociais */
+    text-align: center;    /* Garante que o texto fique centralizado */
 }
 
 .footer-content p {
