@@ -1845,6 +1845,33 @@ body {
     .sidebar-toggle,
     .sidebar-overlay {
         display: none !important;
+      /* ==========================================================================
+   MELHORIA DO BOTÃO DE ORÇAMENTO NO HEADER DESKTOP
+   ========================================================================== */
+
+/* Adicione este código DENTRO do @media (min-width: 1025px) */
+
+/* Estiliza o botão de orçamento especificamente no header de desktop */
+.sidebar .whatsapp-cta {
+    /* 1. Remove o fundo verde e a animação de pulso */
+    background: transparent;
+    animation: none;
+
+    /* 2. Adiciona uma borda na cor principal do site */
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue); /* Cor do texto e ícone */
+    
+    /* 3. Ajustes finos no tamanho e transição */
+    padding: 8px 18px; /* Deixa o botão um pouco mais delicado */
+    transition: all 0.3s ease;
+}
+
+/* 4. Efeito de hover: preenche o botão ao passar o mouse */
+.sidebar .whatsapp-cta:hover {
+    background: var(--primary-blue);
+    color: white; /* Texto fica branco para ter contraste */
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.4); /* Adiciona um brilho suave */
+}
     }
 
     /* 2. Transforma a sidebar em um header horizontal fixo no topo */
