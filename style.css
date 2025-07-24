@@ -1872,6 +1872,36 @@ body {
     color: white; /* Texto fica branco para ter contraste */
     box-shadow: 0 0 20px rgba(74, 144, 226, 0.4); /* Adiciona um brilho suave */
 }
+       /* ==========================================================================
+   MELHORIA DOS ÍCONES SOCIAIS NO HEADER DESKTOP
+   ========================================================================== */
+
+/* Adicione este código DENTRO do @media (min-width: 1025px) */
+
+/* Estiliza os ícones sociais (GitHub/LinkedIn) especificamente no header de desktop */
+.sidebar .social-link {
+    /* 1. Remove o fundo cinza escuro */
+    background: transparent;
+    
+    /* 2. Adiciona uma borda sutil, na mesma cor do texto */
+    border: 2px solid var(--text-muted);
+    color: var(--text-muted); /* Cor do ícone */
+
+    /* 3. Ajustes de tamanho e transição */
+    width: 42px;  /* Tamanho um pouco maior para acomodar a borda */
+    height: 42px;
+    border-radius: 50%; /* Garante que fiquem perfeitamente redondos */
+    transition: all 0.3s ease;
+}
+
+/* 4. Efeito de hover: preenche o botão e muda a cor do ícone */
+.sidebar .social-link:hover {
+    background: var(--text-muted);
+    color: var(--primary-bg); /* O ícone fica escuro para ter contraste */
+    border-color: var(--text-muted);
+    transform: translateY(-2px); /* Efeito de levantar sutilmente */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
     }
 
     /* 2. Transforma a sidebar em um header horizontal fixo no topo */
