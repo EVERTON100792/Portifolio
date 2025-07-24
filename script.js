@@ -1,3 +1,16 @@
+// ==========================================================================
+// LÓGICA DO PRELOADER
+// ==========================================================================
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Adiciona um pequeno atraso para a animação não ser cortada bruscamente
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 200);
+    }
+});
+
 /**
  * PORTFOLIO EVERTON - SCRIPT PRINCIPAL
  * Desenvolvedor Web Criativo
