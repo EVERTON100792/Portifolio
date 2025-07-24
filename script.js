@@ -300,20 +300,7 @@ function initWhatsAppButton() {
         }
     }
     
-    let lastScrollY = window.scrollY;
-    const handleScroll = debounce(() => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY && currentScrollY > 500) {
-            whatsappFloat.style.transform = 'translateY(100px) scale(0.8)';
-            whatsappFloat.style.opacity = '0.7';
-        } else {
-            whatsappFloat.style.transform = '';
-            whatsappFloat.style.opacity = '';
-        }
-        lastScrollY = currentScrollY;
-    }, 100);
-    
-    window.addEventListener('scroll', handleScroll);
+  
     
     whatsappButton.addEventListener('click', () => {
         console.log('WhatsApp button clicked - Lead generation event');
