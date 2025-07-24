@@ -1862,8 +1862,9 @@ body {
     color: var(--primary-blue); /* Cor do texto e ícone */
     
     /* 3. Ajustes finos no tamanho e transição */
-    padding: 8px 18px; /* Deixa o botão um pouco mais delicado */
+    padding: 8px 16px; /* Reduz ligeiramente o padding horizontal */
     transition: all 0.3s ease;
+   
 }
 
 /* 4. Efeito de hover: preenche o botão ao passar o mouse */
@@ -1997,19 +1998,21 @@ body {
     
     /* Agrupa o botão de orçamento e os ícones sociais */
     .sidebar-cta {
-       display: flex;
-       align-items: center;
-       gap: 1.5rem;
-    }
+    display: flex;
+    align-items: center;
+    gap: 2.5rem; /* Aumenta o espaçamento entre o menu e os botões */
+}
 
     .whatsapp-cta {
         margin: 0;
         padding: 10px 20px; /* Botão de orçamento um pouco menor */
+      
     }
     
     .sidebar-social {
         /* Este truque faz os ícones sociais se alinharem como se estivessem no mesmo grupo do botão */
         display: contents; 
+         margin-left: 1.5rem; /* Adiciona um espaço à esquerda */
     }
 
     /* 6. Empurra o conteúdo da página para baixo para não ficar atrás do header */
