@@ -2340,7 +2340,7 @@ body.sidebar-open .sidebar-toggle {
     content: '';
     position: absolute;
 /* ==========================================================================
-   ANIMAÇÃO "ÓRBITA DE CONTATO" PARA O WHATSAPP
+   ANIMAÇÃO "ÓRBITA DE CONTATO" (VERSÃO CORRIGIDA)
    ========================================================================== */
 
 /* Keyframes para a rotação da órbita */
@@ -2374,36 +2374,34 @@ body.sidebar-open .sidebar-toggle {
 .whatsapp-float .whatsapp-button::before {
     content: '';
     position: absolute;
-    top: -10px; /* Aumenta o raio da órbita */
+    top: -10px;
     left: -10px;
     right: -10px;
     bottom: -10px;
     border-radius: 50%;
-    
-    /* A mágica da órbita acontece aqui */
-    border: 2px solid transparent; /* Borda invisível para rotação */
-    border-top-color: var(--whatsapp-green); /* Apenas o topo da borda é visível */
-    
-    /* Aplica a animação de rotação */
+    border: 2px solid transparent;
+    border-top-color: var(--whatsapp-green);
     animation: orbital-rotation 3s infinite linear;
     z-index: -1;
+    /* LINHA ADICIONADA PARA CORRIGIR O BUG DE RENDERIZAÇÃO */
+    will-change: transform;
 }
 
 /* Cria o "satélite" que pulsa */
 .whatsapp-float .whatsapp-button::after {
     content: '';
     position: absolute;
-    top: -12px; /* Posiciona o satélite no topo da órbita */
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background-color: var(--whatsapp-green);
-    box-shadow: 0 0 10px var(--whatsapp-green); /* Efeito de brilho */
-    
-    /* Aplica a animação de pulsação */
+    box-shadow: 0 0 10px var(--whatsapp-green);
     animation: satellite-pulse 1.5s infinite ease-in-out;
+    /* LINHA ADICIONADA PARA CORRIGIR O BUG DE RENDERIZAÇÃO */
+    will-change: transform, opacity;
 }
 
 /* Garante que a órbita não seja cortada */
