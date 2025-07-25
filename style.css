@@ -2409,41 +2409,66 @@ body.sidebar-open .sidebar-toggle {
     overflow: visible;
 }
 /* ==========================================================================
-   NOVO ESTILO PARA O STATUS DOS PROJETOS (AO LADO DO TÍTULO)
+   ESTILO AVANÇADO E ANIMADO PARA O STATUS DOS PROJETOS
    ========================================================================== */
 
 /* Cria um container flex para alinhar o título e o status lado a lado */
 .project-title-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o título e o selo de status */
-    flex-wrap: wrap; /* Permite que o selo quebre a linha em telas muito pequenas */
+    gap: 12px; /* Aumenta um pouco o espaço */
+    flex-wrap: wrap;
     margin-bottom: 1rem;
 }
 
-/* Estilo do título do projeto (sem alterações, apenas para referência) */
+/* Estilo do título do projeto (sem alterações) */
 .project-title {
-    margin-bottom: 0; /* Remove a margem que ele tinha para alinhar corretamente */
+    margin-bottom: 0;
+}
+
+/* Keyframes para a animação de brilho pulsante */
+@keyframes breathing-glow-green {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(37, 211, 102, 0.8);
+    }
+}
+
+@keyframes breathing-glow-blue {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(74, 144, 226, 0.8);
+    }
 }
 
 /* Estilo base para o selo de status */
 .project-status-badge {
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    font-weight: 700;
+    padding: 5px 12px;
+    font-size: 0.8rem; /* Um pouco maior */
+    font-weight: 600;
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: white; /* Texto branco para melhor contraste */
+    transition: transform 0.3s ease; /* Efeito de transição no hover */
 }
 
-/* Estilo para o status "Finalizado" */
+.project-status-badge:hover {
+    transform: scale(1.05); /* Aumenta um pouco ao passar o mouse */
+}
+
+/* Estilo para o status "Finalizado" com a nova animação */
 .project-status-badge.status-finalizado {
-    background-color: rgba(37, 211, 102, 0.15); /* Fundo verde bem claro */
-    color: #25d366; /* Texto verde */
+    background-color: #25d366; /* Fundo verde sólido */
+    animation: breathing-glow-green 3s infinite ease-in-out;
 }
 
-/* Estilo para o status "Em Andamento" */
+/* Estilo para o status "Em Andamento" com a nova animação */
 .project-status-badge.status-andamento {
-    background-color: rgba(74, 144, 226, 0.15); /* Fundo azul bem claro */
-    color: #4a90e2; /* Texto azul */
+    background-color: #4a90e2; /* Fundo azul sólido */
+    animation: breathing-glow-blue 3s infinite ease-in-out;
 }
