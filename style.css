@@ -1894,3 +1894,46 @@ body {
     align-self: center; /* Centraliza o botão */
     background: var(--gradient-primary); /* Gradiente mais bonito */
 }
+
+/* ==========================================================================
+   ANIMAÇÃO DE ONDAS PARA O BOTÃO WHATSAPP
+   ========================================================================== */
+
+/* Define a animação da onda: ela vai crescer e desaparecer */
+@keyframes whatsappRipples {
+    0% {
+        /* Começa no tamanho do botão e totalmente visível */
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        /* Termina com 2.5x o tamanho e totalmente transparente */
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Cria as "ondas" usando pseudo-elementos (círculos que se expandem) */
+.whatsapp-button::before,
+.whatsapp-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* A cor da onda é a mesma do botão, mas com transparência */
+    background-color: var(--whatsapp-green);
+    /* Garante que as ondas fiquem atrás do ícone */
+    z-index: 0;
+    /* Animação com 2s de duração, infinita e com um ritmo suave */
+    animation: whatsappRipples 2s infinite ease-out;
+    /* Impede que as ondas bloqueiem o clique no botão */
+    pointer-events: none;
+}
+
+/* A segunda onda (::after) começa 1 segundo depois da primeira */
+.whatsapp-button::after {
+    animation-delay: 1s;
+}
