@@ -2272,3 +2272,30 @@ body.sidebar-open .sidebar-toggle {
 .sidebar-link::before {
     height: 0; /* Garante que a linha de hover do menu horizontal não apareça */
 }
+/* Estilo para a mensagem de garantia na seção de oferta */
+.offer-guarantee {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(74, 144, 226, 0.1); /* Fundo sutil para destaque */
+    border-left: 4px solid var(--primary-blue); /* Borda lateral para chamar atenção */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.offer-guarantee i {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+}
+
+.offer-guarantee p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.offer-guarantee p strong {
+    color: var(--text-secondary);
+}
