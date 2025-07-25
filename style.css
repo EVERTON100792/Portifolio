@@ -2409,57 +2409,41 @@ body.sidebar-open .sidebar-toggle {
     overflow: visible;
 }
 /* ==========================================================================
-   ESTILOS PARA O STATUS DOS PROJETOS
+   NOVO ESTILO PARA O STATUS DOS PROJETOS (AO LADO DO TÍTULO)
    ========================================================================== */
 
-/* Garante que a tag de status fique posicionada corretamente sobre a imagem */
-.project-image {
-    position: relative;
-}
-
-/* Estilo base para a tag de status */
-.project-status {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-    z-index: 2; /* Garante que fique acima da imagem */
-    
-    /* Efeito de vidro fosco para melhor legibilidade */
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
+/* Cria um container flex para alinhar o título e o status lado a lado */
+.project-title-wrapper {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px; /* Espaço entre o título e o selo de status */
+    flex-wrap: wrap; /* Permite que o selo quebre a linha em telas muito pequenas */
+    margin-bottom: 1rem;
+}
+
+/* Estilo do título do projeto (sem alterações, apenas para referência) */
+.project-title {
+    margin-bottom: 0; /* Remove a margem que ele tinha para alinhar corretamente */
+}
+
+/* Estilo base para o selo de status */
+.project-status-badge {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Estilo para o status "Finalizado" */
-.project-status.status-finalizado {
-    border: 1px solid rgba(37, 211, 102, 0.5); /* Borda verde sutil */
-}
-.project-status.status-finalizado::before {
-    content: '✔'; /* Ícone de check */
-    color: var(--whatsapp-green);
+.project-status-badge.status-finalizado {
+    background-color: rgba(37, 211, 102, 0.15); /* Fundo verde bem claro */
+    color: #25d366; /* Texto verde */
 }
 
 /* Estilo para o status "Em Andamento" */
-.project-status.status-andamento {
-    border: 1px solid rgba(74, 144, 226, 0.5); /* Borda azul sutil */
-}
-.project-status.status-andamento::before {
-    content: '⚙️'; /* Ícone de engrenagem (work in progress) */
-    font-size: 0.9rem;
-    animation: spin 4s linear infinite; /* Animação de rotação */
-}
-
-/* Animação para o ícone de engrenagem */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.project-status-badge.status-andamento {
+    background-color: rgba(74, 144, 226, 0.15); /* Fundo azul bem claro */
+    color: #4a90e2; /* Texto azul */
 }
