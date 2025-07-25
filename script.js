@@ -238,6 +238,21 @@ function initBackToTop() {
     });
 }
 
+// ==========================================================================
+// FUNÇÃO PARA FORÇAR O INÍCIO DE ANIMAÇÕES CSS (NOVA FUNÇÃO ADICIONADA)
+// ==========================================================================
+function kickstartAnimation() {
+    const animatedButton = document.querySelector('.whatsapp-float');
+    if (animatedButton) {
+        // Adiciona uma classe temporária
+        animatedButton.classList.add('animation-kickstart');
+        // Remove a classe logo em seguida para não interferir em nada
+        setTimeout(() => {
+            animatedButton.classList.remove('animation-kickstart');
+        }, 10); // 10 milissegundos é imperceptível
+    }
+}
+
 function initReadingProgressBar() {
     const progressBar = document.createElement('div');
     progressBar.id = 'reading-progress';
@@ -287,8 +302,9 @@ function initPortfolio() {
         initTypingAnimation();
         initProjectCards();
         initWhatsAppButton();
-        initReadingProgressBar(); // <- Corrigido
-        setupSmoothScrolling();   // <- Corrigido
+        initReadingProgressBar();
+        setupSmoothScrolling();
+        kickstartAnimation(); // <-- CHAMADA PARA A NOVA FUNÇÃO ADICIONADA
 
         console.log('✅ Portfolio inicializado com sucesso!');
     } catch (error) {
