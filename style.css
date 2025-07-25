@@ -2408,3 +2408,58 @@ body.sidebar-open .sidebar-toggle {
 .whatsapp-float {
     overflow: visible;
 }
+/* ==========================================================================
+   ESTILOS PARA O STATUS DOS PROJETOS
+   ========================================================================== */
+
+/* Garante que a tag de status fique posicionada corretamente sobre a imagem */
+.project-image {
+    position: relative;
+}
+
+/* Estilo base para a tag de status */
+.project-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    z-index: 2; /* Garante que fique acima da imagem */
+    
+    /* Efeito de vidro fosco para melhor legibilidade */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Estilo para o status "Finalizado" */
+.project-status.status-finalizado {
+    border: 1px solid rgba(37, 211, 102, 0.5); /* Borda verde sutil */
+}
+.project-status.status-finalizado::before {
+    content: '✔'; /* Ícone de check */
+    color: var(--whatsapp-green);
+}
+
+/* Estilo para o status "Em Andamento" */
+.project-status.status-andamento {
+    border: 1px solid rgba(74, 144, 226, 0.5); /* Borda azul sutil */
+}
+.project-status.status-andamento::before {
+    content: '⚙️'; /* Ícone de engrenagem (work in progress) */
+    font-size: 0.9rem;
+    animation: spin 4s linear infinite; /* Animação de rotação */
+}
+
+/* Animação para o ícone de engrenagem */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
