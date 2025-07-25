@@ -1804,37 +1804,96 @@ body {
     transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
 
-/* Classe que será adicionada via JS para esconder o preloader */
+/* ==========================================================================
+   NOVO PRELOADER ESPETACULAR - PORTÕES DESLIZANTES
+   ========================================================================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Garante que os portões não criem barras de rolagem */
+    /* Transição suave de 1 segundo para o desaparecimento final */
+    transition: opacity 1s cubic-bezier(0.87, 0, 0.13, 1), visibility 1s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
 #preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
 }
 
-/* CSS PARA OPÇÃO 3: MONOGRAMA 'E' TECH */
-.logo-animado {
-    width: 100px;
-    height: 100px;
-    animation: pulsar-suave 2.5s ease-in-out infinite;
+/* Estilo do texto principal "EVERTON" */
+.preloader-text {
+    color: #ffffff;
+    font-size: 2.5rem; /* Tamanho do texto */
+    font-weight: 800; /* Deixa a fonte bem forte */
+    letter-spacing: 15px; /* Espaçamento entre as letras */
+    text-transform: uppercase; /* Tudo em maiúsculo */
+    opacity: 0; /* Começa invisível */
+    /* Aplica a animação de brilho */
+    animation: fadeInGlow 3s ease-out forwards;
 }
 
-.logo-animado .brilho {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    animation: brilho-caminho 2.5s ease-in-out infinite;
+/* Estilo base para os dois portões */
+.preloader-gate {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 51%; /* Um pouco mais da metade para garantir a sobreposição */
+    /* O gradiente da sua identidade visual */
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+    /* Aplica a animação de deslizar */
+    animation: slideInGates 1.5s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+    animation-delay: 2s; /* Os portões só começam a deslizar após 2s */
 }
 
-@keyframes pulsar-suave {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+/* Posição inicial de cada portão (fora da tela) */
+#gate-top {
+    top: -51%;
 }
-
-@keyframes brilho-caminho {
-    0% { stroke-dashoffset: 300; }
-    40% { stroke-dashoffset: 0; }
-    100% { stroke-dashoffset: -300; }
+#gate-bottom {
+    bottom: -51%;
 }
 
 
+/* ANIMAÇÕES (KEYFRAMES) */
+
+/* Animação para o texto aparecer com brilho */
+@keyframes fadeInGlow {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0);
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        transform: scale(1);
+    }
+}
+
+/* Animação para os portões deslizarem para o centro */
+@keyframes slideInGates {
+    from {
+        /* Posição inicial (definida em #gate-top e #gate-bottom) */
+    }
+    to {
+        /* Posição final (no centro da tela) */
+        transform: translateY(0);
+        top: 0;
+        bottom: 0;
+    }
+}
 /* Estilos para a Seção de Contato */
 .contato-section {
     padding: 6rem 0 8rem 0;
