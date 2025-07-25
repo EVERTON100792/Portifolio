@@ -2249,3 +2249,26 @@ body.sidebar-open .sidebar-toggle {
         padding-left: 280px; /* Largura da sua sidebar */
     }
 }
+
+/* ==========================================================================
+   CORREÇÃO FINAL PARA O LAYOUT VERTICAL DA SIDEBAR
+   ========================================================================== */
+
+/* Garante que a lista do menu seja sempre uma coluna vertical */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column; /* A linha mais importante: força a direção vertical */
+    width: 100%;
+    padding: 0 15px; /* Restaura o espaçamento lateral original */
+}
+
+/* Garante que cada item do menu não tenha altura fixa e o padding certo */
+.sidebar-item .sidebar-link {
+    height: auto;
+    padding: 15px 20px; /* Restaura o padding original dos links */
+}
+
+/* Remove qualquer resquício de borda inferior do menu horizontal */
+.sidebar-link::before {
+    height: 0; /* Garante que a linha de hover do menu horizontal não apareça */
+}
