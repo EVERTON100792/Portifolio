@@ -312,13 +312,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Inicia todas as outras funcionalidades do portfólio.
     initPortfolio();
 });
-/* ==================
-   Lógica do Preloader
-================== */
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        // Adiciona a classe 'hidden' para iniciar a transição de fade-out
-        preloader.classList.add('hidden');
-    }
-});
+
+
