@@ -2085,3 +2085,75 @@ body {
     align-self: center; /* Centraliza o botão */
     background: var(--gradient-primary); /* Gradiente mais bonito */
 }
+/* ==========================================================================
+   ESTILOS PARA A SEÇÃO DE DEPOIMENTOS
+   ========================================================================== */
+.depoimentos-section {
+    padding: 6rem 0;
+    background: var(--primary-bg); /* Ou use --secondary-bg para variar */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de fundo sutil */
+.depoimentos-section::before {
+    content: '“';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 20rem;
+    color: var(--card-bg);
+    z-index: 0;
+    opacity: 0.5;
+    line-height: 1;
+}
+
+.depoimento-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2.5rem 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid rgba(74, 144, 226, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.depoimento-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-blue);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
+}
+
+.depoimento-content blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0 0 1.5rem 0;
+    border: none;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.depoimento-content cite {
+    font-style: normal;
+}
+
+.depoimento-content cite strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.depoimento-content cite span {
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+}
