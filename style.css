@@ -2157,3 +2157,76 @@ body {
     color: var(--primary-blue);
     font-size: 0.9rem;
 }
+/* ==========================================================================
+   ANIMAÇÃO DE SONAR AVANÇADA PARA O WHATSAPP
+   ========================================================================== */
+
+/* Remove a animação de pulso antiga para não haver conflito */
+.whatsapp-button.pulse-animation,
+.cta-button.pulse-animation {
+    animation: none; /* Desativa a animação antiga */
+}
+
+/* Aplica a nova animação de sonar */
+.whatsapp-button,
+.sidebar .whatsapp-cta:hover, /* Efeito extra no menu desktop */
+.cta-button {
+    /* Garante que a animação de sonar funcione corretamente */
+    position: relative;
+    /* Adiciona a nova animação */
+    animation: sonar-effect 1.5s infinite ease-out;
+}
+
+/* Define a animação 'sonar-effect' */
+@keyframes sonar-effect {
+    0% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* Cria o círculo que expande (a 'onda' do sonar) */
+.whatsapp-button::before,
+.sidebar .whatsapp-cta::before,
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: var(--whatsapp-green);
+    animation: sonar-effect 1.5s infinite ease-out;
+    z-index: -1; /* Coloca o círculo atrás do ícone do WhatsApp */
+    opacity: 0.6;
+}
+
+/* Adiciona um pequeno atraso na segunda onda para um efeito mais rico */
+.whatsapp-button::after,
+.sidebar .whatsapp-cta::after,
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: var(--whatsapp-green);
+    animation: sonar-effect 1.5s infinite ease-out;
+    animation-delay: 0.5s; /* Atraso para a segunda onda */
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* Ajuste fino para os botões não ficarem cortados */
+.whatsapp-float, .hero-cta, .offer-cta, .projects-cta {
+    overflow: visible;
+}
