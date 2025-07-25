@@ -2121,14 +2121,25 @@ body {
     z-index: 1;
 }
 
-.depoimento-avatar {
+/* ==========================================================================
+   ESTILO PARA O NOVO AVATAR DE INICIAIS
+   ========================================================================== */
+.depoimento-avatar-iniciais {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 3px solid var(--primary-blue);
-    margin-bottom: 1.5rem;
-    object-fit: cover;
-    box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
+    background: var(--gradient-primary); /* Usa o gradiente principal do site */
+    margin: 0 auto 1.5rem auto; /* Centraliza e adiciona espaço abaixo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Estilos da fonte para as iniciais */
+    color: white;
+    font-size: 2rem; /* Tamanho das letras */
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase; /* Força as letras a serem maiúsculas */
 }
 
 .depoimento-content blockquote {
