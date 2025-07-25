@@ -403,13 +403,7 @@ function initBackToTop() {
 // SCROLL SUAVE E INDICADORES
 // ==========================================================================
 
-function initSmoothScroll() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
+
     
     const progressBar = document.createElement('div');
     progressBar.id = 'reading-progress';
@@ -444,7 +438,7 @@ function initPortfolio() {
         initTimelineAnimation();
         initProjectCards();
         initWhatsAppButton();
-        initSmoothScroll();
+        
         
         console.log('✅ Portfolio inicializado com sucesso!');
         
@@ -463,3 +457,53 @@ if (document.readyState === 'loading') {
 } else {
     initPortfolio();
 }
+/* ==========================================================================
+   NOVA FUNÇÃO DE ROLAGEM SUAVE E CORRETA
+   ========================================================================== */
+
+function setupSmoothScrolling() {
+    // Seleciona todos os links que começam com '#'
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Previne o comportamento padrão de "pular" para a âncora
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            
+            // Ignora links que não são para seções (ex: abas)
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Calcula a posição do topo do elemento
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                
+                // Calcula a posição atual de rolagem da página
+                const offsetPosition = elementPosition + window.pageYOffset;
+
+                // Rola a página até a posição calculada de forma suave
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+}
+
+// Chama a nova função quando o portfólio é inicializado
+// Adicione esta linha dentro da sua função initPortfolio(),
+// no lugar da antiga initSmoothScroll()
+// Exemplo:
+// function initPortfolio() {
+//    ...
+//    setupSmoothScrolling(); // Adicione esta linha
+//    ...
+// }
+
+// Se não encontrar onde colocar, pode chamar a função aqui no final do arquivo
+// quando o documento estiver pronto.
+document.addEventListener('DOMContentLoaded', setupSmoothScrolling);
