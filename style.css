@@ -2339,71 +2339,74 @@ body.sidebar-open .sidebar-toggle {
 .whatsapp-float .whatsapp-button::after {
     content: '';
     position: absolute;
-    /* ==========================================================================
-   ANIMAÇÃO "BRILHO ORGÂNICO" OTIMIZADA PARA CELULAR
+/* ==========================================================================
+   ANIMAÇÃO "ÓRBITA DE CONTATO" PARA O WHATSAPP
    ========================================================================== */
 
-/* Animação principal que muda a forma do brilho (sem alterações) */
-@keyframes morphing-glow {
-    0% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transform: rotate(0deg) scale(1.3);
+/* Keyframes para a rotação da órbita */
+@keyframes orbital-rotation {
+    from {
+        transform: rotate(0deg);
     }
-    50% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-        transform: rotate(180deg) scale(1.5);
-    }
-    100% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        transform: rotate(360deg) scale(1.3);
+    to {
+        transform: rotate(360deg);
     }
 }
 
-/* Animação sutil para o botão principal "respirar" (sem alterações) */
-@keyframes subtle-breath {
+/* Keyframes para a pulsação do satélite */
+@keyframes satellite-pulse {
     0%, 100% {
         transform: scale(1);
+        opacity: 1;
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.2);
+        opacity: 0.8;
     }
 }
 
-/* Aplica a animação de respiração ao botão */
+/* Garante que o botão principal não tenha animações conflitantes */
 .whatsapp-float .whatsapp-button {
-    animation: subtle-breath 5s infinite ease-in-out;
-    /* Dica para forçar a aceleração de hardware (GPU) */
-    transform: translateZ(0);
+    animation: none;
 }
 
-/* Cria o brilho orgânico usando o pseudo-elemento ::before */
+/* Cria o container da órbita */
 .whatsapp-float .whatsapp-button::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--whatsapp-green);
+    top: -10px; /* Aumenta o raio da órbita */
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    
+    /* A mágica da órbita acontece aqui */
+    border: 2px solid transparent; /* Borda invisível para rotação */
+    border-top-color: var(--whatsapp-green); /* Apenas o topo da borda é visível */
+    
+    /* Aplica a animação de rotação */
+    animation: orbital-rotation 3s infinite linear;
     z-index: -1;
-
-    /* A mágica acontece aqui - com otimizações */
-    -webkit-filter: blur(18px); /* Prefixo para compatibilidade com Safari/Chrome */
-    filter: blur(18px);
-    
-    -webkit-animation: morphing-glow 10s infinite linear; /* Prefixo para animação */
-    animation: morphing-glow 10s infinite linear;
-    
-    transform: translateZ(0); /* Dica para forçar a aceleração de hardware (GPU) */
-    opacity: 0.8;
 }
 
-/* Garante que o pseudo-elemento ::after não seja usado */
+/* Cria o "satélite" que pulsa */
 .whatsapp-float .whatsapp-button::after {
-    content: none;
+    content: '';
+    position: absolute;
+    top: -12px; /* Posiciona o satélite no topo da órbita */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--whatsapp-green);
+    box-shadow: 0 0 10px var(--whatsapp-green); /* Efeito de brilho */
+    
+    /* Aplica a animação de pulsação */
+    animation: satellite-pulse 1.5s infinite ease-in-out;
 }
 
-/* Garante que o brilho não seja cortado */
+/* Garante que a órbita não seja cortada */
 .whatsapp-float {
     overflow: visible;
 }
