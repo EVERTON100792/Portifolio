@@ -2340,10 +2340,10 @@ body.sidebar-open .sidebar-toggle {
     content: '';
     position: absolute;
     /* ==========================================================================
-   ANIMAÇÃO SENSACIONAL "BRILHO ORGÂNICO" PARA O WHATSAPP
+   ANIMAÇÃO "BRILHO ORGÂNICO" OTIMIZADA PARA CELULAR
    ========================================================================== */
 
-/* Animação principal que muda a forma do brilho */
+/* Animação principal que muda a forma do brilho (sem alterações) */
 @keyframes morphing-glow {
     0% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -2359,7 +2359,7 @@ body.sidebar-open .sidebar-toggle {
     }
 }
 
-/* Animação sutil para o botão principal "respirar" */
+/* Animação sutil para o botão principal "respirar" (sem alterações) */
 @keyframes subtle-breath {
     0%, 100% {
         transform: scale(1);
@@ -2372,6 +2372,8 @@ body.sidebar-open .sidebar-toggle {
 /* Aplica a animação de respiração ao botão */
 .whatsapp-float .whatsapp-button {
     animation: subtle-breath 5s infinite ease-in-out;
+    /* Dica para forçar a aceleração de hardware (GPU) */
+    transform: translateZ(0);
 }
 
 /* Cria o brilho orgânico usando o pseudo-elemento ::before */
@@ -2385,9 +2387,14 @@ body.sidebar-open .sidebar-toggle {
     background-color: var(--whatsapp-green);
     z-index: -1;
 
-    /* A mágica acontece aqui */
-    filter: blur(18px); /* Cria o efeito de brilho suave */
-    animation: morphing-glow 10s infinite linear; /* Aplica a animação de mudança de forma */
+    /* A mágica acontece aqui - com otimizações */
+    -webkit-filter: blur(18px); /* Prefixo para compatibilidade com Safari/Chrome */
+    filter: blur(18px);
+    
+    -webkit-animation: morphing-glow 10s infinite linear; /* Prefixo para animação */
+    animation: morphing-glow 10s infinite linear;
+    
+    transform: translateZ(0); /* Dica para forçar a aceleração de hardware (GPU) */
     opacity: 0.8;
 }
 
@@ -2397,21 +2404,6 @@ body.sidebar-open .sidebar-toggle {
 }
 
 /* Garante que o brilho não seja cortado */
-.whatsapp-float {
-    overflow: visible;
-}top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background-color: var(--whatsapp-green);
-    animation: sonar-effect 1.5s infinite ease-out;
-    animation-delay: 0.5s; /* Atraso que cria o efeito duplo */
-    z-index: -1;
-}
-
-/* Garante que as ondas não fiquem cortadas */
 .whatsapp-float {
     overflow: visible;
 }
