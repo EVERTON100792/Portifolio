@@ -1996,3 +1996,39 @@ body {
 .whatsapp-button::after {
     animation-delay: 1s;
 }
+/* ==================
+   Preloader
+================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #1a1a2e; /* Cor de fundo que combina com seu site */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.75s ease-out, visibility 0.75s ease-out;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.2); /* Cor da borda do spinner */
+    border-top-color: #4a90e2; /* Cor principal do spinner (azul do seu site) */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
