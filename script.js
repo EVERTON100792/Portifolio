@@ -32,7 +32,7 @@ function isMobile() {
 }
 
 // ==========================================================================
-// LÓGICA DO PRELOADER (ATUALIZADA)
+// LÓGICA DO PRELOADER
 // ==========================================================================
 function handlePreloader() {
     const preloader = document.getElementById('preloader');
@@ -304,12 +304,17 @@ function initPortfolio() {
 }
 
 // ==========================================================================
-// EVENT LISTENERS E EXECUÇÃO
+// EVENT LISTENERS E EXECUÇÃO (VERSÃO CORRIGIDA)
 // ==========================================================================
+
+// Este evento dispara quando o HTML principal está pronto.
 document.addEventListener('DOMContentLoaded', () => {
-    initPortfolio();
+    // 1. Inicia a lógica do preloader imediatamente para garantir que ele sempre saia da tela.
+    handlePreloader();
+
+    // 2. Inicia as outras funcionalidades do portfólio.
+    initPortfolio();
 });
 
-window.addEventListener('load', () => {
-    handlePreloader();
-});
+// O listener 'window.load' foi removido desta parte para evitar que o site
+// fique travado esperando por algum recurso externo que possa falhar.
