@@ -2479,3 +2479,72 @@ body.sidebar-open .sidebar-toggle {
     background-color: #4a90e2;
     animation: breathing-glow-blue 3s infinite ease-in-out;
 }
+/* ==========================================================================
+   ESTILO AVANÇADO E ANIMADO PARA O STATUS DOS PROJETOS
+   ========================================================================== */
+
+/* Keyframes para a animação de brilho pulsante */
+@keyframes breathing-glow-green {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(37, 211, 102, 0.4), 0 0 12px rgba(37, 211, 102, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(37, 211, 102, 0.8), 0 0 24px rgba(37, 211, 102, 0.5);
+    }
+}
+
+@keyframes breathing-glow-blue {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(74, 144, 226, 0.4), 0 0 12px rgba(74, 144, 226, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(74, 144, 226, 0.8), 0 0 24px rgba(74, 144, 226, 0.5);
+    }
+}
+
+/* Cria um container flex para alinhar o título e o status lado a lado */
+.project-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; /* Permite que o status quebre a linha em telas pequenas */
+    margin-bottom: 1rem;
+}
+
+/* Garante que o título não tenha margem extra */
+.project-title {
+    margin-bottom: 0;
+}
+
+/* Estilo base para o selo de status */
+.project-status-badge {
+    padding: 6px 14px; 
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    transition: transform 0.3s ease;
+    
+    /* Regras que corrigem o alinhamento do texto */
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2; /* Damos um pouco de altura de linha para garantir */
+}
+
+.project-status-badge:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para o status "Finalizado" com a nova animação */
+.project-status-badge.status-finalizado {
+    background-color: #25d366;
+    animation: breathing-glow-green 3s infinite ease-in-out;
+}
+
+/* Estilo para o status "Em Andamento" com a nova animação */
+.project-status-badge.status-andamento {
+    background-color: #4a90e2;
+    animation: breathing-glow-blue 3s infinite ease-in-out;
+}
