@@ -1823,77 +1823,7 @@ body {
     transition: opacity 1s cubic-bezier(0.87, 0, 0.13, 1), visibility 1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 
-#preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
 
-/* Estilo do texto principal "EVERTON" */
-.preloader-text {
-    color: #ffffff;
-    font-size: 2.5rem; /* Tamanho do texto */
-    font-weight: 800; /* Deixa a fonte bem forte */
-    letter-spacing: 15px; /* Espaçamento entre as letras */
-    text-transform: uppercase; /* Tudo em maiúsculo */
-    opacity: 0; /* Começa invisível */
-    /* Aplica a animação de brilho */
-    animation: fadeInGlow 3s ease-out forwards;
-}
-
-/* Estilo base para os dois portões */
-.preloader-gate {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 51%; /* Um pouco mais da metade para garantir a sobreposição */
-    /* O gradiente da sua identidade visual */
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
-    /* Aplica a animação de deslizar */
-    animation: slideInGates 1.5s cubic-bezier(0.87, 0, 0.13, 1) forwards;
-    animation-delay: 2s; /* Os portões só começam a deslizar após 2s */
-}
-
-/* Posição inicial de cada portão (fora da tela) */
-#gate-top {
-    top: -51%;
-}
-#gate-bottom {
-    bottom: -51%;
-}
-
-
-/* ANIMAÇÕES (KEYFRAMES) */
-
-/* Animação para o texto aparecer com brilho */
-@keyframes fadeInGlow {
-    0% {
-        opacity: 0;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0);
-        transform: scale(0.9);
-    }
-    50% {
-        opacity: 1;
-        text-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-    }
-    100% {
-        opacity: 1;
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        transform: scale(1);
-    }
-}
-
-/* Animação para os portões deslizarem para o centro */
-@keyframes slideInGates {
-    from {
-        /* Posição inicial (definida em #gate-top e #gate-bottom) */
-    }
-    to {
-        /* Posição final (no centro da tela) */
-        transform: translateY(0);
-        top: 0;
-        bottom: 0;
-    }
-}
 /* Estilos para a Seção de Contato */
 .contato-section {
     padding: 6rem 0 8rem 0;
