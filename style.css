@@ -2216,10 +2216,36 @@ body {
 .whatsapp-float, .hero-cta, .offer-cta, .projects-cta {
     overflow: visible;
 }
-/* Ajusta o conteúdo principal quando a sidebar está aberta no PC */
+/* ==========================================================================
+   CONFIGURAÇÃO FINAL DA SIDEBAR PARA TODAS AS TELAS
+   ========================================================================== */
+
+/* 1. Garante que o corpo da página não tenha espaçamentos indesejados */
+body {
+    padding-top: 0 !important; /* Remove a faixa preta de vez */
+    padding-left: 0; /* Garante que o padding lateral seja aplicado apenas quando necessário */
+    transition: padding-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. Deixa a sidebar com o efeito de "vidro fosco" quando aberta */
+.sidebar.open {
+    /* Mantém a transformação original para abrir */
+    transform: translateX(0);
+    
+    /* Efeito de vidro fosco (opcional, mas estiloso) */
+    background: rgba(26, 26, 26, 0.8); /* Fundo escuro com mais transparência */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* 3. Ajusta a posição do botão de fechar quando a sidebar está aberta */
+body.sidebar-open .sidebar-toggle {
+    left: 295px; /* Posição correta para o botão X */
+}
+
+/* 4. Faz o conteúdo da página se deslocar para o lado no PC quando o menu abrir */
 @media screen and (min-width: 1025px) {
     body.sidebar-open {
         padding-left: 280px; /* Largura da sua sidebar */
-        transition: padding-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
