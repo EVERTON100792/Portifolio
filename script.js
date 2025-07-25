@@ -1,43 +1,20 @@
-// ==========================================================================
-// LÓGICA DO PRELOADER
-// ==========================================================================
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        // Adiciona um pequeno atraso para a animação não ser cortada bruscamente
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-        }, 200);
-    }
-});
-
 /**
  * PORTFOLIO EVERTON - SCRIPT PRINCIPAL
  * Desenvolvedor Web Criativo
- * * Este arquivo contém todas as funcionalidades JavaScript do portfólio,
- * incluindo animações impressionantes, Intersection Observer API,
- * configuração do particles.js e interações do usuário.
  */
 
 // ==========================================================================
 // CONFIGURAÇÕES GLOBAIS E UTILITÁRIOS
 // ==========================================================================
-
 const CONFIG = {
-    // Configurações de animação
     TYPING_SPEED: 50,
     PARTICLE_COUNT: 100,
-    
-    // Breakpoints responsivos
     MOBILE_BREAKPOINT: 768,
     TABLET_BREAKPOINT: 1024,
-    
-    // Configurações do WhatsApp
-    WHATSAPP_NUMBER: '5511999999999',
+    WHATSAPP_NUMBER: '5543998719821',
     WHATSAPP_MESSAGE: 'Olá, Everton! Vi seu portfólio e gostaria de fazer um orçamento.'
 };
 
-// Utilitário para debounce
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -50,42 +27,45 @@ function debounce(func, wait) {
     };
 }
 
-// Utilitário para detectar dispositivo móvel
 function isMobile() {
     return window.innerWidth <= CONFIG.MOBILE_BREAKPOINT;
 }
 
 // ==========================================================================
-// INTERSECTION OBSERVER API - ANIMAÇÕES OTIMIZADAS
+// LÓGICA DO PRELOADER
 // ==========================================================================
+function handlePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 200);
+    }
+}
 
+// ==========================================================================
+// ANIMAÇÕES E OBSERVERS
+// ==========================================================================
 function initIntersectionObserver() {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
-
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
                 if (entry.target.classList.contains('timeline-line')) {
                     entry.target.classList.add('drawing');
                 }
-                
                 observer.unobserve(entry.target);
             }
         });
     };
-
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-
     const animatedElements = document.querySelectorAll('.fade-in-animation');
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
+    animatedElements.forEach(element => observer.observe(element));
 
     const timelineLine = document.getElementById('timeline-progress');
     if (timelineLine) {
@@ -93,28 +73,22 @@ function initIntersectionObserver() {
     }
 }
 
-// ==========================================================================
-// PARTICLES.JS - FUNDO INTERATIVO IMPRESSIONANTE
-// ==========================================================================
-
 function initParticles() {
     if (typeof particlesJS === 'undefined') {
-        console.warn('Particles.js não foi carregado. Usando fallback CSS.');
+        console.warn('Particles.js não foi carregado.');
         return;
     }
-
     const particleCount = isMobile() ? 50 : CONFIG.PARTICLE_COUNT;
     const lineDistance = isMobile() ? 100 : 150;
-
     particlesJS('particles-js', {
         particles: {
             number: { value: particleCount, density: { enable: true, value_area: 1000 } },
             color: { value: ['#4a90e2', '#357abd', '#8b5cf6', '#25d366'] },
-            shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-            opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
-            size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+            shape: { type: 'circle' },
+            opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+            size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
             line_linked: { enable: true, distance: lineDistance, color: '#4a90e2', opacity: 0.3, width: 1 },
-            move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false, attract: { enable: true, rotateX: 600, rotateY: 1200 } }
+            move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out', attract: { enable: true, rotateX: 600, rotateY: 1200 } }
         },
         interactivity: {
             detect_on: 'canvas',
@@ -130,15 +104,10 @@ function initParticles() {
         },
         retina_detect: true
     });
-
     setTimeout(() => {
         document.querySelector('.hero-section').classList.add('loaded');
     }, 1000);
 }
-
-// ==========================================================================
-// ANIMAÇÃO DE DIGITAÇÃO DO TÍTULO
-// ==========================================================================
 
 function initTypingAnimation() {
     const typingElement = document.querySelector('.typing-text');
@@ -148,177 +117,58 @@ function initTypingAnimation() {
     const originalText = typingElement.textContent;
     typingElement.textContent = '';
     let charIndex = 0;
-    
+
     function typeCharacter() {
         if (charIndex < originalText.length) {
             typingElement.textContent += originalText.charAt(charIndex);
             charIndex++;
             const delay = Math.random() * 50 + CONFIG.TYPING_SPEED;
             setTimeout(typeCharacter, delay);
-        } else {
-            if (cursor) {
-                cursor.style.animation = 'blink 1s infinite';
-            }
+        } else if (cursor) {
+            cursor.style.animation = 'blink 1s infinite';
         }
     }
     setTimeout(typeCharacter, 1000);
 }
 
 // ==========================================================================
-// LINHA DO TEMPO INTERATIVA
+// INTERAÇÕES DE COMPONENTES
 // ==========================================================================
-
-function initTimelineAnimation() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineLine = document.getElementById('timeline-progress');
-    if (!timelineItems.length || !timelineLine) return;
-
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                const itemIndex = Array.from(timelineItems).indexOf(entry.target);
-                const percentage = ((itemIndex + 1) / timelineItems.length) * 100;
-                timelineLine.style.height = `${percentage}%`;
-            }
-        });
-    }, {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-    });
-
-    timelineItems.forEach(item => {
-        timelineObserver.observe(item);
-    });
-}
-
-// ==========================================================================
-// INTERAÇÕES DOS CARDS DE PROJETO
-// ==========================================================================
-
-/**
- * Adiciona interatividade avançada aos cards de projeto
- */
 function initProjectCards() {
     const projectCards = document.querySelectorAll('.project-card');
-    
     projectCards.forEach(card => {
-        // ===============================================================
-        // ALTERAÇÃO AQUI: Efeito 3D restaurado para o original
-        // ===============================================================
         if (!isMobile()) {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
-                
-                // Aplica a transformação 3D diretamente no estilo do card
-                card.style.transform = `
-                    perspective(1000px) 
-                    rotateX(${rotateX}deg) 
-                    rotateY(${rotateY}deg) 
-                    scale(1.05)
-                `;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
             });
-            
             card.addEventListener('mouseleave', () => {
-                // Remove a transformação ao tirar o mouse, permitindo a transição suave do CSS
                 card.style.transform = '';
             });
         }
-        
-        // Efeito ripple no clique (mantido)
-        card.addEventListener('click', (e) => {
-            if (e.target.closest('.btn-primary, .btn-secondary')) return;
-            
-            const ripple = document.createElement('div');
-            ripple.classList.add('ripple-effect');
-            
-            const rect = card.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute; width: ${size}px; height: ${size}px;
-                left: ${x}px; top: ${y}px; background: rgba(74, 144, 226, 0.3);
-                border-radius: 50%; transform: scale(0);
-                animation: ripple 0.6s ease-out; pointer-events: none; z-index: 10;
-            `;
-            
-            card.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-        });
     });
-    
-    // Adicionar CSS para ripple effect, se ainda não existir
-    if (!document.querySelector('#ripple-styles')) {
-        const style = document.createElement('style');
-        style.id = 'ripple-styles';
-        style.textContent = `
-            @keyframes ripple { to { transform: scale(4); opacity: 0; } }
-            .project-card { position: relative; overflow: hidden; }
-        `;
-        document.head.appendChild(style);
-    }
 }
-
-// ==========================================================================
-// BOTÃO WHATSAPP INTELIGENTE
-// ==========================================================================
 
 function initWhatsAppButton() {
     const whatsappButton = document.querySelector('.whatsapp-button');
-    const whatsappFloat = document.querySelector('.whatsapp-float');
-    if (!whatsappButton || !whatsappFloat) return;
+    if (!whatsappButton) return;
 
-    setTimeout(() => {
-        if (!localStorage.getItem('whatsapp-tooltip-shown')) {
-            showTooltipTemporarily();
-            localStorage.setItem('whatsapp-tooltip-shown', 'true');
-        }
-    }, 3000);
-    
-    function showTooltipTemporarily() {
-        const tooltip = whatsappButton.querySelector('.whatsapp-tooltip');
-        if (tooltip) {
-            tooltip.style.opacity = '1';
-            tooltip.style.visibility = 'visible';
-            tooltip.style.transform = 'translateY(-50%) translateX(-10px)';
-            
-            setTimeout(() => {
-                tooltip.style.opacity = '';
-                tooltip.style.visibility = '';
-                tooltip.style.transform = '';
-            }, 3000);
-        }
-    }
-    
-  
-    
     whatsappButton.addEventListener('click', () => {
         console.log('WhatsApp button clicked - Lead generation event');
         whatsappButton.classList.add('clicked');
         setTimeout(() => whatsappButton.classList.remove('clicked'), 300);
     });
-    
+
     const style = document.createElement('style');
-    style.textContent = `
-        .whatsapp-button.clicked { transform: scale(1.2); background: #128c7e; }
-        .whatsapp-float { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    `;
+    style.textContent = `.whatsapp-button.clicked { transform: scale(1.2); background: #128c7e; }`;
     document.head.appendChild(style);
 }
-
-// ==========================================================================
-// SIDEBAR NAVIGATION INTERATIVO
-// ==========================================================================
 
 function initSidebarNavigation() {
     const sidebar = document.getElementById('sidebar');
@@ -332,26 +182,24 @@ function initSidebarNavigation() {
         sidebarOverlay.classList.remove('active');
         document.body.classList.remove('sidebar-open');
     };
-    
+
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('open');
         sidebarOverlay.classList.toggle('active');
         document.body.classList.toggle('sidebar-open');
     });
-    
+
     sidebarOverlay.addEventListener('click', closeSidebar);
-    
     sidebarLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            closeSidebar(); // Fecha a sidebar ao clicar em qualquer link
-            const href = link.getAttribute('href');
-            if (href.startsWith('#')) {
+        link.addEventListener('click', () => {
+            closeSidebar();
+            if (link.getAttribute('href').startsWith('#')) {
                 sidebarLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
             }
         });
     });
-    
+
     const sections = document.querySelectorAll('section[id]');
     const highlightSidebarNavigation = debounce(() => {
         let currentSectionId = '';
@@ -361,7 +209,6 @@ function initSidebarNavigation() {
                 currentSectionId = section.getAttribute('id');
             }
         });
-
         sidebarLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${currentSectionId}`) {
@@ -369,9 +216,8 @@ function initSidebarNavigation() {
             }
         });
     }, 100);
-    
+
     window.addEventListener('scroll', highlightSidebarNavigation);
-    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && sidebar.classList.contains('open')) {
             closeSidebar();
@@ -379,32 +225,20 @@ function initSidebarNavigation() {
     });
 }
 
-// ==========================================================================
-// BOTÃO VOLTAR AO TOPO
-// ==========================================================================
-
 function initBackToTop() {
     const backToTopButton = document.getElementById('backToTop');
     if (!backToTopButton) return;
-    
     const toggleBackToTop = debounce(() => {
         backToTopButton.classList.toggle('show', window.scrollY > 500);
     }, 100);
-    
     window.addEventListener('scroll', toggleBackToTop);
-    
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
-// ==========================================================================
-// SCROLL SUAVE E INDICADORES
-// ==========================================================================
-
-
-    
+function initReadingProgressBar() {
     const progressBar = document.createElement('div');
     progressBar.id = 'reading-progress';
     progressBar.style.cssText = `
@@ -413,78 +247,24 @@ function initBackToTop() {
         z-index: 9999; transition: width 0.1s ease;
     `;
     document.body.appendChild(progressBar);
-    
     const updateReadingProgress = debounce(() => {
         const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
         progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
     }, 10);
-    
     window.addEventListener('scroll', updateReadingProgress);
 }
 
-// ==========================================================================
-// INICIALIZAÇÃO PRINCIPAL
-// ==========================================================================
-
-function initPortfolio() {
-    console.log('🚀 Iniciando Portfolio Everton - Desenvolvedor Web Criativo');
-    
-    try {
-        initSidebarNavigation();
-        initBackToTop();
-        initIntersectionObserver();
-        initParticles();
-        initTypingAnimation();
-        initTimelineAnimation();
-        initProjectCards();
-        initWhatsAppButton();
-        
-        
-        console.log('✅ Portfolio inicializado com sucesso!');
-        
-    } catch (error) {
-        console.error('❌ Erro na inicialização do portfolio:', error);
-        document.querySelector('.hero-section')?.classList.add('loaded');
-    }
-}
-
-// ==========================================================================
-// EVENT LISTENERS E EXECUÇÃO
-// ==========================================================================
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPortfolio);
-} else {
-    initPortfolio();
-}
-/* ==========================================================================
-   NOVA FUNÇÃO DE ROLAGEM SUAVE E CORRETA
-   ========================================================================== */
-
 function setupSmoothScrolling() {
-    // Seleciona todos os links que começam com '#'
     const internalLinks = document.querySelectorAll('a[href^="#"]');
-
     internalLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Previne o comportamento padrão de "pular" para a âncora
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
-            
-            // Ignora links que não são para seções (ex: abas)
             if (targetId === '#') return;
-
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
-                // Calcula a posição do topo do elemento
                 const elementPosition = targetElement.getBoundingClientRect().top;
-                
-                // Calcula a posição atual de rolagem da página
                 const offsetPosition = elementPosition + window.pageYOffset;
-
-                // Rola a página até a posição calculada de forma suave
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
@@ -494,16 +274,36 @@ function setupSmoothScrolling() {
     });
 }
 
-// Chama a nova função quando o portfólio é inicializado
-// Adicione esta linha dentro da sua função initPortfolio(),
-// no lugar da antiga initSmoothScroll()
-// Exemplo:
-// function initPortfolio() {
-//    ...
-//    setupSmoothScrolling(); // Adicione esta linha
-//    ...
-// }
+// ==========================================================================
+// INICIALIZAÇÃO PRINCIPAL
+// ==========================================================================
+function initPortfolio() {
+    console.log('🚀 Iniciando Portfolio Everton - Desenvolvedor Web Criativo');
+    try {
+        initSidebarNavigation();
+        initBackToTop();
+        initIntersectionObserver();
+        initParticles();
+        initTypingAnimation();
+        initProjectCards();
+        initWhatsAppButton();
+        initReadingProgressBar(); // <- Corrigido
+        setupSmoothScrolling();   // <- Corrigido
 
-// Se não encontrar onde colocar, pode chamar a função aqui no final do arquivo
-// quando o documento estiver pronto.
-document.addEventListener('DOMContentLoaded', setupSmoothScrolling);
+        console.log('✅ Portfolio inicializado com sucesso!');
+    } catch (error) {
+        console.error('❌ Erro na inicialização do portfolio:', error);
+        document.querySelector('.hero-section')?.classList.add('loaded');
+    }
+}
+
+// ==========================================================================
+// EVENT LISTENERS E EXECUÇÃO
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    initPortfolio();
+});
+
+window.addEventListener('load', () => {
+    handlePreloader();
+});
