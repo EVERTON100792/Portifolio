@@ -313,4 +313,20 @@ document.addEventListener('DOMContentLoaded', () => {
     initPortfolio();
 });
 
+/* =========================================
+   FUNCIONALIDADE DA SETA DE ROLAGEM (HERO)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona a seta e a seção de destino
+    const scrollArrow = document.querySelector('.scroll-arrow');
+    const aboutSection = document.querySelector('#about');
 
+    // Verifica se os dois elementos existem na página
+    if (scrollArrow && aboutSection) {
+        // Adiciona o evento de clique na seta
+        scrollArrow.addEventListener('click', () => {
+            // Rola suavemente até o início da seção "Sobre Mim"
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
