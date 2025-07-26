@@ -611,14 +611,16 @@ body {
    ========================================================================== */
 
 .hero-section {
+    /* Usar min-height é mais seguro que height */
+    min-height: 100vh; 
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
     overflow: hidden;
-    padding-top: 8rem; 
-    padding-bottom: 6rem; 
+    /* Adiciona um pouco de padding para garantir que nada encoste nas bordas */
+    padding: 2rem 0;
 }
 
 #particles-js {
@@ -636,13 +638,15 @@ body {
     text-align: center;
     max-width: 800px;
     padding: 0 20px;
-    margin-top: 2rem; 
+    /* REMOVEMOS a margem no topo que empurrava o conteúdo para baixo */
+    margin-top: 0; 
 }
 
 .hero-title {
     font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    /* REDUZIMOS a margem inferior para compactar o espaço */
+    margin-bottom: 1rem; 
     position: relative;
 }
 
@@ -666,13 +670,14 @@ body {
 .hero-subtitle {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     color: var(--text-secondary);
-    margin-bottom: 3rem;
+    /* REDUZIMOS drasticamente a margem inferior */
+    margin-bottom: 2rem; 
     font-weight: 300;
     line-height: 1.4;
 }
-
 .hero-cta {
-    margin-bottom: 2rem;
+    /* Não precisa de margem inferior aqui, o espaçamento da seção já resolve */
+    margin-bottom: 0;
 }
 
 .cta-button {
