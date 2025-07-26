@@ -617,7 +617,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 0 20px; /* Adiciona um respiro nas laterais */
+    padding: 0 40px; /* <-- Aumentamos o espaço lateral para 40px */
     background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
 }
 
