@@ -611,67 +611,67 @@ body {
    ========================================================================== */
 
 .hero-section {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 0 20px; /* Adiciona um respiro nas laterais */
-    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 20px; /* Adiciona um respiro nas laterais */
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
 }
 
 
 #particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .hero-wrapper {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
 }
 
-hero-title {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 1rem;
-    position: relative;
+.hero-title { /* <<< CORRIGIDO AQUI (adicionado o ponto) */
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .typing-text {
-    display: inline-block;
-    color: var(--text-primary);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    position: relative;
+    display: inline-block;
+    color: var(--text-primary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
 }
 
 .cursor {
-    display: inline-block;
-    color: var(--primary-blue);
-    animation: blink 1s infinite;
-    font-weight: 400;
+    display: inline-block;
+    color: var(--primary-blue);
+    animation: blink 1s infinite;
+    font-weight: 400;
 }
 
 .hero-subtitle {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    font-weight: 300;
-    line-height: 1.4;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    line-height: 1.4;
 }
 .hero-cta {
-    margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .cta-button {
@@ -1036,8 +1036,6 @@ hero-title {
     animation: pulse 2s infinite;
 }
 
-/* (O restante do CSS para Projetos, WhatsApp, Footer, etc., continua aqui) */
-
 .projects-section, .curriculo-section {
     padding: 8rem 0;
     position: relative;
@@ -1046,8 +1044,6 @@ hero-title {
 .projects-section {
     background: var(--secondary-bg);
 }
-
-/* O resto do CSS permanece o mesmo... */
 
 .projects-grid {
     display: grid;
@@ -1235,22 +1231,6 @@ hero-title {
     position: relative;
     overflow: hidden;
     animation: whatsappPulse 2s infinite;
-}
-
-.whatsapp-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity var(--transition-fast);
-}
-
-.whatsapp-button:hover::before {
-    opacity: 1;
 }
 
 .whatsapp-button:hover {
@@ -1804,22 +1784,22 @@ hero-title {
 }
 
 /* ==========================================================================
-   NOVO PRELOADER ESPETACULAR - PORTÕES DESLIZANTES
-   ========================================================================== */
+   NOVO PRELOADER ESPETACULAR - PORTÕES DESLIZANTES
+   ========================================================================== */
 #preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0a0a0a;
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Garante que os portões não criem barras de rolagem */
-    /* Transição suave de 1 segundo para o desaparecimento final */
-    transition: opacity 1s cubic-bezier(0.87, 0, 0.13, 1), visibility 1s cubic-bezier(0.87, 0, 0.13, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Garante que os portões não criem barras de rolagem */
+    /* Transição suave de 1 segundo para o desaparecimento final */
+    transition: opacity 1s cubic-bezier(0.87, 0, 0.13, 1), visibility 1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 
@@ -1884,46 +1864,46 @@ hero-title {
 }
 
 /* ==========================================================================
-   ANIMAÇÃO DE ONDAS PARA O BOTÃO WHATSAPP
-   ========================================================================== */
+   ANIMAÇÃO DE ONDAS PARA O BOTÃO WHATSAPP
+   ========================================================================== */
 
 /* Define a animação da onda: ela vai crescer e desaparecer */
 @keyframes whatsappRipples {
-    0% {
-        /* Começa no tamanho do botão e totalmente visível */
-        transform: scale(1);
-        opacity: 0.6;
-    }
-    100% {
-        /* Termina com 2.5x o tamanho e totalmente transparente */
-        transform: scale(2.5);
-        opacity: 0;
-    }
+    0% {
+        /* Começa no tamanho do botão e totalmente visível */
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        /* Termina com 2.5x o tamanho e totalmente transparente */
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }
 
 /* Cria as "ondas" usando pseudo-elementos (círculos que se expandem) */
 .whatsapp-button::before,
 .whatsapp-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     /* A cor da onda é a mesma do botão, mas com transparência */
-    background-color: var(--whatsapp-green);
-    /* Garante que as ondas fiquem atrás do ícone */
-    z-index: 0;
+    background-color: var(--whatsapp-green);
+    /* Garante que as ondas fiquem atrás do ícone */
+    z-index: 0;
     /* Animação com 2s de duração, infinita e com um ritmo suave */
-    animation: whatsappRipples 2s infinite ease-out;
+    animation: whatsappRipples 2s infinite ease-out;
     /* Impede que as ondas bloqueiem o clique no botão */
     pointer-events: none;
 }
 
 /* A segunda onda (::after) começa 1 segundo depois da primeira */
 .whatsapp-button::after {
-    animation-delay: 1s;
+    animation-delay: 1s;
 }
 /* ==================
    Preloader
@@ -1975,8 +1955,8 @@ hero-title {
     
     /* ESTILOS DE CARD ADICIONADOS AQUI */
     background: var(--card-bg); /* Adiciona o fundo padrão dos cards */
-    padding: 3rem;              /* Adiciona um bom espaçamento interno */
-    border-radius: 20px;        /* Deixa os cantos arredondados */
+    padding: 3rem;               /* Adiciona um bom espaçamento interno */
+    border-radius: 20px;         /* Deixa os cantos arredondados */
     box-shadow: var(--shadow-medium); /* Adiciona uma sombra para profundidade */
     border: 1px solid rgba(74, 144, 226, 0.1); /* Borda sutil para brilho */
     transition: all var(--transition-medium);
