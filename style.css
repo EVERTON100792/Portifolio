@@ -1731,6 +1731,10 @@ body {
         padding-right: 15px;
     }
 
+   .scroll-indicator {
+        bottom: 70px; /* Aumenta a distância da parte inferior da tela */
+   }
+
     /* Move a linha e o marcador para a borda esquerda */
     .timeline-line, .timeline-marker {
         left: 15px; /* Um pouco de espaço da borda */
