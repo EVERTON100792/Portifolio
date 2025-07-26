@@ -2012,3 +2012,29 @@ body {
     align-self: center; 
     background: var(--gradient-primary);
 }
+/* =========================================
+   EFEITO DE LUZ (SPOTLIGHT) NO MOUSE
+   ========================================= */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none; /* Garante que o efeito não bloqueie cliques */
+    z-index: 999; /* Garante que fique sobre o fundo, mas atrás do conteúdo principal */
+    
+    /* A 'luz' é um gradiente radial. A posição será controlada pelo JS */
+    background: radial-gradient(
+        circle 400px at var(--mouse-x) var(--mouse-y),
+        rgba(74, 144, 226, 0.10), /* Cor da luz (seu azul primário, com baixa opacidade) */
+        transparent 80%
+    );
+    opacity: 0; /* Começa invisível para uma transição suave ao entrar na página */
+    transition: opacity 0.5s ease-out;
+}
+
+body.mouse-inside::before {
+    opacity: 1; /* Torna o efeito visível quando o mouse está na página */
+}
