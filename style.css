@@ -1725,7 +1725,7 @@ body {
    .scroll-indicator {
         /* Ajustamos o valor para que a seta fique mais próxima da borda inferior,
            bem abaixo do conteúdo principal. */
-        bottom: 30px; 
+        bottom: 100px; 
    }
 
     /* Move a linha e o marcador para a borda esquerda */
