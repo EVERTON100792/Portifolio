@@ -2062,16 +2062,35 @@ body.mouse-inside::before {
     animation: floatInComputer 1s ease-out 0.8s forwards;
 }
 
-.hero-computer-animation svg {
+/* ==========================================================================
+   ANIMAÇÃO DO COMPUTADOR NO HERO
+   ========================================================================== */
+
+/* Container da animação */
+.hero-computer-animation {
+    margin: 1.5rem auto; /* Espaçamento acima e abaixo do computador */
+    max-width: 400px;    /* Aumentei um pouco o tamanho máximo para imagens maiores */
+    width: 100%;
+
+    /* Estado inicial para a animação */
+    opacity: 0;
+    transform: translateY(40px);
+
+    /* Animação: nome, duração, tempo de espera, e estado final */
+    animation: floatInComputer 1s ease-out 0.8s forwards;
+}
+
+/* Aplica os estilos à tag IMG agora */
+.hero-computer-animation **img** {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* Tela do computador com efeito de pulsação */
-.animated-screen {
+/* Tela do computador com efeito de pulsação (podemos remover isso para uma imagem estática) */
+/* .animated-screen {
     animation: pulseScreen 4s infinite ease-in-out;
-}
+} */
 
 /* Animação de entrada (aparecer e flutuar para cima) */
 @keyframes floatInComputer {
@@ -2081,9 +2100,9 @@ body.mouse-inside::before {
     }
 }
 
-/* Animação de pulsação da tela */
-@keyframes pulseScreen {
+/* Animação de pulsação da tela (podemos remover isso para uma imagem estática) */
+/* @keyframes pulseScreen {
     0% { opacity: 0.4; }
     50% { opacity: 1; }
     100% { opacity: 0.4; }
-}
+} */
