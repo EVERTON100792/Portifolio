@@ -671,7 +671,7 @@ body {
     line-height: 1.4;
 }
 .hero-cta {
-    margin-bottom: 0;
+    margin-bottom: 3rem; /* Adiciona um espaço de respiro abaixo do botão */
 }
 
 .cta-button {
