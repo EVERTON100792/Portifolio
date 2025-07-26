@@ -2049,3 +2049,16 @@ body::before {
 body.mouse-inside::before {
     opacity: 1; /* Torna o efeito visível quando o mouse está na página */
 }
+/* =========================================
+   AJUSTE DE ESPAÇAMENTO DO HEADER NO FORMULÁRIO
+   ========================================= */
+
+/* Remove a margem superior do formulário, já que ele agora é o card principal */
+.contato-form {
+    margin-top: 0;
+}
+
+/* Diminui o espaçamento do cabeçalho QUANDO ele está dentro do formulário */
+.contato-form .section-header {
+    margin-bottom: 2.5rem; /* O valor original era 4rem, diminuímos para 2.5rem */
+}
