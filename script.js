@@ -330,3 +330,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+/* =========================================
+   LÓGICA DO EFEITO DE LUZ (SPOTLIGHT)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
+
+    // Adiciona a classe quando o mouse entra na janela
+    document.addEventListener('mouseenter', () => {
+        body.classList.add('mouse-inside');
+    });
+
+    // Remove a classe quando o mouse sai
+    document.addEventListener('mouseleave', () => {
+        body.classList.remove('mouse-inside');
+    });
+
+    // Atualiza a posição da luz conforme o mouse se move
+    document.addEventListener('mousemove', e => {
+        // e.clientX e e.clientY nos dão a posição X e Y do mouse
+        body.style.setProperty('--mouse-x', e.clientX + 'px');
+        body.style.setProperty('--mouse-y', e.clientY + 'px');
+    });
+});
