@@ -611,25 +611,30 @@ body {
    ========================================================================== */
 
 .hero-section {
-    /* Usar min-height é mais seguro que height */
-    min-height: 100vh; 
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
-    overflow: hidden;
-    /* Adiciona um pouco de padding para garantir que nada encoste nas bordas */
-    padding: 2rem 0;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    overflow: hidden;
+    /* A MUDANÇA: Remove o padding vertical e mantém o horizontal */
+    padding: 0 2rem;
 }
-
+.hero-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px; /* Apenas padding horizontal para segurança */
+}
 #particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .hero-content {
@@ -1404,7 +1409,7 @@ body {
         padding: 0 10px;
     }
     .hero-content {
-        padding: 80px 20px 0;
+        
         max-width: 100%;
     }
     .hero-title {
