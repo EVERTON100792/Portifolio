@@ -353,3 +353,41 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.setProperty('--mouse-y', e.clientY + 'px');
     });
 });
+/* =========================================
+   LÓGICA DA ANIMAÇÃO ESCALONADA (STAGGERING)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Seleciona todos os itens da lista de tecnologias
+    const techItems = document.querySelectorAll('.tech-item');
+    const techStackSection = document.querySelector('.tech-stack');
+
+    // Opções para o Intersection Observer
+    const options = {
+        root: null, // observa em relação ao viewport
+        rootMargin: '0px',
+        threshold: 0.2 // aciona quando 20% do elemento está visível
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Se a seção de tecnologias está visível
+            if (entry.isIntersecting) {
+                techItems.forEach((item, index) => {
+                    // Aplica a classe 'visible' com um atraso
+                    // O atraso é o índice do item multiplicado por 150ms
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 150); 
+                });
+                // Para a observação depois de animar uma vez
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    // Inicia a observação na seção de tecnologias
+    if(techStackSection) {
+        observer.observe(techStackSection);
+    }
+});
