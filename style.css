@@ -611,13 +611,14 @@ body {
    ========================================================================== */
 
 .hero-section {
-    height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
     overflow: hidden;
+    padding-top: 8rem; 
+    padding-bottom: 6rem; 
 }
 
 #particles-js {
