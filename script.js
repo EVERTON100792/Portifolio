@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // O atraso é o índice do item multiplicado por 150ms
                     setTimeout(() => {
                         item.classList.add('visible');
-                    }, index * 150); 
+                    }, index * 100); 
                 });
                 // Para a observação depois de animar uma vez
                 observer.unobserve(entry.target);
