@@ -1723,7 +1723,9 @@ body {
     }
 
    .scroll-indicator {
-        bottom: 70px; /* Aumenta a distância da parte inferior da tela */
+        /* Ajustamos o valor para que a seta fique mais próxima da borda inferior,
+           bem abaixo do conteúdo principal. */
+        bottom: 30px; 
    }
 
     /* Move a linha e o marcador para a borda esquerda */
