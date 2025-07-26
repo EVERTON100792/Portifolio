@@ -616,18 +616,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
     overflow: hidden;
-    /* A MUDANÇA: Remove o padding vertical e mantém o horizontal */
-    padding: 0 2rem;
+    padding: 0 20px; /* Adiciona um respiro nas laterais */
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
 }
-.hero-wrapper {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 800px;
-    padding: 0 20px; /* Apenas padding horizontal para segurança */
-}
+
+
 #particles-js {
     position: absolute;
     width: 100%;
@@ -637,52 +631,47 @@ body {
     z-index: 1;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 800px;
-    padding: 0 20px;
-    /* REMOVEMOS a margem no topo que empurrava o conteúdo para baixo */
-    margin-top: 0; 
+.hero-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
 }
 
-.hero-title {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 800;
-    /* REDUZIMOS a margem inferior para compactar o espaço */
-    margin-bottom: 1rem; 
-    position: relative;
+hero-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .typing-text {
-    display: inline-block;
-    color: var(--text-primary);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    position: relative;
+    display: inline-block;
+    color: var(--text-primary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
 }
 
 .cursor {
-    display: inline-block;
-    color: var(--primary-blue);
-    animation: blink 1s infinite;
-    font-weight: 400;
+    display: inline-block;
+    color: var(--primary-blue);
+    animation: blink 1s infinite;
+    font-weight: 400;
 }
 
 .hero-subtitle {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    color: var(--text-secondary);
-    /* REDUZIMOS drasticamente a margem inferior */
-    margin-bottom: 2rem; 
-    font-weight: 300;
-    line-height: 1.4;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    line-height: 1.4;
 }
 .hero-cta {
-    /* Não precisa de margem inferior aqui, o espaçamento da seção já resolve */
-    margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .cta-button {
