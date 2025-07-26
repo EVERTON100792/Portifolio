@@ -860,6 +860,17 @@ body {
     border-radius: 12px;
     transition: all var(--transition-medium);
     cursor: pointer;
+
+    /* LINHAS PARA ADICIONAR */
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px); /* Começa um pouco abaixo */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Adicione esta nova regra ao seu CSS */
+.tech-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tech-item:hover {
