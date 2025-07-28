@@ -2113,6 +2113,7 @@ body.mouse-inside::before {
 .project-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Esta é a propriedade mais importante. Ela faz a imagem cobrir todo o espaço sem distorcer. */
-    transition: all var(--transition-medium); /* Mantém a animação de zoom suave. */
+    object-fit: cover;
+    object-position: top; /* <-- ADICIONE ESTA LINHA */
+    transition: all var(--transition-medium);
 }
