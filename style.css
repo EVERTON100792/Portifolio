@@ -2112,8 +2112,9 @@ body.mouse-inside::before {
 
 .project-image img {
     width: 100%;
-    height: 100%;
-    object-fit: fill;
+    height: 220px;
+    object-fit: cover;
     object-position: top; /* <-- ADICIONE ESTA LINHA */
     transition: all var(--transition-medium);
+    overflow: hidden;
 }
