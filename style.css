@@ -2105,3 +2105,14 @@ body.mouse-inside::before {
     50% { opacity: 1; }
     100% { opacity: 0.4; }
 }
+
+/* =========================================
+   CORREÇÃO PARA IMAGENS DOS PROJETOS
+   ========================================= */
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esta é a propriedade mais importante. Ela faz a imagem cobrir todo o espaço sem distorcer. */
+    transition: all var(--transition-medium); /* Mantém a animação de zoom suave. */
+}
