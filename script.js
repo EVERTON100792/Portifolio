@@ -1,23 +1,51 @@
 /* ==========================================================================
-   NAVIGATION & HEADER
+   MOSTRAR E ESCONDER O MENU MOBILE
    ========================================================================== */
 const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navLinks = document.querySelectorAll('.nav__link');
+      navToggle = document.getElementById('nav-toggle');
 
-// Function to show/hide the mobile menu
-const toggleMenu = () => navMenu.classList.toggle('show-menu');
-navToggle.addEventListener('click', toggleMenu);
+// Função para mostrar/esconder o menu
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show-menu');
+    });
+}
 
-// Function to close the menu when a link is clicked
+/* ==========================================================================
+   A SOLUÇÃO PARA O SEU PROBLEMA ESTÁ AQUI
+   Fecha o menu quando um link (ex: Sobre, Projetos) é clicado
+   ========================================================================== */
+const navLinks = document.querySelectorAll('.nav__link');
+
 const linkAction = () => {
+    // Quando clicamos em um link do menu, removemos a classe show-menu para fechá-lo
     navMenu.classList.remove('show-menu');
 };
 navLinks.forEach(link => link.addEventListener('click', linkAction));
 
-// Function to change header style on scroll
+
+/* ==========================================================================
+   FECHAR O MENU AO CLICAR FORA (NA ÁREA DE CONTEÚDO)
+   ========================================================================== */
+const mainContent = document.querySelector('.main');
+
+const closeMenuOnClickContent = () => {
+    // Verifica se o menu está atualmente visível
+    if (navMenu.classList.contains('show-menu')) {
+        // Remove a classe para esconder o menu
+        navMenu.classList.remove('show-menu');
+    }
+};
+// Adiciona o 'ouvinte' de clique à tag <main>
+mainContent.addEventListener('click', closeMenuOnClickContent);
+
+
+/* ==========================================================================
+   MUDAR ESTILO DO HEADER AO ROLAR A PÁGINA
+   ========================================================================== */
 const scrollHeader = () => {
     const header = document.getElementById('header');
+    // Quando a rolagem for maior que 50, adiciona a classe scroll-header
     window.scrollY >= 50 ? header.classList.add('scroll-header') 
                          : header.classList.remove('scroll-header');
 };
@@ -25,7 +53,7 @@ window.addEventListener('scroll', scrollHeader);
 
 
 /* ==========================================================================
-   ACTIVE LINK ON SCROLL
+   MARCAR LINK ATIVO NA NAVEGAÇÃO CONFORME A ROLAGEM
    ========================================================================== */
 const sections = document.querySelectorAll('section[id]');
 
@@ -34,7 +62,7 @@ const scrollActive = () => {
 
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 58; // 58px = header height
+        const sectionTop = current.offsetTop - 58; // 58px = altura do header
         const sectionId = current.getAttribute('id');
         const correspondingLink = document.querySelector(`.nav__menu a[href*=${sectionId}]`);
 
@@ -49,17 +77,19 @@ window.addEventListener('scroll', scrollActive);
 
 
 /* ==========================================================================
-   SCROLL TO TOP BUTTON
+   BOTÃO DE VOLTAR AO TOPO
    ========================================================================== */
 const scrollTop = () => {
     const scrollUp = document.getElementById('scroll-up');
+    // Quando a rolagem for maior que 400, mostra o botão
     window.scrollY >= 400 ? scrollUp.classList.add('show-scroll')
                           : scrollUp.classList.remove('show-scroll');
 };
 window.addEventListener('scroll', scrollTop);
 
+
 /* ==========================================================================
-   SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   ANIMAÇÕES DE SCROLL REVEAL (INTERSECTION OBSERVER)
    ========================================================================== */
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -68,24 +98,24 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold: 0.1 // Triggers when 10% of the element is visible
+    threshold: 0.1 // Ativa quando 10% do elemento está visível
 });
 
-// Observe all sections and elements with the 'animate' class
 const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .timeline__item, .contact__form');
 animatedElements.forEach((el) => observer.observe(el));
 
 
 /* ==========================================================================
-   SPOTLIGHT MOUSE EFFECT
+   EFEITO DE LUZ (SPOTLIGHT) NO MOUSE
    ========================================================================== */
 document.addEventListener('mousemove', (e) => {
     document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
     document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
 });
 
+
 /* ==========================================================================
-   PROJECT CARD 3D TILT EFFECT
+   EFEITO 3D NOS CARDS DE PROJETO
    ========================================================================== */
 const projectCards = document.querySelectorAll('.project__card');
 
@@ -98,8 +128,8 @@ projectCards.forEach(card => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = ((y - centerY) / centerY) * -7; // Max rotation 7 degrees
-        const rotateY = ((x - centerX) / centerX) * 7;  // Max rotation 7 degrees
+        const rotateX = ((y - centerY) / centerY) * -7; // Rotação máxima de 7 graus
+        const rotateY = ((x - centerX) / centerX) * 7;
         
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
@@ -108,18 +138,3 @@ projectCards.forEach(card => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
     });
 });
-/* ==========================================================================
-   FECHAR O MENU AO CLICAR FORA (NA ÁREA DE CONTEÚDO)
-   ========================================================================== */
-const mainContent = document.querySelector('.main');
-
-const closeMenuOnClickContent = () => {
-    // Verifica se o menu está atualmente visível (contém a classe 'show-menu')
-    if (navMenu.classList.contains('show-menu')) {
-        // Remove a classe para 'encolher' ou esconder o menu
-        navMenu.classList.remove('show-menu');
-    }
-};
-
-// Adiciona um 'ouvinte' de clique à tag <main>
-mainContent.addEventListener('click', closeMenuOnClickContent);
