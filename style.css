@@ -1,7 +1,11 @@
 /* ==========================================================================
-   BASE E VARIÁVEIS (Sem alterações)
+   GOOGLE FONTS & BASE CONFIG
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   CSS VARIABLES - NEW MODERN THEME
+   ========================================================================== */
 :root {
     --header-height: 3.5rem;
     --primary-color: #5D9CEC;
@@ -10,7 +14,7 @@
     --text-color: #A0AEC0;
     --body-bg: #1A202C;
     --container-bg: #2D3748;
-    --card-bg: #2D3748; /* Renomeado para consistência */
+    --card-bg: #2D3748;
     --whatsapp-color: #25D366;
     --body-font: 'Poppins', sans-serif;
     --h1-font-size: clamp(2.2rem, 6vw, 3.5rem);
@@ -23,7 +27,7 @@
 }
 
 /* ==========================================================================
-   RESET E ESTILOS GERAIS (Sem alterações)
+   BASE STYLES & RESET
    ========================================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -44,7 +48,7 @@ img, svg { max-width: 100%; height: auto; }
 .button--flex { display: inline-flex; align-items: center; gap: 0.5rem; }
 
 /* ==========================================================================
-   HEADER & NAVIGATION (Sem alterações)
+   HEADER & NAVIGATION
    ========================================================================== */
 .header { width: 100%; background-color: transparent; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); transition: background-color 0.4s; }
 .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
@@ -61,12 +65,22 @@ img, svg { max-width: 100%; height: auto; }
 .scroll-header { background-color: rgba(26, 32, 44, 0.8); }
 
 /* ==========================================================================
-   HERO & ABOUT (Com pequenos ajustes)
+   HERO & ABOUT
    ========================================================================== */
-.hero.section{padding-top:8rem;padding-bottom:4rem}.hero__container{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;text-align:center}.hero__content{opacity:0;animation:fadeIn 1s ease-out forwards}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.hero__title{font-size:var(--h1-font-size);line-height:1.2;margin-bottom:1rem}.hero__subtitle{font-size:var(--h3-font-size);color:var(--text-color);margin-bottom:1.5rem;font-weight:400;max-width:600px;margin-left:auto;margin-right:auto;}.hero__subtitle strong{color:var(--primary-color);font-weight:600}.hero__image{max-width:300px;justify-self:center;opacity:0;animation:fadeIn 1s .3s ease-out forwards}.animated-screen{animation:pulseScreen 4s infinite ease-in-out}@keyframes pulseScreen{0%{opacity:.4}50%{opacity:1}100%{opacity:.4}}@keyframes pulse-animation{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}.pulse-animation{animation:pulse-animation 2s infinite}.about__container{align-items:center;gap:3rem;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.about__container.is-visible{opacity:1;transform:translateY(0)}.about__image-container{width:280px;height:280px;justify-self:center;border-radius:50%;overflow:hidden;border:4px solid var(--primary-color)}.about__photo{width:100%;height:100%;object-fit:cover;}.about__content h3{font-size:var(--h2-font-size);margin-bottom:1rem}.about__description{line-height:1.7;margin-bottom:1rem;}
+/* CORREÇÃO PARA TELA CHEIA NO CELULAR APLICADA AQUI */
+.hero.section {
+    height: 100vh; /* Faz a seção ter a altura total da tela */
+    min-height: 650px; /* Altura mínima para telas muito curtas, como celular na horizontal */
+    display: flex; /* Ativa o Flexbox para alinhar o conteúdo */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    padding-top: 0; /* Remove o padding antigo */
+    padding-bottom: 0; /* Remove o padding antigo */
+}
+.hero__container{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;text-align:center}.hero__content{opacity:0;animation:fadeIn 1s ease-out forwards}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.hero__title{font-size:var(--h1-font-size);line-height:1.2;margin-bottom:1rem}.hero__subtitle{font-size:var(--h3-font-size);color:var(--text-color);margin-bottom:1.5rem;font-weight:400;max-width:600px;margin-left:auto;margin-right:auto;}.hero__subtitle strong{color:var(--primary-color);font-weight:600}.hero__image{max-width:300px;justify-self:center;opacity:0;animation:fadeIn 1s .3s ease-out forwards}.animated-screen{animation:pulseScreen 4s infinite ease-in-out}@keyframes pulseScreen{0%{opacity:.4}50%{opacity:1}100%{opacity:.4}}@keyframes pulse-animation{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}.pulse-animation{animation:pulse-animation 2s infinite}.about__container{align-items:center;gap:3rem;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.about__container.is-visible{opacity:1;transform:translateY(0)}.about__image-container{width:280px;height:280px;justify-self:center;border-radius:50%;overflow:hidden;border:4px solid var(--primary-color)}.about__photo{width:100%;height:100%;object-fit:cover;}.about__content h3{font-size:var(--h2-font-size);margin-bottom:1rem}.about__description{line-height:1.7;margin-bottom:1rem;}
 
 /* ==========================================================================
-   SERVICES SECTION (NOVO)
+   SERVICES SECTION
    ========================================================================== */
 .services.section { background-color: var(--body-bg); }
 .services__container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
@@ -80,7 +94,7 @@ img, svg { max-width: 100%; height: auto; }
 .service__features .fa-check { color: var(--whatsapp-color); }
 
 /* ==========================================================================
-   PROCESS SECTION (NOVO)
+   PROCESS SECTION
    ========================================================================== */
 .process.section { background-color: var(--container-bg); }
 .process__container { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); text-align: center; position: relative; }
@@ -91,7 +105,7 @@ img, svg { max-width: 100%; height: auto; }
 .process__step p { font-size: var(--small-font-size); }
 
 /* ==========================================================================
-   PROJECTS SECTION (COM MELHORIAS)
+   PROJECTS SECTION
    ========================================================================== */
 .projects.section { background-color: var(--body-bg); }
 .projects__container { gap: 2rem; justify-content: center; }
@@ -119,7 +133,7 @@ img, svg { max-width: 100%; height: auto; }
 .project__link .fa-github:hover { color: var(--primary-color); }
 
 /* ==========================================================================
-   TESTIMONIALS SECTION (NOVO)
+   TESTIMONIALS SECTION
    ========================================================================== */
 .testimonials.section { background-color: var(--container-bg); }
 .testimonial__card { background-color: var(--body-bg); padding: 2rem; border-radius: 0.5rem; max-width: 700px; margin: 0 auto; border-left: 5px solid var(--primary-color); }
@@ -131,7 +145,7 @@ img, svg { max-width: 100%; height: auto; }
 .client__role { display: block; font-size: var(--small-font-size); }
 
 /* ==========================================================================
-   FAQ SECTION (NOVO)
+   FAQ SECTION
    ========================================================================== */
 .faq__container { max-width: 768px; margin: auto; display: flex; flex-direction: column; gap: 1rem; }
 .faq__item { background-color: var(--card-bg); border-radius: 0.5rem; }
@@ -140,10 +154,8 @@ img, svg { max-width: 100%; height: auto; }
 .faq__icon { font-size: 1.25rem; color: var(--primary-color); transition: transform 0.4s; }
 .faq__content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
 .faq__content p { padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--body-bg); paddingTop: 1.5rem; font-size: var(--small-font-size); line-height: 1.7; }
-/* Estilo para item ativo (via JS) */
-.faq__item.active .faq__content { max-height: 200px; /* Altura suficiente para o conteúdo */ }
+.faq__item.active .faq__content { max-height: 200px; }
 .faq__item.active .faq__icon { transform: rotate(180deg); }
-
 
 /* ==========================================================================
    CONTATO, FOOTER E FLUTUANTES
@@ -158,3 +170,18 @@ img, svg { max-width: 100%; height: auto; }
 @media screen and (min-width:767px){body{margin:0}.section{padding:6rem 0 2rem}.nav{height:calc(var(--header-height) + 1.5rem)}.nav__toggle{display:none}.nav__list{flex-direction:row;gap:2.5rem}.nav__menu{position:static;width:auto;background-color:transparent;padding:0;box-shadow:none;backdrop-filter:none}.nav__button{display:inline-block;background-color:var(--primary-color);color:var(--title-color);padding:.75rem 1.5rem;border-radius:.5rem;font-weight:500;transition:.3s}.nav__button:hover{background-color:#4c8cd6}.hero__container,.about__container{gap:5rem}.footer__container{flex-direction:row;justify-content:space-between}.whatsapp-button{bottom:40px;right:40px}.show-scroll{bottom:40px}.whatsapp-tooltip{display:block}}
 @media screen and (min-width:1024px){.container{margin-left:auto;margin-right:auto}.header,.section{padding-left:0;padding-right:0}.projects__container{grid-template-columns:repeat(auto-fit,minmax(400px,1fr))}}
 @media screen and (min-width:1200px){.projects__container{grid-template-columns:repeat(2,450px)}}
+@media screen and (max-width: 767px) {
+    .whatsapp-button {
+        width: 60px;
+        height: 60px;
+        bottom: 90px;
+        right: 20px;
+        font-size: 30px;
+    }
+    .scrollup.show-scroll {
+       bottom: 20px;
+    }
+    .whatsapp-tooltip {
+        display: none;
+    }
+}
