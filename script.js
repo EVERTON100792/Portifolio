@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================================================
-    //  LÓGICA DO MENU MOBILE (Método à Prova de Falhas)
+    //  LÓGICA DO MENU MOBILE
     // ==========================================================================
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
@@ -43,14 +43,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    //  LÓGICA CENTRALIZADA DE SCROLL (Mais Eficiente)
+    //  NOVA LÓGICA DO FAQ (ACORDEÃO)
+    // ==========================================================================
+    const faqItems = document.querySelectorAll('.faq__item');
+
+    faqItems.forEach((item) => {
+        const header = item.querySelector('.faq__header');
+        header.addEventListener('click', () => {
+            const openItem = document.querySelector('.faq__item.active');
+            
+            // Fecha o item que já estava aberto (se houver e não for o mesmo)
+            if(openItem && openItem !== item) {
+                openItem.classList.remove('active');
+            }
+
+            // Abre ou fecha o item clicado
+            item.classList.toggle('active');
+        });
+    });
+
+
+    // ==========================================================================
+    //  LÓGICA CENTRALIZADA DE SCROLL
     // ==========================================================================
     const handleScroll = () => {
+        // --- Header ---
         const header = document.getElementById('header');
         if (header) {
             window.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
         }
 
+        // --- Link Ativo ---
         const sections = document.querySelectorAll('section[id]');
         const scrollY = window.pageYOffset;
         sections.forEach(current => {
@@ -67,17 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // --- Botão Voltar ao Topo ---
         const scrollUp = document.getElementById('scroll-up');
         if (scrollUp) {
             window.scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
         }
 
+        // --- Botão WhatsApp ---
         const whatsAppButton = document.getElementById('whatsapp-float-button');
         if (whatsAppButton) {
             window.scrollY >= 400 ? whatsAppButton.classList.add('show') : whatsAppButton.classList.remove('show');
         }
     };
-
     window.addEventListener('scroll', handleScroll);
 
     // ==========================================================================
@@ -90,14 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.1 });
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .timeline__item, .contact__form');
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .timeline__item, .contact__form, .service__card, .process__step, .testimonial__card, .faq__item');
     animatedElements.forEach((el) => observer.observe(el));
 
     document.addEventListener('mousemove', (e) => {
         document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
         document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
     });
-
-    /* O código do efeito 3D foi removido daqui para dar lugar à nova animação CSS. */
-
 });
