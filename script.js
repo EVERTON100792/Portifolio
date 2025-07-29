@@ -108,3 +108,18 @@ projectCards.forEach(card => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
     });
 });
+/* ==========================================================================
+   FECHAR O MENU AO CLICAR FORA (NA ÁREA DE CONTEÚDO)
+   ========================================================================== */
+const mainContent = document.querySelector('.main');
+
+const closeMenuOnClickContent = () => {
+    // Verifica se o menu está atualmente visível (contém a classe 'show-menu')
+    if (navMenu.classList.contains('show-menu')) {
+        // Remove a classe para 'encolher' ou esconder o menu
+        navMenu.classList.remove('show-menu');
+    }
+};
+
+// Adiciona um 'ouvinte' de clique à tag <main>
+mainContent.addEventListener('click', closeMenuOnClickContent);
