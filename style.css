@@ -222,7 +222,7 @@ img, svg {
 .hero.section{padding-top:8rem;padding-bottom:4rem}.hero__container{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;text-align:center}.hero__content{opacity:0;animation:fadeIn 1s ease-out forwards}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.hero__title{font-size:var(--h1-font-size);font-weight:var(--font-bold);line-height:1.2;margin-bottom:var(--mb-1)}.hero__subtitle{font-size:var(--h3-font-size);color:var(--text-color);margin-bottom:var(--mb-1-5);font-weight:var(--font-regular)}.hero__subtitle strong{color:var(--primary-color);font-weight:var(--font-semibold)}.hero__guarantee{display:inline-flex;align-items:center;gap:.5rem;background-color:rgba(93,156,236,.1);padding:.5rem 1rem;border-radius:2rem;color:var(--primary-color);margin-bottom:var(--mb-2);font-size:var(--small-font-size)}.hero__image{max-width:300px;justify-self:center;opacity:0;animation:fadeIn 1s .3s ease-out forwards}.animated-screen{animation:pulseScreen 4s infinite ease-in-out}@keyframes pulseScreen{0%{opacity:.4}50%{opacity:1}100%{opacity:.4}}.hero__scroll-down{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--text-color);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:var(--small-font-size);animation:bounce 2s infinite}@keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-10px)}60%{transform:translate(-50%,-5px)}}@keyframes pulse-animation{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}.pulse-animation{animation:pulse-animation 2s infinite}.about__container{align-items:center;gap:3rem;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.about__container.is-visible{opacity:1;transform:translateY(0)}.about__image-container{position:relative;width:280px;height:280px;justify-self:center;background:url(https://via.placeholder.com/280) no-repeat center center;background-size:cover;border-radius:50%}.about__image-blob{position:absolute;width:100%;height:100%;background-color:var(--primary-color);border-radius:50%;filter:blur(40px);z-index:-1;animation:blob-animation 8s infinite ease-in-out}@keyframes blob-animation{0%{transform:scale(1)}33%{transform:scale(1.1)}66%{transform:scale(.9)}100%{transform:scale(1)}}.about__description{margin-bottom:var(--mb-1-5);line-height:1.7}.about__description strong{color:var(--title-color)}.about__tech{margin-top:var(--mb-2)}.about__tech h3{text-align:left;margin-bottom:var(--mb-1);font-size:var(--h3-font-size)}.tech__icons{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:flex-start}.tech__item{display:flex;flex-direction:column;align-items:center;gap:.5rem;transition:transform .3s}.tech__item:hover{transform:translateY(-5px)}.tech__item i{font-size:2.5rem;color:var(--primary-color)}.tech__item span{font-size:var(--small-font-size);color:var(--text-color)}
 
 /* ==========================================================================
-   PROJECTS SECTION (COM ANIMAÇÃO SENSACIONAL IMPLEMENTADA)
+   PROJECTS SECTION (COM CORREÇÃO PARA NÃO CORTAR IMAGENS)
    ========================================================================== */
 .projects.section {
     background-color: var(--container-bg);
@@ -230,15 +230,15 @@ img, svg {
 
 .projects__container {
     gap: 2rem;
-    justify-content: center; /* Centraliza os cards */
+    justify-content: center;
 }
 
 .project__card {
     background-color: var(--body-bg);
     border-radius: 1rem;
-    overflow: hidden; /* Essencial para a animação */
-    position: relative; /* Essencial para o posicionamento do conteúdo */
-    border: 2px solid transparent; /* Borda inicial invisível */
+    overflow: hidden;
+    position: relative;
+    border: 2px solid transparent;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     opacity: 0;
     transform: translateY(30px);
@@ -249,51 +249,47 @@ img, svg {
     transform: translateY(0);
 }
 
-/* Efeito de brilho e sombra no hover */
 .project__card:hover {
     border-color: rgba(93, 156, 236, 0.5);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
 }
 
 .project__image {
-    height: 250px;
+    height: 250px; /* A altura do container da imagem continua fixa */
+    background-color: #242b38; /* Cor de fundo caso a imagem não preencha tudo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
 .project__image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
+    /* CORREÇÃO APLICADA AQUI */
+    object-fit: contain; /* Garante que a imagem inteira caiba, sem cortar */
+    object-position: center; /* Centraliza a imagem no espaço */
     transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Efeito de zoom na imagem */
+/* Opcional: efeito de zoom na imagem ao passar o mouse */
 .project__card:hover .project__image img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* Painel de conteúdo que desliza */
 .project__content {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     padding: 1.5rem;
-    
-    /* Efeito Glassmorphism (vidro) */
     background: linear-gradient(to top, rgba(26, 32, 44, 0.95), rgba(26, 32, 44, 0.7));
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-
-    /* Transição suave para o deslize */
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-
-    /* Estado inicial: painel quase todo escondido, mostrando só o título */
     transform: translateY(calc(100% - 85px));
 }
 
-/* Efeito de deslizar para cima no hover */
 .project__card:hover .project__content {
     transform: translateY(0);
 }
@@ -303,15 +299,13 @@ img, svg {
     margin-bottom: var(--mb-1);
 }
 
-/* Esconde os detalhes inicialmente */
 .project__description,
 .project__tech-list,
 .project__links {
     opacity: 0;
-    transition: opacity 0.4s ease-in-out 0.2s; /* Atraso para aparecer depois do slide */
+    transition: opacity 0.4s ease-in-out 0.2s;
 }
 
-/* Mostra os detalhes no hover */
 .project__card:hover .project__description,
 .project__card:hover .project__tech-list,
 .project__card:hover .project__links {
