@@ -41,28 +41,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       LÓGICA PRINCIPAL DA PÁGINA
+       LÓGICA DO MENU MOBILE (SIDEBAR) - CORREÇÃO DEFINITIVA
        ========================================================================== */
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
 
-    // LÓGICA DO MENU MOBILE (COM CORREÇÃO)
     if (navToggle && navMenu) {
-        // Abre e fecha o menu ao clicar no ícone
-        navToggle.addEventListener('click', () => {
+        // Função para fechar o menu
+        const closeMenu = () => navMenu.classList.remove('show-menu');
+
+        // Abre/Fecha o menu ao clicar no ícone de toggle
+        navToggle.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede que o clique no toggle feche o menu imediatamente
             navMenu.classList.toggle('show-menu');
         });
         
-        // **[CORREÇÃO APLICADA AQUI]**
-        // Fecha o menu mobile ao clicar em um link (ex: "Serviços")
+        // 1. Fecha o menu ao clicar em um dos links
         navMenu.addEventListener('click', (event) => {
             if (event.target.classList.contains('nav__link')) {
-                navMenu.classList.remove('show-menu');
+                closeMenu();
+            }
+        });
+
+        // 2. Fecha o menu se clicar FORA dele
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = navMenu.contains(event.target);
+            const isClickOnToggle = navToggle.contains(event.target);
+            if (!isClickInsideMenu && !isClickOnToggle && navMenu.classList.contains('show-menu')) {
+                closeMenu();
             }
         });
     }
     
-    // LÓGICA DO DIAGNÓSTICO DIGITAL
+    /* ==========================================================================
+       LÓGICA DO DIAGNÓSTICO DIGITAL
+       ========================================================================== */
     const diagnosisOptions = document.querySelectorAll('.diagnosis__questions .option');
     const diagnosisText = document.getElementById('diagnosis-text');
     const diagnosisCta = document.getElementById('diagnosis-cta');
@@ -85,8 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         diagnosisText.innerHTML = text;
         if (diagnosisCta) {
-            diagnosisCta.style.display = 'inline-flex';
-            setTimeout(() => diagnosisCta.classList.add('visible'), 100);
+            diagnosisCta.classList.add('visible');
         }
     }
 
@@ -105,7 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // LÓGICA CENTRALIZADA DE SCROLL
+    /* ==========================================================================
+       LÓGICA DE SCROLL
+       ========================================================================== */
     const header = document.getElementById('header');
     const scrollUp = document.getElementById('scroll-up');
     const whatsAppButton = document.getElementById('whatsapp-float-button');
@@ -115,10 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
 
+        // Adiciona sombra ao header ao rolar
         if (header) {
             scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
         }
 
+        // 3. [CORREÇÃO SIDEBAR] Fecha o menu se estiver aberto e o usuário rolar
+        if (navMenu && navMenu.classList.contains('show-menu')) {
+            navMenu.classList.remove('show-menu');
+        }
+
+        // Marca o link ativo na navegação
         let currentSectionId = '';
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
@@ -134,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Mostra o botão de "Voltar ao Topo" e WhatsApp
         if (scrollUp) {
             scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
         }
@@ -143,8 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', handleScroll);
 
-    // LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .diagnosis__container');
+    /* ==========================================================================
+       LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
+       ========================================================================== */
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .diagnosis__container, .contact__form');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
