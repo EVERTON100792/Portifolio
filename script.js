@@ -1,161 +1,114 @@
-/**
- * PORTFOLIO EVERTON - SCRIPT PRINCIPAL
- * Desenvolvedor Web Criativo
- */
-
+/* ==========================================================================
+   LÓGICA DO PRELOADER
+   ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Iniciando Portfolio Everton - Desenvolvedor Web Criativo');
+    const preloader = document.getElementById('preloader');
+    const logoTextSpan = document.getElementById('logo-text');
+    const body = document.querySelector('body');
 
-    // Função auxiliar para debounce
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // Inicialização do Particles.js
-    function initParticles() {
-        if (typeof particlesJS === 'undefined') {
-            console.warn('Particles.js não foi carregado.');
-            return;
-        }
-        const isMobile = window.innerWidth <= 768;
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: isMobile ? 40 : 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out" }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-            },
-            retina_detect: true
-        });
-    }
-
-    // Animação de digitação
-    function initTypingAnimation() {
-        const typingElement = document.querySelector('.typing-text');
-        if (!typingElement) return;
-        const text = typingElement.textContent;
-        typingElement.textContent = '';
+    if (preloader && logoTextSpan && body) {
+        body.classList.add('preloader-active');
+        const logoText = "Everton.dev";
         let i = 0;
+
         function typeWriter() {
-            if (i < text.length) {
-                typingElement.textContent += text.charAt(i);
+            if (i < logoText.length) {
+                logoTextSpan.innerHTML += logoText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 70);
+                setTimeout(typeWriter, 120);
             }
         }
-        setTimeout(typeWriter, 500);
-    }
 
-    // Intersection Observer para animações de fade-in
-    function initIntersectionObserver() {
-        const animatedElements = document.querySelectorAll('.fade-in-animation, .fade-up-animation');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        typeWriter();
 
-        animatedElements.forEach(el => observer.observe(el));
-    }
-
-    // Lógica da Sidebar
-    function initSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const toggle = document.getElementById('sidebarToggle');
-        const overlay = document.getElementById('sidebarOverlay');
-        const links = document.querySelectorAll('.sidebar-link');
-
-        const closeSidebar = () => {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('active');
-        };
-        
-        toggle.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                body.classList.remove('preloader-active');
+            }, 2000);
         });
-
-        overlay.addEventListener('click', closeSidebar);
-        links.forEach(link => link.addEventListener('click', closeSidebar));
+    } else {
+        const preloaderEl = document.getElementById('preloader');
+        if (preloaderEl) {
+           preloaderEl.classList.add('hidden');
+        }
+        document.querySelector('body').classList.remove('preloader-active');
     }
 
-    // Botão Voltar ao Topo
-    function initBackToTop() {
-        const backToTopButton = document.getElementById('backToTop');
-        window.addEventListener('scroll', debounce(() => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
+    /* ==========================================================================
+       LÓGICA DA ANIMAÇÃO DE FUNDO (PARTICLES.JS)
+       ========================================================================== */
+    if (document.getElementById('particles-js')) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#475569" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.4, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 0.6, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true } },
+            "retina_detect": true
+        });
+    }
+
+    /* ==========================================================================
+       LÓGICA PRINCIPAL DA PÁGINA
+       ========================================================================== */
+    const navMenu = document.getElementById('nav-menu');
+    const navToggle = document.getElementById('nav-toggle');
+    const closeMenu = () => { if (navMenu) navMenu.classList.remove('show-menu'); };
+    const toggleMenu = () => { if (navMenu) navMenu.classList.toggle('show-menu'); };
+    if (navToggle) { navToggle.addEventListener('click', (event) => { event.stopPropagation(); toggleMenu(); }); }
+    if (navMenu) { navMenu.addEventListener('click', (event) => { if (event.target.classList.contains('nav__link')) { closeMenu(); }}); }
+    document.addEventListener('click', (event) => {
+        if (navMenu && navMenu.classList.contains('show-menu')) {
+            const isClickInsideMenu = navMenu.contains(event.target);
+            const isClickOnToggle = navToggle ? navToggle.contains(event.target) : false;
+            if (!isClickInsideMenu && !isClickOnToggle) { closeMenu(); }
+        }
+    });
+
+    const faqItems = document.querySelectorAll('.faq__item');
+    faqItems.forEach((item) => {
+        const header = item.querySelector('.faq__header');
+        header.addEventListener('click', () => {
+            const openItem = document.querySelector('.faq__item.active');
+            if(openItem && openItem !== item) { openItem.classList.remove('active'); }
+            item.classList.toggle('active');
+        });
+    });
+
+    const handleScroll = () => {
+        const header = document.getElementById('header');
+        if (header) { window.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header'); }
+        const sections = document.querySelectorAll('section[id]');
+        const scrollY = window.pageYOffset;
+        let currentSectionId = null;
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight, sectionTop = current.offsetTop - 58;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                currentSectionId = current.getAttribute('id');
             }
-        }, 100));
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    }
-
-    // Navegação suave e ativação de links
-    function initSmoothScrollAndActiveLinks() {
-        const links = document.querySelectorAll('.sidebar-link');
-        const sections = document.querySelectorAll('section');
-
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
-                if(this.href.includes('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
+        document.querySelectorAll('.nav__menu a').forEach(link => {
+            link.classList.remove('active-link');
+            if (link.getAttribute('href') === '#' + currentSectionId) {
+                link.classList.add('active-link');
+            }
         });
+        const scrollUp = document.getElementById('scroll-up');
+        if (scrollUp) { window.scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll'); }
+        const whatsAppButton = document.getElementById('whatsapp-float-button');
+        if (whatsAppButton) { window.scrollY >= 400 ? whatsAppButton.classList.add('show') : whatsAppButton.classList.remove('show'); }
+    };
+    window.addEventListener('scroll', handleScroll);
 
-        window.addEventListener('scroll', debounce(() => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            links.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        }, 100));
-    }
-
-    // Inicia todas as funções
-    initParticles();
-    initTypingAnimation();
-    initIntersectionObserver();
-    initSidebar();
-    initBackToTop();
-    initSmoothScrollAndActiveLinks();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }});
+    }, { threshold: 0.1 });
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container, .contact__form');
+    animatedElements.forEach((el) => observer.observe(el));
 });
