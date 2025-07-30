@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       LÓGICA DE SCROLL
+       LÓGICA DE SCROLL (HEADER, ACTIVE LINKS, SCROLL-UP)
        ========================================================================== */
     const header = document.getElementById('header');
     const scrollUp = document.getElementById('scroll-up');
@@ -125,14 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
 
+        // Adiciona sombra no header ao scrollar
         if (header) {
             scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
         }
 
-        if (navMenu && navMenu.classList.contains('show-menu')) {
-            navMenu.classList.remove('show-menu');
-        }
+        // --- BUG FIX: REMOVIDO CÓDIGO QUE FECHAVA MENU NO SCROLL ---
 
+        // Atualiza o link ativo na navegação
         let currentSectionId = '';
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
@@ -148,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Mostra/esconde o botão de voltar ao topo e WhatsApp
         if (scrollUp) {
             scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
         }
@@ -155,7 +156,23 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollY >= 400 ? whatsAppButton.classList.add('show') : whatsAppButton.classList.remove('show');
         }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    // Otimização de performance: função throttle
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+    
+    // Aplica o throttle ao evento de scroll
+    window.addEventListener('scroll', throttle(handleScroll, 100));
 
     /* ==========================================================================
        LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
