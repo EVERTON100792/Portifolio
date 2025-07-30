@@ -3,6 +3,7 @@
    ========================================================================== */
 const preloader = document.getElementById('preloader');
 const logoTextSpan = document.getElementById('logo-text');
+const subtitleSpan = document.getElementById('preloader-subtitle');
 const body = document.querySelector('body');
 let isTypingFinished = false;
 let isWindowLoaded = false;
@@ -15,7 +16,6 @@ function tryToHidePreloader() {
         }, 200);
     }
 }
-
 if (preloader && logoTextSpan && body) {
     const logoText = "Everton.dev";
     body.classList.add('preloader-active');
@@ -45,127 +45,50 @@ if (preloader && logoTextSpan && body) {
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // LÓGICA DO MENU MOBILE
-    const navMenu = document.getElementById('nav-menu');
-    const navToggle = document.getElementById('nav-toggle');
+    // LÓGICA DO CURSOR INTERATIVO
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+    const interactiveElements = document.querySelectorAll('a, button, .option, .faq__header');
+    let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
 
-    const closeMenu = () => { if (navMenu) navMenu.classList.remove('show-menu'); };
-    const toggleMenu = () => { if (navMenu) navMenu.classList.toggle('show-menu'); };
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
 
-    if (navToggle) {
-        navToggle.addEventListener('click', (event) => { event.stopPropagation(); toggleMenu(); });
-    }
-    if (navMenu) {
-        navMenu.addEventListener('click', (event) => { if (event.target.classList.contains('nav__link')) { closeMenu(); }});
-    }
-    document.addEventListener('click', (event) => {
-        if (navMenu && navMenu.classList.contains('show-menu')) {
-            const isClickInsideMenu = navMenu.contains(event.target);
-            const isClickOnToggle = navToggle ? navToggle.contains(event.target) : false;
-            if (!isClickInsideMenu && !isClickOnToggle) { closeMenu(); }
+    const animateCursor = () => {
+        if (cursorDot && cursorOutline) {
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+            
+            outlineX += (mouseX - outlineX) * 0.1;
+            outlineY += (mouseY - outlineY) * 0.1;
+            
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
         }
-    });
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
 
-    // LÓGICA DO FAQ (ACORDEÃO)
-    const faqItems = document.querySelectorAll('.faq__item');
-    faqItems.forEach((item) => {
-        const header = item.querySelector('.faq__header');
-        header.addEventListener('click', () => {
-            const openItem = document.querySelector('.faq__item.active');
-            if(openItem && openItem !== item) { openItem.classList.remove('active'); }
-            item.classList.toggle('active');
-        });
-    });
-
-    // LÓGICA DO DIAGNÓSTICO DIGITAL
-    const diagnosisOptions = document.querySelectorAll('.diagnosis__questions .option');
-    const diagnosisText = document.getElementById('diagnosis-text');
-    const diagnosisCta = document.getElementById('diagnosis-cta');
-    const userAnswers = {};
-    const totalQuestions = 3;
-
-    function generateDiagnosis() {
-        if (Object.keys(userAnswers).length !== totalQuestions) return;
-
-        let text = "<b>Diagnóstico:</b> ";
-        
-        if (userAnswers['1'] === 'nao-tenho') {
-            text += "Você está no ponto de partida ideal. Um <b>Site Institucional</b> é o primeiro passo para estabelecer sua marca e gerar credibilidade.";
-        } else if (userAnswers['2'] === 'lento' || userAnswers['2'] === 'nao-sei') {
-            text += "Sua presença online pode estar sendo prejudicada por uma má experiência em celulares, afetando seu ranking no Google. A solução é um <b>design 100% responsivo e otimizado para velocidade</b>.";
-        } else if (userAnswers['3'] === 'raramente' || userAnswers['3'] === 'nunca') {
-            text += "Seu site não está funcionando como uma ferramenta de negócios. Precisamos focar em uma <b>Landing Page de Alta Conversão</b> ou reestruturar seu site com chamadas para ação claras.";
-        } else {
-            text += "Sua base digital é boa, mas sempre há espaço para otimizar! Podemos melhorar a velocidade e a estratégia de conversão para <b>aumentar ainda mais seus resultados</b>.";
-        }
-
-        diagnosisText.innerHTML = text;
-        diagnosisCta.style.display = 'inline-flex';
-        setTimeout(() => {
-            diagnosisCta.style.transform = 'scale(1)';
-        }, 100);
-    }
-
-    diagnosisOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const parentCard = option.closest('.question__card');
-            if (!parentCard) return;
-
-            const questionNumber = parentCard.dataset.question;
-            const selectedValue = option.dataset.value;
-
-            userAnswers[questionNumber] = selectedValue;
-            parentCard.querySelectorAll('.option').forEach(btn => btn.classList.remove('selected'));
-            option.classList.add('selected');
-            generateDiagnosis();
-        });
-    });
-
-    // LÓGICA CENTRALIZADA DE SCROLL
-    const handleScroll = () => {
-        const header = document.getElementById('header');
-        if (header) { window.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header'); }
-
-        const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.pageYOffset;
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight, sectionTop = current.offsetTop - 58, sectionId = current.getAttribute('id'),
-                  correspondingLink = document.querySelector('.nav__menu a[href="#' + sectionId + '"]');
-            if (correspondingLink) {
-                 // Limpa a classe de todos os links
-                document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
-                // Adiciona a classe apenas ao link da seção visível
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    correspondingLink.classList.add('active-link');
-                }
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            if (cursorDot && cursorOutline) {
+                cursorDot.classList.add('cursor-active');
+                cursorOutline.classList.add('cursor-active');
             }
         });
-        // Caso especial: no topo da página, marcar o link "Início"
-        if (scrollY < sections[0].offsetTop - 58) {
-             document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
-             const homeLink = document.querySelector('.nav__menu a[href="#hero"]');
-             if(homeLink) homeLink.classList.add('active-link');
-        }
-
-
-        const scrollUp = document.getElementById('scroll-up');
-        if (scrollUp) { window.scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll'); }
-
-        const whatsAppButton = document.getElementById('whatsapp-float-button');
-        if (whatsAppButton) { window.scrollY >= 400 ? whatsAppButton.classList.add('show') : whatsAppButton.classList.remove('show'); }
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    // LÓGICA DO OBSERVER PARA ANIMAÇÕES
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }});
-    }, { threshold: 0.1 });
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container, .contact__form');
-    animatedElements.forEach((el) => observer.observe(el));
-
-    // LÓGICA DO EFEITO DE LUZ DO MOUSE
-    document.addEventListener('mousemove', (e) => {
-        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+        el.addEventListener('mouseleave', () => {
+            if (cursorDot && cursorOutline) {
+                cursorDot.classList.remove('cursor-active');
+                cursorOutline.classList.remove('cursor-active');
+            }
+        });
     });
+
+    // LÓGICA DO MENU MOBILE, FAQ, SCROLL, OBSERVER...
+    const navMenu=document.getElementById("nav-menu"),navToggle=document.getElementById("nav-toggle");const closeMenu=()=>{navMenu&&navMenu.classList.remove("show-menu")},toggleMenu=()=>{navMenu&&navMenu.classList.toggle("show-menu")};navToggle&&navToggle.addEventListener("click",e=>{e.stopPropagation(),toggleMenu()}),navMenu&&navMenu.addEventListener("click",e=>{e.target.classList.contains("nav__link")&&closeMenu()}),document.addEventListener("click",e=>{navMenu&&navMenu.classList.contains("show-menu")&&(!navMenu.contains(e.target)&&!(navToggle?navToggle.contains(e.target):!1))&&closeMenu()});const faqItems=document.querySelectorAll(".faq__item");faqItems.forEach(e=>{const t=e.querySelector(".faq__header");t.addEventListener("click",()=>{const o=document.querySelector(".faq__item.active");o&&o!==e&&o.classList.remove("active"),e.classList.toggle("active")})});const handleScroll=()=>{const e=document.getElementById("header");e&&(window.scrollY>=50?e.classList.add("scroll-header"):e.classList.remove("scroll-header"));const t=document.querySelectorAll("section[id]"),o=window.pageYOffset;t.forEach(e=>{const t=e.offsetHeight,n=e.offsetTop-58,c=e.getAttribute("id"),s=document.querySelector('.nav__menu a[href="#'+c+'"]');if(s){if(o>n&&o<=n+t)document.querySelectorAll(".nav__menu a").forEach(e=>e.classList.remove("active-link")),s.classList.add("active-link");else{}}});if(o<t[0].offsetTop-58){document.querySelectorAll(".nav__menu a").forEach(e=>e.classList.remove("active-link"));const e=document.querySelector('.nav__menu a[href="#hero"]');e&&e.classList.add("active-link")}const n=document.getElementById("scroll-up");n&&(window.scrollY>=400?n.classList.add("show-scroll"):n.classList.remove("show-scroll"));const c=document.getElementById("whatsapp-float-button");c&&(window.scrollY>=400?c.classList.add("show"):c.classList.remove("show"))};window.addEventListener("scroll",handleScroll);const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add("is-visible")})},{threshold:.1});const animatedElements=document.querySelectorAll(".section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container, .contact__form");animatedElements.forEach(e=>{observer.observe(e)});
+
+    // LÓGICA DO DIAGNÓSTICO DIGITAL
+    const diagnosisOptions=document.querySelectorAll(".diagnosis__questions .option"),diagnosisText=document.getElementById("diagnosis-text"),diagnosisCta=document.getElementById("diagnosis-cta"),userAnswers={};function generateDiagnosis(){if(3!==Object.keys(userAnswers).length)return;let e="<b>Diagnóstico:</b> ";userAnswers[1]==="nao-tenho"?e+="Você está no ponto de partida ideal. Um <b>Site Institucional</b> é o primeiro passo para estabelecer sua marca e gerar credibilidade.":userAnswers[2]==="lento"||userAnswers[2]==="nao-sei"?e+="Sua presença online pode estar sendo prejudicada por uma má experiência em celulares, afetando seu ranking no Google. A solução é um <b>design 100% responsivo e otimizado para velocidade</b>.":userAnswers[3]==="raramente"||userAnswers[3]==="nunca"?e+="Seu site não está funcionando como uma ferramenta de negócios. Precisamos focar em uma <b>Landing Page de Alta Conversão</b> ou reestruturar seu site com chamadas para ação claras.":e+="Sua base digital é boa, mas sempre há espaço para otimizar! Podemos melhorar a velocidade e a estratégia de conversão para <b>aumentar ainda mais seus resultados</b>.",diagnosisText.innerHTML=e,diagnosisCta.style.display="inline-flex",setTimeout(()=>{diagnosisCta.style.transform="scale(1)"},100)}diagnosisOptions.forEach(e=>{e.addEventListener("click",()=>{const t=e.closest(".question__card");if(!t)return;const o=t.dataset.question,n=e.dataset.value;userAnswers[o]=n,t.querySelectorAll(".option").forEach(e=>e.classList.remove("selected")),e.classList.add("selected"),generateDiagnosis()})});
 });
