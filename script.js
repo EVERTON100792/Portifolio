@@ -14,7 +14,7 @@ body.classList.add('preloader-active');
 
 let i = 0;
 function typeWriter() {
-    if (i < logoText.length) {
+    if (logoTextSpan && i < logoText.length) {
         logoTextSpan.innerHTML += logoText.charAt(i);
         i++;
         setTimeout(typeWriter, 120);
@@ -25,12 +25,16 @@ function typeWriter() {
 
 function changeSubtitle() {
     subtitleIndex = (subtitleIndex + 1) % subtitles.length;
-    subtitleSpan.textContent = subtitles[subtitleIndex];
+    if (subtitleSpan) {
+       subtitleSpan.textContent = subtitles[subtitleIndex];
+    }
 }
 
 window.addEventListener('load', () => {
     setTimeout(() => {
-        preloader.classList.add('hidden');
+        if (preloader) {
+            preloader.classList.add('hidden');
+        }
         body.classList.remove('preloader-active');
     }, 1500);
 });
