@@ -323,3 +323,63 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .container { margin-left: auto; margin-right: auto; }
     .academic__grid { grid-template-columns: repeat(2, 1fr); }
 }
+/* ==========================================================================
+   CORREÇÃO RESPONSIVA PARA OS PROJETOS (MOBILE)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+
+    /* Desativa o efeito 3D e restaura um layout de card simples */
+    .project__card {
+        height: auto; /* A altura volta a ser automática para caber todo o conteúdo */
+        perspective: none; /* Remove a perspectiva 3D */
+        background-color: var(--body-bg-solid); /* Devolve o fundo ao card principal */
+        border: 1px solid var(--accent-color); /* Devolve a borda */
+        border-radius: 1rem; /* Devolve o arredondamento */
+    }
+
+    .project__card-inner {
+        position: static; /* Posição deixa de ser relativa */
+        transform-style: flat; /* Remove o ambiente 3D */
+        transition: none; /* Remove a transição de giro */
+    }
+
+    /* Remove o giro no hover para mobile, garantindo que não haja bugs de toque */
+    .project__card:hover .project__card-inner {
+        transform: none;
+    }
+
+    /* Faz a frente e o verso se comportarem como blocos normais, um abaixo do outro */
+    .project__card-front,
+    .project__card-back {
+        position: static;
+        -webkit-backface-visibility: visible;
+        backface-visibility: visible;
+        transform: none; /* Remove qualquer rotação do verso */
+        border: none; /* Remove a borda das faces, pois o card principal já tem */
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    /* Ajusta a frente (imagem) para mobile */
+    .project__card-front {
+        height: 200px; /* Uma altura boa para a imagem no celular */
+        padding: 1rem; /* Um padding para a imagem não colar nas bordas */
+        border-top-left-radius: 1rem; /* Arredonda os cantos superiores */
+        border-top-right-radius: 1rem;
+    }
+
+    .project__card-front img {
+        object-fit: contain; /* Garante que a imagem não seja cortada */
+    }
+    
+    /* Ajusta o verso (conteúdo) para mobile */
+    .project__card-back {
+        background-color: transparent; /* O fundo já está no card principal */
+        padding-bottom: 1.5rem; /* Garante um bom espaçamento no final */
+    }
+
+    .project__card-back .project__details p {
+        font-size: 0.9rem; /* Aumenta um pouco a fonte no mobile para melhor leitura */
+    }
+}
