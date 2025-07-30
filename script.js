@@ -1,190 +1,161 @@
-/* ==========================================================================
-   LÓGICA DO PRELOADER
-   ========================================================================== */
+/**
+ * PORTFOLIO EVERTON - SCRIPT PRINCIPAL
+ * Desenvolvedor Web Criativo
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    const preloader = document.getElementById('preloader');
-    const logoTextSpan = document.getElementById('logo-text');
-    const body = document.querySelector('body');
+    console.log('🚀 Iniciando Portfolio Everton - Desenvolvedor Web Criativo');
 
-    if (preloader && logoTextSpan && body) {
-        body.classList.add('preloader-active');
-        const logoText = "Everton.dev";
+    // Função auxiliar para debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Inicialização do Particles.js
+    function initParticles() {
+        if (typeof particlesJS === 'undefined') {
+            console.warn('Particles.js não foi carregado.');
+            return;
+        }
+        const isMobile = window.innerWidth <= 768;
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: isMobile ? 40 : 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+    }
+
+    // Animação de digitação
+    function initTypingAnimation() {
+        const typingElement = document.querySelector('.typing-text');
+        if (!typingElement) return;
+        const text = typingElement.textContent;
+        typingElement.textContent = '';
         let i = 0;
-
         function typeWriter() {
-            if (i < logoText.length) {
-                logoTextSpan.innerHTML += logoText.charAt(i);
+            if (i < text.length) {
+                typingElement.textContent += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 120);
+                setTimeout(typeWriter, 70);
             }
         }
-
-        typeWriter();
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-                body.classList.remove('preloader-active');
-            }, 2000);
-        });
-    } else {
-        const preloaderEl = document.getElementById('preloader');
-        if (preloaderEl) {
-           preloaderEl.classList.add('hidden');
-        }
-        document.querySelector('body').classList.remove('preloader-active');
+        setTimeout(typeWriter, 500);
     }
 
-    /* ==========================================================================
-       LÓGICA DA ANIMAÇÃO DE FUNDO (PARTICLES.JS) - RESTAURADA
-       ========================================================================== */
-    if (document.getElementById('particles-js')) {
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#475569"
-                },
-                "shape": {
-                    "type": "circle"
-                },
-                "opacity": {
-                    "value": 0.4,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": false
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 0.6,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
+    // Intersection Observer para animações de fade-in
+    function initIntersectionObserver() {
+        const animatedElements = document.querySelectorAll('.fade-in-animation, .fade-up-animation');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
-            },
-            "retina_detect": true
+            });
+        }, { threshold: 0.1 });
+
+        animatedElements.forEach(el => observer.observe(el));
+    }
+
+    // Lógica da Sidebar
+    function initSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const toggle = document.getElementById('sidebarToggle');
+        const overlay = document.getElementById('sidebarOverlay');
+        const links = document.querySelectorAll('.sidebar-link');
+
+        const closeSidebar = () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        };
+        
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', closeSidebar);
+        links.forEach(link => link.addEventListener('click', closeSidebar));
+    }
+
+    // Botão Voltar ao Topo
+    function initBackToTop() {
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', debounce(() => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        }, 100));
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
+    // Navegação suave e ativação de links
+    function initSmoothScrollAndActiveLinks() {
+        const links = document.querySelectorAll('.sidebar-link');
+        const sections = document.querySelectorAll('section');
 
-    /* ==========================================================================
-       LÓGICA PRINCIPAL DA PÁGINA
-       ========================================================================== */
-
-    // LÓGICA DO MENU MOBILE
-    const navMenu = document.getElementById('nav-menu');
-    const navToggle = document.getElementById('nav-toggle');
-    const closeMenu = () => { if (navMenu) navMenu.classList.remove('show-menu'); };
-    const toggleMenu = () => { if (navMenu) navMenu.classList.toggle('show-menu'); };
-    if (navToggle) { navToggle.addEventListener('click', (event) => { event.stopPropagation(); toggleMenu(); }); }
-    if (navMenu) { navMenu.addEventListener('click', (event) => { if (event.target.classList.contains('nav__link')) { closeMenu(); }}); }
-    document.addEventListener('click', (event) => {
-        if (navMenu && navMenu.classList.contains('show-menu')) {
-            const isClickInsideMenu = navMenu.contains(event.target);
-            const isClickOnToggle = navToggle ? navToggle.contains(event.target) : false;
-            if (!isClickInsideMenu && !isClickOnToggle) { closeMenu(); }
-        }
-    });
-
-    // LÓGICA DO FAQ (ACORDEÃO)
-    const faqItems = document.querySelectorAll('.faq__item');
-    faqItems.forEach((item) => {
-        const header = item.querySelector('.faq__header');
-        header.addEventListener('click', () => {
-            const openItem = document.querySelector('.faq__item.active');
-            if(openItem && openItem !== item) { openItem.classList.remove('active'); }
-            item.classList.toggle('active');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.href.includes('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
         });
-    });
 
-    // LÓGICA DO DIAGNÓSTICO DIGITAL
-    const diagnosisOptions = document.querySelectorAll('.diagnosis__questions .option');
-    const diagnosisText = document.getElementById('diagnosis-text');
-    const diagnosisCta = document.getElementById('diagnosis-cta');
-    const userAnswers = {};
-    const totalQuestions = 3;
-    function generateDiagnosis() {
-        if (Object.keys(userAnswers).length !== totalQuestions) return;
-        let text = "<b>Diagnóstico:</b> ";
-        if (userAnswers['1'] === 'nao-tenho') { text += "Você está no ponto de partida ideal. Um <b>Site Institucional</b> é o primeiro passo para estabelecer sua marca e gerar credibilidade."; } 
-        else if (userAnswers['2'] === 'lento' || userAnswers['2'] === 'nao-sei') { text += "Sua presença online pode estar sendo prejudicada por uma má experiência em celulares. A solução é um <b>design 100% responsivo e otimizado para velocidade</b>."; } 
-        else if (userAnswers['3'] === 'raramente' || userAnswers['3'] === 'nunca') { text += "Seu site não está funcionando como uma ferramenta de negócios. Precisamos focar em uma <b>Landing Page de Alta Conversão</b> ou reestruturar seu site com chamadas para ação claras."; } 
-        else { text += "Sua base digital é boa, mas sempre há espaço para otimizar! Podemos melhorar a velocidade e a estratégia de conversão para <b>aumentar ainda mais seus resultados</b>."; }
-        diagnosisText.innerHTML = text;
-        diagnosisCta.style.display = 'inline-flex';
-        setTimeout(() => { diagnosisCta.style.transform = 'scale(1)'; }, 100);
+        window.addEventListener('scroll', debounce(() => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        }, 100));
     }
-    diagnosisOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const parentCard = option.closest('.question__card');
-            if (!parentCard) return;
-            const questionNumber = parentCard.dataset.question;
-            const selectedValue = option.dataset.value;
-            userAnswers[questionNumber] = selectedValue;
-            parentCard.querySelectorAll('.option').forEach(btn => btn.classList.remove('selected'));
-            option.classList.add('selected');
-            generateDiagnosis();
-        });
-    });
 
-    // LÓGICA CENTRALIZADA DE SCROLL
-    const handleScroll = () => {
-        const header = document.getElementById('header');
-        if (header) { window.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header'); }
-        const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.pageYOffset;
-        let currentSectionId = null;
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight, sectionTop = current.offsetTop - 58;
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                currentSectionId = current.getAttribute('id');
-            }
-        });
-        document.querySelectorAll('.nav__menu a').forEach(link => {
-            link.classList.remove('active-link');
-            if (link.getAttribute('href') === '#' + currentSectionId) {
-                link.classList.add('active-link');
-            }
-        });
-        if (scrollY < sections[0].offsetTop - 58) {
-             const homeLink = document.querySelector('.nav__menu a[href="#hero"]');
-             if(homeLink) homeLink.classList.add('active-link');
-        }
-
-        const scrollUp = document.getElementById('scroll-up');
-        if (scrollUp) { window.scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll'); }
-        const whatsAppButton = document.getElementById('whatsapp-float-button');
-        if (whatsAppButton) { window.scrollY >= 400 ? whatsAppButton.classList.add('show') : whatsAppButton.classList.remove('show'); }
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    // LÓGICA DO OBSERVER PARA ANIMAÇÕES
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }});
-    }, { threshold: 0.1 });
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container, .contact__form');
-    animatedElements.forEach((el) => observer.observe(el));
+    // Inicia todas as funções
+    initParticles();
+    initTypingAnimation();
+    initIntersectionObserver();
+    initSidebar();
+    initBackToTop();
+    initSmoothScrollAndActiveLinks();
 });
