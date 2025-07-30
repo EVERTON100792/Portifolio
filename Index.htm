@@ -3,341 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Everton | Desenvolvedor Web Criativo</title>
-    <meta name="description" content="Portfólio de Everton - Desenvolvedor Web especializado em criar experiências digitais incríveis. Solicite seu orçamento!">
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Everton | Desenvolvedor Web Estratégico</title>
+    <meta name="description" content="Transformo suas ideias em sites que geram resultados. Especialista em desenvolvimento para autônomos e pequenos negócios. Peça seu orçamento!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="sidebar-toggle" id="sidebarToggle">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+    <div id="particles-js"></div>
+
+    <div id="preloader">
+        <div class="preloader-content">
+            <h1 class="preloader-logo">
+                <span id="logo-text"></span><span class="cursor">_</span>
+            </h1>
+        </div>
     </div>
     
-    <nav class="sidebar" id="sidebar">
-        
-        <div class="sidebar-logo">
-            <a href="#hero" class="logo-link">
-                <div class="logo-icon">
-                    <i class="fas fa-code" aria-hidden="true"></i>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#hero" class="nav__logo">Everton <span class="logo-accent">.dev</span></a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#hero" class="nav__link">Início</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">Sobre</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Serviços</a></li>
+                    <li class="nav__item"><a href="#projects" class="nav__link">Projetos</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contato</a></li>
+                </ul>
+            </div>
+            <div class="nav__actions">
+                <a href="#contact" class="button nav__button">Iniciar Projeto</a>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
-                <div class="logo-content">
-                    <span class="logo-text">Everton</span>
-                    <span class="logo-subtitle">Dev Criativo</span>
-                </div>
-            </a>
-        </div>
-        
-        <ul class="sidebar-menu">
-            <li class="sidebar-item">
-                <a href="#hero" class="sidebar-link active" data-tooltip="Início">
-                    <i class="fas fa-home" aria-hidden="true"></i>
-                    <span class="link-text">Início</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#about" class="sidebar-link" data-tooltip="Sobre Mim">
-                    <i class="fas fa-user" aria-hidden="true"></i>
-                    <span class="link-text">Sobre</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#timeline" class="sidebar-link" data-tooltip="Minha Jornada">
-                    <i class="fas fa-road" aria-hidden="true"></i>
-                    <span class="link-text">Jornada</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#curriculo" class="sidebar-link" data-tooltip="Meu Currículo">
-                    <i class="fas fa-file-alt" aria-hidden="true"></i>
-                    <span class="link-text">Currículo</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#projects" class="sidebar-link" data-tooltip="Projetos">
-                    <i class="fas fa-laptop-code" aria-hidden="true"></i>
-                    <span class="link-text">Projetos</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#contato" class="sidebar-link" data-tooltip="Entre em Contato">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <span class="link-text">Contato</span>
-                </a>
-            </li>
-        </ul>
-        
-        <div class="sidebar-cta">
-            <a href="https://api.whatsapp.com/send?phone=5543998719821&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20fazer%20um%20orçamento."
-               class="whatsapp-cta" target="_blank" data-tooltip="Fazer Orçamento">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                <span class="cta-text">Orçamento</span>
-            </a>
-        </div>
-                
-    </nav>
-    
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+            </div>
+        </nav>
+    </header>
 
-    <main class="main-content">
-        <section id="hero" class="hero-section">
-            <div id="particles-js"></div>
-            <div class="hero-wrapper">
-                <div class="hero-text-content">
-                    <h1 class="hero-title">
-                        <span class="typing-text">Everton | Desenvolvedor Web Criativo</span>
-                        <span class="cursor">|</span>
+    <main class="main">
+        <section id="hero" class="hero section">
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        Um Site Profissional é o Seu Melhor Vendedor
                     </h1>
-                    <p class="hero-subtitle fade-up-animation">
-                        Transformo suas ideias em sites rápidos e modernos que geram resultados.<br>
-                        <strong>Sua satisfação garantida: pague somente após aprovar o site.</strong>
-                    </p>
-                    <div class="hero-cta fade-up-animation">
-                        <a href="https://api.whatsapp.com/send?phone=5543998719821&text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20receber%20um%20orçamento%20gratuito."
-                           class="cta-button pulse-animation" target="_blank">
-                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                            Receba seu Orçamento Gratuito
-                        </a>
-                    </div>
-                </div>
-                <div class="scroll-indicator">
-                    <div class="scroll-arrow bounce-animation">
-                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title fade-in-animation">Sobre Mim</h2>
-                    <div class="section-divider"></div>
-                </div>
-                
-                <div class="about-content">
-                    <div class="about-image fade-in-animation">
-                        <img src="images/profile-placeholder.png" alt="Foto de Everton" class="profile-photo">
-                    </div>
-                    
-                    <div class="about-text fade-in-animation">
-                        <p class="about-description">
-                            Olá! Sou <strong>Everton</strong>, um desenvolvedor web focado em criar soluções digitais para autônomos e pequenos negócios. Minha missão é transformar sua visão em um site profissional, rápido e que atraia clientes.
-                        </p>
-                        <p class="about-description">
-                            Com as tecnologias mais modernas, eu não apenas crio um design bonito, mas também construo uma base sólida para que seu site seja bem ranqueado no Google e funcione perfeitamente em qualquer dispositivo.
-                        </p>
-                        <div class="tech-stack">
-                            <h3>Tecnologias que domino:</h3>
-                            <div class="tech-icons">
-                                <div class="tech-item"><i class="fab fa-html5" aria-hidden="true"></i><span>HTML5</span></div>
-                                <div class="tech-item"><i class="fab fa-css3-alt" aria-hidden="true"></i><span>CSS3</span></div>
-                                <div class="tech-item"><i class="fab fa-js-square" aria-hidden="true"></i><span>JavaScript</span></div>
-                                <div class="tech-item"><i class="fab fa-git-alt" aria-hidden="true"></i><span>Git</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="timeline" class="timeline-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title fade-in-animation">Minha Jornada de Aprendizado</h2>
-                    <p class="section-subtitle fade-in-animation">
-                        Uma trajetória de dedicação contínua para transformar código em soluções incríveis.
-                    </p>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-item fade-in-animation" data-date="Fev/2025 - Mar/2025">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>A Base Sólida: HTML5 e CSS3</h3>
-                            <p>Iniciei minha jornada focado em construir a estrutura fundamental da web, dominando a criação de sites semanticamente corretos, essenciais para SEO.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item fade-in-animation" data-date="Abr/2025 - Mai/2025">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Dando Vida às Páginas: JavaScript</h3>
-                            <p>Fui além do visual estático, mergulhando no JavaScript para criar interações que engajam o usuário, como animações e menus dinâmicos.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item fade-in-animation" data-date="Jun/2025 - Jul/2025">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Design que se Adapta: Layouts Responsivos</h3>
-                            <p>Com os fundamentos sólidos, foquei em dominar Flexbox e CSS Grid para garantir que os sites sejam perfeitos em qualquer dispositivo (Mobile-First).</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item fade-in-animation" data-date="Em Andamento">
-                        <div class="timeline-marker future-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Evolução Contínua: Foco em React.js e Performance</h3>
-                            <p>Atualmente, estou a aprofundar os meus estudos em <strong>React.js</strong> para criar interfaces ainda mais dinâmicas e otimizadas, sempre com foco em performance.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="curriculo" class="curriculo-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title fade-in-animation">Currículo & Habilidades</h2>
-                    <p class="section-subtitle fade-in-animation">
-                        Um resumo da minha formação e das tecnologias que domino. Estou buscando ativamente por uma oportunidade para aplicar minhas habilidades e colaborar em projetos inovadores.
-                    </p>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="curriculo-grid">
-                    <div class="curriculo-coluna fade-in-animation">
-                        <div class="curriculo-bloco">
-                            <h3 class="bloco-titulo"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Formação Acadêmica</h3>
-                            <ul class="info-list">
-                                <li><h4>Ciências Contábeis</h4><p>Faccar Faculdade Paranaense (2013 - 2017)</p></li>
-                                <li><h4>Desenvolvimento Web Full-Stack</h4><p>Cursando em IFPR Campus Avançado Arapongas (2025)</p></li>
-                            </ul>
-                        </div>
-                        <div class="curriculo-bloco">
-                             <h3 class="bloco-titulo"><i class="fas fa-paper-plane" aria-hidden="true"></i> Contato para Oportunidades</h3>
-                            <ul class="info-list">
-                                <li><h4>E-mail</h4><p>evertonmoura.dev@gmail.com</p></li>
-                                <li><h4>Telefone</h4><p>(43) 998719821</p></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="curriculo-coluna fade-in-animation">
-                        <div class="curriculo-bloco">
-                            <h3 class="bloco-titulo"><i class="fas fa-cogs" aria-hidden="true"></i> Hard Skills</h3>
-                            <ul class="skills-list">
-                                <li data-skill-level="95%"><span class="skill-nome">HTML5 & CSS3</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
-                                <li data-skill-level="85%"><span class="skill-nome">JavaScript (ES6+)</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
-                                <li data-skill-level="90%"><span class="skill-nome">Design Responsivo</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
-                                <li data-skill-level="75%"><span class="skill-nome">Git & GitHub</span><div class="skill-bar"><div class="skill-progress"></div></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="download-cta fade-in-animation">
-                    <a href="curriculo-everton.pdf" class="cta-button" download>
-                        <i class="fas fa-download" aria-hidden="true"></i> Baixar CV em PDF
+                    <h2 class="hero__subtitle">
+                        Eu ajudo pequenos negócios a **atrair clientes e construir autoridade** com sites rápidos, modernos e focados em resultados.
+                    </h2>
+                    <a href="#services" class="button button--flex pulse-animation">
+                        Conheça Meus Serviços <i class="fas fa-arrow-down"></i>
                     </a>
                 </div>
+                <div class="hero__image">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+                         <defs>
+                             <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                 <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.5"></stop>
+                                 <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.5"></stop>
+                             </linearGradient>
+                         </defs>
+                         <path d="M 10 110 L 190 110 L 200 100 L 0 100 Z" fill="#1E293B"></path>
+                         <rect x="15" y="10" width="170" height="90" rx="5" fill="#0F172A" stroke="#3B82F6" stroke-width="1"></rect>
+                         <rect class="animated-screen" x="25" y="20" width="150" height="70" fill="url(#screenGradient)"></rect>
+                         <path d="M 35 35 H 80 M 35 45 H 95 M 35 55 H 70 M 35 65 H 105" stroke="#F8FAFC" stroke-width="1.5" stroke-opacity="0.3"></path>
+                         <circle cx="100" cy="55" r="3" fill="#60A5FA" opacity="0.7"></circle>
+                     </svg>
+                </div>
             </div>
         </section>
 
-        <section id="projects" class="projects-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title fade-in-animation">Meus Projetos</h2>
-                    <p class="section-subtitle fade-in-animation">
-                        Cada projeto é uma oportunidade de criar algo incrível.
+        <section id="about" class="about section">
+            <div class="section__header">
+                <h2 class="section__title">De Desenvolvedor a Parceiro Estratégico</h2>
+                <span class="section__subtitle">Conheça minha jornada e minhas competências</span>
+            </div>
+            <div class="about__container container grid">
+                <div class="about__image-container">
+                    <img src="images/sua-foto.jpg" alt="Everton, Desenvolvedor Web" class="about__photo">
+                </div>
+                <div class="about__content">
+                    <h3>Minha História</h3>
+                    <p class="about__description">
+                        Olá, sou Everton! Minha transição da contabilidade para a tecnologia foi uma busca por criar soluções práticas que realmente impactam o crescimento de um negócio. Hoje, meu objetivo é ser mais que um programador: sou um parceiro dedicado a entender suas metas e traduzi-las em um site que não apenas impressiona visualmente, mas que também funciona como uma ferramenta de negócios eficaz.
                     </p>
-                    <div class="section-divider"></div>
-                </div>
-                
-                <div class="projects-grid">
-                    <div class="project-card fade-in-animation">
-                        <div class="project-image">
-                            <img src="images/prof-vane-pdfs.png" alt="Plataforma educacional Prof Vane PDFs">
+                    
+                    <div class="info-group">
+                        <h4 class="info-group__title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h4>
+                        <div class="info-group__item">
+                            <p><strong>Desenvolvimento Web Full-Stack</strong></p>
+                            <span>Cursando em IFPR Campus Avançado Arapongas (2025)</span>
                         </div>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="https://materiaisprofvane.netlify.app/" class="btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Site ao Vivo</a>
-                                <a href="https://github.com/everton-dev/prof-vane-pdfs" class="btn-secondary" target="_blank"><i class="fab fa-github"></i> Ver o Código</a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Prof Vane PDFs</h3>
-                            <p class="project-description">Plataforma educacional para venda de materiais pedagógicos em PDF, com design vibrante e integração com WhatsApp e Hotmart.</p>
-                            <div class="project-tech">
-                                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
-                                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
-                                <span class="tech-badge"><i class="fab fa-js-square"></i> JavaScript</span>
-                            </div>
+                        <div class="info-group__item">
+                            <p><strong>Ciências Contábeis</strong></p>
+                            <span>Faccar Faculdade Paranaense (2013 - 2017)</span>
                         </div>
                     </div>
-                    
-                    <div class="project-card fade-in-animation">
-                        <div class="project-image">
-                            <img src="images/sistema-financeiro.png" alt="Dashboard do Sistema Financeiro Pessoal">
+                </div>
+            </div>
+        </section>
+        
+        <section id="services" class="services section">
+            <div class="section__header">
+                <h2 class="section__title">Soluções Sob Medida para o Seu Sucesso</h2>
+                <span class="section__subtitle">O que eu posso fazer por você e seu negócio</span>
+            </div>
+            <div class="services__container container grid">
+                </div>
+        </section>
+
+        <section id="projects" class="projects section">
+            <div class="section__header">
+                <h2 class="section__title">Projetos que Resolvem Problemas</h2>
+                <span class="section__subtitle">Veja na prática como eu transformo ideias em realidade</span>
+            </div>
+            <div class="projects__container container grid">
+                <div class="project__card">
+                    <div class="project__image">
+                        <img src="images/prof-vane-pdfs.png" alt="Plataforma educacional Prof Vane PDFs">
+                    </div>
+                    <div class="project__content">
+                        <h3 class="project__title">Prof Vane PDFs</h3>
+                        <div class="project__details">
+                            <h4><i class="fas fa-bullseye"></i> O Desafio</h4>
+                            <p>A cliente precisava de uma vitrine online profissional para centralizar e vender seus materiais pedagógicos, saindo da informalidade dos grupos de WhatsApp.</p>
+                            <h4><i class="fas fa-lightbulb"></i> A Solução</h4>
+                            <p>Criei uma landing page vibrante e de fácil navegação, que organiza os produtos e direciona o cliente para a compra de forma clara, fortalecendo a sua marca.</p>
                         </div>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Usar a Ferramenta</a>
-                                <a href="#" class="btn-secondary" target="_blank"><i class="fab fa-github"></i> Ver o Código</a>
-                            </div>
+                        <div class="project__tech-list">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Dashboard Financeiro PWA</h3>
-                            <p class="project-description">Sistema de gestão financeira construído como PWA. Controle contas, cartões e metas, com dados salvos localmente via IndexedDB. <strong>Disponibilizado para uso gratuito.</strong></p>
-                            <div class="project-tech">
-                                <span class="tech-badge"><i class="fab fa-js-square"></i> JavaScript</span>
-                                <span class="tech-badge"><i class="fas fa-database"></i> IndexedDB</span>
-                                <span class="tech-badge"><i class="fas fa-chart-bar"></i> Chart.js</span>
-                                <span class="tech-badge" style="background-color: var(--whatsapp-green); color: white;"><i class="fas fa-star"></i> Uso Gratuito</span>
-                            </div>
+                        <div class="project__links">
+                            <a href="https://materiaisprofvane.netlify.app/" target="_blank" class="project__link">Ver Site <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/everton-dev/prof-vane-pdfs" target="_blank" class="project__link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="project__card">
+                    <div class="project__image">
+                        <img src="images/sistema-financeiro.png" alt="Dashboard Financeiro Pessoal">
+                    </div>
+                    <div class="project__content">
+                        <h3 class="project__title">Dashboard Financeiro</h3>
+                        <div class="project__details">
+                           <h4><i class="fas fa-bullseye"></i> O Desafio</h4>
+                           <p>Desenvolver uma ferramenta prática e acessível para que qualquer pessoa pudesse organizar suas finanças pessoais de forma intuitiva e visual.</p>
+                           <h4><i class="fas fa-lightbulb"></i> A Solução</h4>
+                           <p>Criei um PWA que funciona offline e permite o controle de contas e metas, com gráficos interativos para facilitar a visualização dos dados.</p>
+                        </div>
+                        <div class="project__tech-list">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">PWA</span>
+                            <span class="tech-badge">Chart.js</span>
+                            <span class="tech-badge special-badge">Uso Gratuito</span>
+                        </div>
+                        <div class="project__links">
+                            <a href="#" target="_blank" class="project__link">Usar Ferramenta <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" target="_blank" class="project__link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="contato-section">
-            <div class="container">
-                <form action="https://formspree.io/f/xyzpwynb" method="POST" class="contato-form fade-in-animation">
-                    <div class="section-header">
-                        <h2 class="section-title fade-in-animation">Vamos Conversar</h2>
-                        <p class="section-subtitle fade-in-animation">
-                            Tem uma ideia? Preencha o formulário abaixo ou me chame no WhatsApp. Estou pronto para transformar seu projeto em realidade.
-                        </p>
-                        <div class="section-divider"></div>
+        <section id="contact" class="contact section">
+            <div class="section__header">
+                <h2 class="section__title">Vamos Transformar Sua Ideia em Realidade?</h2>
+                <span class="section__subtitle">Envie sua mensagem ou me chame no WhatsApp. Estou pronto para ajudar!</span>
+            </div>
+            <div class="contact__container container">
+                <form action="https://formspree.io/f/xyzpwynb" method="POST" class="contact__form">
+                    <div class="form__group">
+                        <input type="text" name="name" id="name" placeholder=" " required class="form__input">
+                        <label for="name" class="form__label">Seu Nome</label>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="name" id="name" placeholder=" " required>
-                        <label for="name">Seu Nome</label>
+                    <div class="form__group">
+                        <input type="email" name="email" id="email" placeholder=" " required class="form__input">
+                        <label for="email" class="form__label">Seu E-mail</label>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="email" placeholder=" " required>
-                        <label for="email">Seu E-mail</label>
+                    <div class="form__group">
+                        <textarea name="message" id="message" placeholder=" " rows="5" required class="form__input"></textarea>
+                        <label for="message" class="form__label">Me conte sobre seu projeto...</label>
                     </div>
-                    <div class="form-group">
-                        <textarea name="message" id="message" placeholder=" " rows="5" required></textarea>
-                        <label for="message">Conte-me sobre seu projeto...</label>
-                    </div>
-                    <button type="submit" class="cta-button">Enviar Mensagem</button>
+                    <button type="submit" class="button button--flex">Enviar Proposta <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </section>
     </main>
-
+    
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Everton - Desenvolvedor Web Criativo. Transformando ideias em realidade digital.</p>
-                <div class="footer-social">
-                    <a href="https://api.whatsapp.com/send?phone=5543998719821" target="_blank" aria-label="Contato via WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" target="_blank" aria-label="Visite meu perfil no GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank" aria-label="Visite meu perfil no LinkedIn"><i class="fab fa-linkedin"></i></a>
-                </div>
+        <div class="footer__container container">
+            <p class="footer__copy">&copy; 2025 Everton Moura | Desenvolvedor Web Estratégico.</p>
+            <div class="footer__socials">
+                <a href="https://api.whatsapp.com/send?phone=5543998719821" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://github.com/everton-dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
-    
-    <a href="#" class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></a>
-    
+
+    <a href="#" class="scrollup" id="scroll-up"><i class="fas fa-arrow-up"></i></a>
+    <a href="https://wa.me/5543998719821?text=Olá,%20Everton!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20um%20orçamento." class="whatsapp-button" id="whatsapp-float-button" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i><span class="whatsapp-tooltip">Fale Comigo!</span>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
