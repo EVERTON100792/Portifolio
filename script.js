@@ -47,23 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('nav-toggle');
 
     if (navToggle && navMenu) {
-        // Função para fechar o menu
         const closeMenu = () => navMenu.classList.remove('show-menu');
 
-        // Abre/Fecha o menu ao clicar no ícone de toggle
         navToggle.addEventListener('click', (event) => {
-            event.stopPropagation(); // Impede que o clique no toggle feche o menu imediatamente
+            event.stopPropagation();
             navMenu.classList.toggle('show-menu');
         });
         
-        // 1. Fecha o menu ao clicar em um dos links
         navMenu.addEventListener('click', (event) => {
             if (event.target.classList.contains('nav__link')) {
                 closeMenu();
             }
         });
 
-        // 2. Fecha o menu se clicar FORA dele
         document.addEventListener('click', (event) => {
             const isClickInsideMenu = navMenu.contains(event.target);
             const isClickOnToggle = navToggle.contains(event.target);
@@ -129,17 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
 
-        // Adiciona sombra ao header ao rolar
         if (header) {
             scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
         }
 
-        // 3. [CORREÇÃO SIDEBAR] Fecha o menu se estiver aberto e o usuário rolar
         if (navMenu && navMenu.classList.contains('show-menu')) {
             navMenu.classList.remove('show-menu');
         }
 
-        // Marca o link ativo na navegação
         let currentSectionId = '';
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
@@ -155,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Mostra o botão de "Voltar ao Topo" e WhatsApp
         if (scrollUp) {
             scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
         }
@@ -168,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
        ========================================================================== */
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .diagnosis__container, .contact__form');
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .diagnosis__container, .contact__form, .academic__item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
