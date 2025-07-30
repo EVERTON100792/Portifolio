@@ -1,52 +1,65 @@
 /* ==========================================================================
-   LÓGICA DO PRELOADER
-   ========================================================================== */
-const preloader = document.getElementById('preloader');
-const logoTextSpan = document.getElementById('logo-text');
-const subtitleSpan = document.getElementById('preloader-subtitle');
-const body = document.querySelector('body');
-
-const logoText = "Everton.dev";
-const subtitles = ["Desenvolvedor", "Criativo", "Estrategista"];
-let subtitleIndex = 0;
-
-body.classList.add('preloader-active');
-
-let i = 0;
-function typeWriter() {
-    if (logoTextSpan && i < logoText.length) {
-        logoTextSpan.innerHTML += logoText.charAt(i);
-        i++;
-        setTimeout(typeWriter, 120);
-    } else {
-        setInterval(changeSubtitle, 2000);
-    }
-}
-
-function changeSubtitle() {
-    subtitleIndex = (subtitleIndex + 1) % subtitles.length;
-    if (subtitleSpan) {
-       subtitleSpan.textContent = subtitles[subtitleIndex];
-    }
-}
-
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        if (preloader) {
-            preloader.classList.add('hidden');
-        }
-        body.classList.remove('preloader-active');
-    }, 1500);
-});
-
-typeWriter();
-
-
-/* ==========================================================================
-   LÓGICA PRINCIPAL DA PÁGINA
+   LÓGICA DO PRELOADER (VERSÃO CORRIGIDA E ROBUSTA)
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
+    const preloader = document.getElementById('preloader');
+    const logoTextSpan = document.getElementById('logo-text');
+    const subtitleSpan = document.getElementById('preloader-subtitle');
+    const body = document.querySelector('body');
+
+    // Verifica se os elementos do preloader existem antes de rodar a lógica
+    if (preloader && logoTextSpan && subtitleSpan && body) {
+        const logoText = "Everton.dev";
+        const subtitles = ["Desenvolvedor", "Criativo", "Estrategista"];
+        let subtitleIndex = 0;
+        let typingFinished = false;
+
+        body.classList.add('preloader-active');
+
+        let i = 0;
+        function typeWriter() {
+            if (i < logoText.length) {
+                logoTextSpan.innerHTML += logoText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 120);
+            } else {
+                typingFinished = true;
+                // Só inicia a troca de subtítulos DEPOIS de terminar de digitar
+                setInterval(changeSubtitle, 2000);
+            }
+        }
+
+        function changeSubtitle() {
+            if (typingFinished) {
+                subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+                subtitleSpan.textContent = subtitles[subtitleIndex];
+            }
+        }
+        
+        // Inicia a animação de digitação
+        typeWriter();
+
+        // Esconde o preloader APENAS quando a página inteira (imagens, etc) carregar
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                body.classList.remove('preloader-active');
+            }, 500); // Um pequeno delay para a transição ficar suave
+        });
+
+    } else {
+        // Fallback: Se os elementos do preloader não forem encontrados, remove-o para não travar o site
+        const preloaderEl = document.getElementById('preloader');
+        if (preloaderEl) {
+           preloaderEl.classList.add('hidden');
+        }
+        document.querySelector('body').classList.remove('preloader-active');
+    }
+
+    /* ==========================================================================
+       LÓGICA PRINCIPAL DA PÁGINA
+       ========================================================================== */
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
 
