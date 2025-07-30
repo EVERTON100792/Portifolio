@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       LÓGICA DO MENU MOBILE (SIDEBAR) - CORREÇÃO DEFINITIVA
+       LÓGICA DO MENU MOBILE (SIDEBAR)
        ========================================================================== */
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
