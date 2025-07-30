@@ -44,7 +44,7 @@ body.preloader-active { overflow: hidden; }
 h1, h2, h3, h4, h5 { 
     color: var(--title-color); 
     font-weight: 600;
-    line-height: 1.4; /* CORREÇÃO: Adiciona espaçamento vertical para melhor leitura */
+    line-height: 1.4;
 }
 ul { list-style: none; }
 a { text-decoration: none; color: inherit; }
@@ -213,16 +213,11 @@ textarea.form__input { resize: vertical; min-height: 100px; }
    MEDIA QUERIES (RESPONSIVIDADE E CORREÇÃO DESKTOP)
    ========================================================================== */
 @media screen and (min-width: 768px) {
-    /* Reseta o menu para um layout de desktop */
-    .nav__menu {
-        all: unset; /* Remove os estilos de posicionamento da sidebar mobile */
-    }
-
     /* Organiza a lista de links na horizontal */
     .nav__list {
-        display: flex; /* CRÍTICO: Transforma a lista em um container flexível */
-        flex-direction: row; /* Alinha os links horizontalmente */
-        align-items: center; /* Alinha verticalmente os links e o botão */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         gap: 2.5rem;
     }
 
