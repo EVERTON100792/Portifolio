@@ -154,15 +154,13 @@ img, svg { max-width: 100%; height: auto; }
     gap: 2.5rem;
 }
 
-/* O card principal agora serve como o contêiner 3D */
 .project__card {
-    background-color: transparent; /* O fundo agora fica nas faces */
-    height: 280px; /* Altura fixa para o efeito 3D funcionar bem */
-    perspective: 1000px; /* Define a profundidade da cena 3D */
-    border: none; /* Removemos a borda do contêiner principal */
+    background-color: transparent;
+    height: 280px;
+    perspective: 1000px;
+    border: none;
 }
 
-/* Contêiner interno que efetivamente irá girar */
 .project__card-inner {
     position: relative;
     width: 100%;
@@ -171,39 +169,39 @@ img, svg { max-width: 100%; height: auto; }
     transform-style: preserve-3d;
 }
 
-/* Efeito de giro ao passar o mouse */
 .project__card:hover .project__card-inner {
     transform: rotateY(180deg);
 }
 
-/* Estilização da FRENTE e do VERSO do card */
 .project__card-front,
 .project__card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Para não mostrar o verso "escondido" */
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid var(--accent-color);
 }
 
-/* Estilização da FRENTE (a imagem) */
 .project__card-front {
     background-color: #2c3a52;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .project__card-front img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* ALTERADO: Garante que a imagem inteira apareça, sem cortar */
+    object-fit: contain;
 }
 
-/* Estilização do VERSO (o conteúdo) */
 .project__card-back {
     background-color: var(--body-bg-solid);
-    transform: rotateY(180deg); /* O verso começa já virado */
+    transform: rotateY(180deg);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -212,13 +210,12 @@ img, svg { max-width: 100%; height: auto; }
 
 .project__card:hover .project__card-front,
 .project__card:hover .project__card-back {
-    border-color: var(--primary-color); /* Borda destaca no hover */
+    border-color: var(--primary-color);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
 }
 
-/* Ajustes finos no conteúdo do verso para caber melhor */
 .project__card-back .project__title {
-    font-size: 1.15rem; /* Título um pouco menor */
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
 }
 
@@ -229,7 +226,7 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 .project__card-back .project__details p {
-    font-size: 0.8rem; /* Descrição menor para caber */
+    font-size: 0.8rem;
     line-height: 1.5;
     margin-bottom: 0.5rem;
 }
@@ -243,6 +240,7 @@ img, svg { max-width: 100%; height: auto; }
     margin-top: 1rem;
     padding-top: 0.75rem;
 }
+
 
 /* DIAGNOSIS */
 .diagnosis__container { background-color: var(--container-bg); padding: 2rem; border-radius: 1rem; }
@@ -323,6 +321,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .container { margin-left: auto; margin-right: auto; }
     .academic__grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 /* ==========================================================================
    CORREÇÃO RESPONSIVA PARA OS PROJETOS (MOBILE)
    ========================================================================== */
@@ -342,6 +341,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         position: static; /* Posição deixa de ser relativa */
         transform-style: flat; /* Remove o ambiente 3D */
         transition: none; /* Remove a transição de giro */
+        height: auto;
     }
 
     /* Remove o giro no hover para mobile, garantindo que não haja bugs de toque */
@@ -359,27 +359,26 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         border: none; /* Remove a borda das faces, pois o card principal já tem */
         box-shadow: none;
         border-radius: 0;
+        height: auto;
     }
 
     /* Ajusta a frente (imagem) para mobile */
     .project__card-front {
-        height: 200px; /* Uma altura boa para a imagem no celular */
-        padding: 1rem; /* Um padding para a imagem não colar nas bordas */
-        border-top-left-radius: 1rem; /* Arredonda os cantos superiores */
+        height: 200px;
+        background-color: #2c3a52;
+        padding: 1rem;
+        border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
     }
 
     .project__card-front img {
-        object-fit: contain; /* Garante que a imagem não seja cortada */
+        object-fit: contain;
     }
     
     /* Ajusta o verso (conteúdo) para mobile */
     .project__card-back {
-        background-color: transparent; /* O fundo já está no card principal */
-        padding-bottom: 1.5rem; /* Garante um bom espaçamento no final */
-    }
-
-    .project__card-back .project__details p {
-        font-size: 0.9rem; /* Aumenta um pouco a fonte no mobile para melhor leitura */
+        background-color: transparent;
+        padding: 1.5rem; /* Garante um bom espaçamento em todos os lados */
+        padding-top: 1rem; /* Diminui um pouco o espaçamento superior */
     }
 }
