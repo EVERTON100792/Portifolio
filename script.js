@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LÓGICA DO PRELOADER (VERSÃO SIMPLIFICADA E À PROVA DE FALHAS)
+   LÓGICA DO PRELOADER
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
@@ -19,19 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Inicia a digitação imediatamente
         typeWriter();
 
-        // Espera a página inteira carregar (incluindo imagens)
         window.addEventListener('load', () => {
-            // Garante que o preloader fique visível por pelo menos 2 segundos
             setTimeout(() => {
                 preloader.classList.add('hidden');
                 body.classList.remove('preloader-active');
-            }, 2000); // 2 segundos de duração mínima
+            }, 2000);
         });
     } else {
-        // Se algo der errado, remove o preloader para não travar o site
         const preloaderEl = document.getElementById('preloader');
         if (preloaderEl) {
            preloaderEl.classList.add('hidden');
@@ -40,7 +36,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       LÓGICA PRINCIPAL DA PÁGINA (GARANTIDA PARA RODAR)
+       LÓGICA DA ANIMAÇÃO DE FUNDO (PARTICLES.JS) - RESTAURADA
+       ========================================================================== */
+    if (document.getElementById('particles-js')) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#475569" // Cor das partículas
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.4,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": false // Sem linhas conectando
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 0.6,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
+            },
+            "retina_detect": true
+        });
+    }
+
+
+    /* ==========================================================================
+       LÓGICA PRINCIPAL DA PÁGINA
        ========================================================================== */
 
     // LÓGICA DO MENU MOBILE
