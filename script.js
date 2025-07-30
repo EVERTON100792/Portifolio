@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 preloader.classList.add('hidden');
                 body.classList.remove('preloader-active');
-            }, 1800); // Tempo ajustado para uma transição mais rápida
+            }, 1800);
         });
     }
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     if (document.getElementById('particles-js')) {
         particlesJS("particles-js", {
-            "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#475569" }, "shape": { "type": "circle" }, "opacity": { "value": 0.4, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": false }, "move": { "enable": true, "speed": 0.6, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } },
+            "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#334155" }, "shape": { "type": "circle" }, "opacity": { "value": 0.4, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": false }, "move": { "enable": true, "speed": 0.6, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } },
             "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true } },
             "retina_detect": true
         });
@@ -46,13 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
 
-    // LÓGICA DO MENU MOBILE
+    // LÓGICA DO MENU MOBILE (COM CORREÇÃO)
     if (navToggle && navMenu) {
+        // Abre e fecha o menu ao clicar no ícone
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show-menu');
         });
         
-        // Fecha o menu ao clicar em um link
+        // **[CORREÇÃO APLICADA AQUI]**
+        // Fecha o menu mobile ao clicar em um link (ex: "Serviços")
         navMenu.addEventListener('click', (event) => {
             if (event.target.classList.contains('nav__link')) {
                 navMenu.classList.remove('show-menu');
@@ -113,12 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
 
-        // Header com fundo
         if (header) {
             scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
         }
 
-        // Active link highlighting
         let currentSectionId = '';
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Botão "Scroll Up" e WhatsApp
         if (scrollUp) {
             scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
         }
@@ -150,13 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Opcional: para animar apenas uma vez
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
     animatedElements.forEach((el) => {
-        el.classList.add('animated-element'); // Adiciona classe base para o estado inicial
+        el.classList.add('animated-element');
         observer.observe(el);
     });
 });
