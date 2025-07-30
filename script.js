@@ -36,44 +36,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       LÓGICA DA ANIMAÇÃO DE FUNDO (PARTICLES.JS) - RESTAURADA
+       LÓGICA DA ANIMAÇÃO DE FUNDO (PARTICLES.JS) - VERSÃO ESTILOSA
        ========================================================================== */
     if (document.getElementById('particles-js')) {
         particlesJS("particles-js", {
             "particles": {
                 "number": {
-                    "value": 60,
+                    "value": 80, // Aumentei o número de partículas
                     "density": {
                         "enable": true,
                         "value_area": 800
                     }
                 },
                 "color": {
-                    "value": "#475569" // Cor das partículas
+                    "value": "#64748B" // Cor mais clara para melhor visibilidade
                 },
                 "shape": {
                     "type": "circle"
                 },
                 "opacity": {
-                    "value": 0.4,
+                    "value": 0.6, // Opacidade padrão maior
                     "random": true,
                     "anim": {
                         "enable": true,
                         "speed": 1,
-                        "opacity_min": 0.1,
+                        "opacity_min": 0.2, // Opacidade mínima maior
                         "sync": false
                     }
                 },
                 "size": {
-                    "value": 3,
+                    "value": 4, // Tamanho maior
                     "random": true
                 },
                 "line_linked": {
-                    "enable": false // Sem linhas conectando
+                    "enable": false
                 },
                 "move": {
                     "enable": true,
-                    "speed": 0.6,
+                    "speed": 0.8, // Movimento um pouco mais rápido
                     "direction": "none",
                     "random": true,
                     "straight": false,
@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionHeight = current.offsetHeight, sectionTop = current.offsetTop - 58, sectionId = current.getAttribute('id'),
                   correspondingLink = document.querySelector('.nav__menu a[href="#' + sectionId + '"]');
             if (correspondingLink) {
-                document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
                     correspondingLink.classList.add('active-link');
                 }
             }
