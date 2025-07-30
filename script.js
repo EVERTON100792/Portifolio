@@ -4,7 +4,6 @@
 const preloader = document.getElementById('preloader');
 const logoTextSpan = document.getElementById('logo-text');
 const body = document.querySelector('body');
-
 let isTypingFinished = false;
 let isWindowLoaded = false;
 
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // LÓGICA DO DIAGNÓSTICO DIGITAL (AGORA FUNCIONAL)
+    // LÓGICA DO DIAGNÓSTICO DIGITAL
     const diagnosisOptions = document.querySelectorAll('.diagnosis__questions .option');
     const diagnosisText = document.getElementById('diagnosis-text');
     const diagnosisCta = document.getElementById('diagnosis-cta');
@@ -91,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let text = "<b>Diagnóstico:</b> ";
         
         if (userAnswers['1'] === 'nao-tenho') {
-            text += "Você está no ponto de partida ideal para construir uma presença online forte. Um <b>Site Institucional</b> é o primeiro passo para estabelecer sua marca e gerar credibilidade no mercado.";
+            text += "Você está no ponto de partida ideal. Um <b>Site Institucional</b> é o primeiro passo para estabelecer sua marca e gerar credibilidade.";
         } else if (userAnswers['2'] === 'lento' || userAnswers['2'] === 'nao-sei') {
-            text += "Sua presença online pode estar sendo prejudicada por uma má experiência em celulares. Isso afeta seu ranking no Google. A solução é um <b>design 100% responsivo e otimizado para velocidade</b>.";
+            text += "Sua presença online pode estar sendo prejudicada por uma má experiência em celulares, afetando seu ranking no Google. A solução é um <b>design 100% responsivo e otimizado para velocidade</b>.";
         } else if (userAnswers['3'] === 'raramente' || userAnswers['3'] === 'nunca') {
-            text += "Seu site atual não está funcionando como uma ferramenta de negócios. Precisamos focar em uma <b>Landing Page de Alta Conversão</b> ou reestruturar seu site com chamadas para ação claras.";
+            text += "Seu site não está funcionando como uma ferramenta de negócios. Precisamos focar em uma <b>Landing Page de Alta Conversão</b> ou reestruturar seu site com chamadas para ação claras.";
         } else {
             text += "Sua base digital é boa, mas sempre há espaço para otimizar! Podemos melhorar a velocidade e a estratégia de conversão para <b>aumentar ainda mais seus resultados</b>.";
         }
@@ -133,12 +132,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionHeight = current.offsetHeight, sectionTop = current.offsetTop - 58, sectionId = current.getAttribute('id'),
                   correspondingLink = document.querySelector('.nav__menu a[href="#' + sectionId + '"]');
             if (correspondingLink) {
+                 // Limpa a classe de todos os links
+                document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
+                // Adiciona a classe apenas ao link da seção visível
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
                     correspondingLink.classList.add('active-link');
                 }
             }
         });
+        // Caso especial: no topo da página, marcar o link "Início"
+        if (scrollY < sections[0].offsetTop - 58) {
+             document.querySelectorAll('.nav__menu a').forEach(link => link.classList.remove('active-link'));
+             const homeLink = document.querySelector('.nav__menu a[href="#hero"]');
+             if(homeLink) homeLink.classList.add('active-link');
+        }
+
 
         const scrollUp = document.getElementById('scroll-up');
         if (scrollUp) { window.scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll'); }
@@ -152,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }});
     }, { threshold: 0.1 });
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container');
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container, .contact__form');
     animatedElements.forEach((el) => observer.observe(el));
 
     // LÓGICA DO EFEITO DE LUZ DO MOUSE
