@@ -3,7 +3,6 @@
    ========================================================================== */
 const preloader = document.getElementById('preloader');
 const logoTextSpan = document.getElementById('logo-text');
-const subtitleSpan = document.getElementById('preloader-subtitle');
 const body = document.querySelector('body');
 let isTypingFinished = false;
 let isWindowLoaded = false;
@@ -16,6 +15,7 @@ function tryToHidePreloader() {
         }, 200);
     }
 }
+
 if (preloader && logoTextSpan && body) {
     const logoText = "Everton.dev";
     body.classList.add('preloader-active');
@@ -44,47 +44,6 @@ if (preloader && logoTextSpan && body) {
    LÓGICA PRINCIPAL DA PÁGINA
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-
-    // LÓGICA DO CURSOR INTERATIVO
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    const interactiveElements = document.querySelectorAll('a, button, .option, .faq__header');
-    let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    const animateCursor = () => {
-        if (cursorDot && cursorOutline) {
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-            
-            outlineX += (mouseX - outlineX) * 0.1;
-            outlineY += (mouseY - outlineY) * 0.1;
-            
-            cursorOutline.style.left = `${outlineX}px`;
-            cursorOutline.style.top = `${outlineY}px`;
-        }
-        requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            if (cursorDot && cursorOutline) {
-                cursorDot.classList.add('cursor-active');
-                cursorOutline.classList.add('cursor-active');
-            }
-        });
-        el.addEventListener('mouseleave', () => {
-            if (cursorDot && cursorOutline) {
-                cursorDot.classList.remove('cursor-active');
-                cursorOutline.classList.remove('cursor-active');
-            }
-        });
-    });
 
     // LÓGICA DO MENU MOBILE, FAQ, SCROLL, OBSERVER...
     const navMenu=document.getElementById("nav-menu"),navToggle=document.getElementById("nav-toggle");const closeMenu=()=>{navMenu&&navMenu.classList.remove("show-menu")},toggleMenu=()=>{navMenu&&navMenu.classList.toggle("show-menu")};navToggle&&navToggle.addEventListener("click",e=>{e.stopPropagation(),toggleMenu()}),navMenu&&navMenu.addEventListener("click",e=>{e.target.classList.contains("nav__link")&&closeMenu()}),document.addEventListener("click",e=>{navMenu&&navMenu.classList.contains("show-menu")&&(!navMenu.contains(e.target)&&!(navToggle?navToggle.contains(e.target):!1))&&closeMenu()});const faqItems=document.querySelectorAll(".faq__item");faqItems.forEach(e=>{const t=e.querySelector(".faq__header");t.addEventListener("click",()=>{const o=document.querySelector(".faq__item.active");o&&o!==e&&o.classList.remove("active"),e.classList.toggle("active")})});const handleScroll=()=>{const e=document.getElementById("header");e&&(window.scrollY>=50?e.classList.add("scroll-header"):e.classList.remove("scroll-header"));const t=document.querySelectorAll("section[id]"),o=window.pageYOffset;t.forEach(e=>{const t=e.offsetHeight,n=e.offsetTop-58,c=e.getAttribute("id"),s=document.querySelector('.nav__menu a[href="#'+c+'"]');if(s){if(o>n&&o<=n+t)document.querySelectorAll(".nav__menu a").forEach(e=>e.classList.remove("active-link")),s.classList.add("active-link");else{}}});if(o<t[0].offsetTop-58){document.querySelectorAll(".nav__menu a").forEach(e=>e.classList.remove("active-link"));const e=document.querySelector('.nav__menu a[href="#hero"]');e&&e.classList.add("active-link")}const n=document.getElementById("scroll-up");n&&(window.scrollY>=400?n.classList.add("show-scroll"):n.classList.remove("show-scroll"));const c=document.getElementById("whatsapp-float-button");c&&(window.scrollY>=400?c.classList.add("show"):c.classList.remove("show"))};window.addEventListener("scroll",handleScroll);const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add("is-visible")})},{threshold:.1});const animatedElements=document.querySelectorAll(".section__header, .about__container, .project__card, .service__card, .process__step, .testimonial__card, .faq__item, .diagnosis__container, .contact__form");animatedElements.forEach(e=>{observer.observe(e)});
