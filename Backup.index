@@ -218,7 +218,7 @@
                         <p class="blog__excerpt">
                             Entenda a diferença crucial entre essas duas ferramentas e descubra qual delas é a ideal para alcançar seus objetivos de marketing e vendas.
                         </p>
-                        <a href="#" class="blog__link">Leia Mais <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="blog__link" data-article="article1">Leia Mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="blog__card animated-element">
@@ -231,7 +231,7 @@
                         <p class="blog__excerpt">
                             Cada segundo de espera pode custar um cliente. Veja como um site rápido melhora a experiência do usuário, o ranking no Google e sua receita.
                         </p>
-                         <a href="#" class="blog__link">Leia Mais <i class="fas fa-arrow-right"></i></a>
+                         <a href="#" class="blog__link" data-article="article2">Leia Mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="blog__card animated-element">
@@ -244,7 +244,7 @@
                         <p class="blog__excerpt">
                             Seu site parece antigo, não funciona bem no celular ou não gera contatos? Saiba quando é a hora de investir em uma atualização estratégica.
                         </p>
-                         <a href="#" class="blog__link">Leia Mais <i class="fas fa-arrow-right"></i></a>
+                         <a href="#" class="blog__link" data-article="article3">Leia Mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -330,6 +330,14 @@
         <i class="fab fa-whatsapp whatsapp-icon"></i>
         <span class="whatsapp-tooltip">Fale Comigo!</span>
     </a>
+
+    <div id="blog-modal" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" aria-label="Fechar modal">&times;</button>
+            <h2 id="modal-title" class="modal__title"></h2>
+            <div id="modal-body" class="modal__body"></div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js" defer></script>
