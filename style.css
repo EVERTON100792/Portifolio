@@ -141,37 +141,30 @@ img, svg { max-width: 100%; height: auto; display: block; }
 /* ==========================================================================
    PROJETOS (VERSÃO MOBILE-FIRST, À PROVA DE FALHAS)
    ========================================================================== */
-
-/* ESTILOS PADRÃO (MOBILE) */
 .projects__container {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
-
 .project-card {
     background-color: var(--container-bg);
     border: 1px solid var(--accent-color);
     border-radius: 1rem;
     overflow: hidden;
 }
-
 .project-card__image img {
     width: 100%;
     height: auto;
     object-fit: contain;
     background-color: var(--accent-color);
 }
-
 .project-card__content {
     padding: 1.5rem;
 }
-
 .project-card__content .project__title {
     font-size: 1.3rem;
     margin-bottom: 1rem;
 }
-
 .project-card__content .project__details h4 {
     color: var(--primary-color);
     font-size: 0.9rem;
@@ -181,40 +174,100 @@ img, svg { max-width: 100%; height: auto; display: block; }
     align-items: center;
     gap: 0.5rem;
 }
-
 .project-card__content .project__details p {
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
 }
-
 .project-card__content .project__tech-list {
     margin-top: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
-
 .project-card__content .project__links {
     margin-top: 1.5rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
 }
-
 .project-card__content .project__links a {
     color: var(--title-color);
     font-size: 1.3rem;
     transition: color 0.3s ease, transform 0.3s ease;
 }
-
 .project-card__content .project__links a:hover {
     color: var(--primary-color);
 }
-
 .project-card__content .project__links .project__link {
     font-size: 0.9rem;
     font-weight: 600;
+}
+
+/* ==========================================================================
+   BLOG
+   ========================================================================== */
+.blog__container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.blog__card {
+    background-color: var(--container-bg);
+    border: 1px solid var(--accent-color);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.blog__card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.blog__image-placeholder {
+    width: 100%;
+    height: 180px;
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+.blog__content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+.blog__category {
+    color: var(--primary-color);
+    font-size: var(--small-font-size);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.blog__title {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+}
+.blog__excerpt {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+.blog__link {
+    color: var(--title-color);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto; 
+    align-self: flex-start; 
+    transition: color 0.3s ease;
+}
+.blog__link:hover {
+    color: var(--primary-color);
 }
 
 /* DIAGNOSIS */
@@ -312,7 +365,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .diagnosis__questions { grid-template-columns: repeat(3, 1fr); }
     .footer__container { flex-direction: row; justify-content: space-between; align-items: center; }
 
-    /* EFEITO DE HOVER NOS CARDS (APENAS DESKTOP) */
+    /* EFEITO DE HOVER NOS CARDS DE PROJETO (APENAS DESKTOP) */
     .projects__container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -321,6 +374,12 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         position: relative;
         height: 340px;
         border-color: transparent;
+        transition: all 0.4s ease;
+    }
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border-color: var(--primary-color);
     }
     .project-card__image {
         position: absolute;
@@ -340,15 +399,17 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .project-card__content .project__details {
         opacity: 0;
         transform: translateY(10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        max-height: 0;
+        transition: all 0.4s ease;
     }
-    .project-card:hover .project__details {
+    .project-card:hover .project-card__content .project__details {
         opacity: 1;
         transform: translateY(0);
+        max-height: 200px;
     }
     .project-card:hover .project-card__image img {
         transform: scale(1.1);
-        opacity: 0.2;
+        opacity: 0.1;
     }
 }
 
