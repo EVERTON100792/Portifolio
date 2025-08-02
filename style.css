@@ -183,6 +183,8 @@ picture { display: block; }
 /* DEPOIMENTOS */
 .testimonials.section {
     background-color: var(--body-bg-solid);
+    padding-top: 6rem;    /* Aumenta o espaço acima */
+    padding-bottom: 5rem; /* Aumenta o espaço abaixo */
 }
 .testimonials__container {
     max-width: 768px;
