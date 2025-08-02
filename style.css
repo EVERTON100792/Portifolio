@@ -338,20 +338,32 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 /* ==========================================================================
    MEDIA QUERIES (RESPONSIVIDADE)
    ========================================================================== */
-@media screen and (max-width: 991px) { /* <-- PONTO DE QUEBRA AJUSTADO */
+@media screen and (max-width: 991px) {
     .nav__menu { position: fixed; top: 0; right: -100%; width: 70%; max-width: 300px; height: 100vh; background-color: rgba(30, 41, 59, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6rem 2rem 3rem; transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1); box-shadow: -4px 0 12px rgba(0,0,0,0.2); }
     .nav__list { display: flex; flex-direction: column; align-items: flex-start; gap: 2.5rem; }
     .show-menu { right: 0; }
 }
 
 /* ESTILOS PARA DESKTOP */
-@media screen and (min-width: 992px) { /* <-- PONTO DE QUEBRA AJUSTADO */
+@media screen and (min-width: 992px) {
+    /* <<< ALTERAÇÃO PARA CENTRALIZAR O HERO >>> */
+    .hero__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero__content, 
+    .hero__image {
+        order: initial;
+    }
+    .hero__image {
+        margin-top: 2rem;
+    }
+    /* <<< FIM DA ALTERAÇÃO >>> */
+
     .nav__list { display: flex; flex-direction: row; align-items: center; gap: 2.5rem; }
     .nav__toggle { display: none; }
-    .nav__button { display: inline-block; padding: 0.6rem 1.2rem; font-size: 0.95rem; margin-left: 1.5rem; }
-    .hero__container { grid-template-columns: 1fr 0.8fr; text-align: left; }
-    .hero__content { order: 1; }
-    .hero__image { order: 2; }
+    .nav__button { display: inline-block; padding: 0.75rem 1.5rem; }
+    
     .about__container { grid-template-columns: 280px 1fr; }
     .academic__grid { grid-template-columns: 1fr; }
     .diagnosis__questions { grid-template-columns: repeat(3, 1fr); }
