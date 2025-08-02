@@ -42,7 +42,7 @@ body {
     position: relative;
 }
 body.preloader-active { overflow: hidden; }
-body.modal-open-body-lock { overflow: hidden; } /* Trava o scroll do body quando o modal está aberto */
+body.modal-open-body-lock { overflow: hidden; }
 
 h1, h2, h3, h4, h5 { 
     color: var(--title-color); 
@@ -477,7 +477,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .diagnosis__questions { grid-template-columns: repeat(3, 1fr); }
     .footer__container { flex-direction: row; justify-content: space-between; align-items: center; }
 
-    /* EFEITO DE HOVER NOS CARDS DE PROJETO (APENAS DESKTOP) */
+    /* NOVA ANIMAÇÃO DOS CARDS DE PROJETO (APENAS DESKTOP) */
     .projects__container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -501,27 +501,34 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         height: 100%;
         z-index: 1;
     }
-    .project-card__content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        background: linear-gradient(180deg, rgba(15, 23, 42, 0) 20%, rgba(15, 23, 42, 1) 90%);
-    }
-    .project-card__content .project__details {
-        opacity: 0;
-        transform: translateY(10px);
-        max-height: 0;
-        transition: all 0.4s ease;
-    }
-    .project-card:hover .project-card__content .project__details {
-        opacity: 1;
-        transform: translateY(0);
-        max-height: 200px;
+    .project-card__image img {
+        transition: transform 0.4s ease;
     }
     .project-card:hover .project-card__image img {
         transform: scale(1.1);
-        opacity: 0.1;
+    }
+    .project-card__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        background: linear-gradient(to top, rgba(15, 23, 42, 1) 40%, rgba(15, 23, 42, 0.7) 70%, transparent 100%);
+        
+        transform: translateY(calc(100% - 80px));
+        transition: transform 0.4s ease-in-out;
+    }
+    .project-card:hover .project-card__content {
+        transform: translateY(0);
+    }
+    .project-card__content .project__details {
+        flex-grow: 1;
+        overflow: hidden;
     }
 }
 
