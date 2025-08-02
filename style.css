@@ -123,6 +123,17 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .about__description { line-height: 1.7; margin-bottom: 2.5rem; }
 .info-group__title { display: flex; align-items: center; gap: 0.75rem; color: var(--title-color); font-size: 1.1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--accent-color); }
 
+/* Estilo para a citação na seção Sobre */
+.about__quote {
+    margin: 2rem 0 2.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--primary-color);
+    font-style: italic;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
 /* ABOUT - ACADEMIC SECTION STYLING */
 .academic__grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
 .academic__item { background: var(--body-bg-solid); padding: 1.25rem; border-radius: 0.5rem; border-left: 3px solid var(--primary-color); display: flex; align-items: center; gap: 1rem; transition: background-color 0.3s, transform 0.3s; }
@@ -468,17 +479,14 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     /* LÓGICA DOS CARDS DE PROJETO (APENAS DESKTOP) */
     .projects__container {
         display: grid;
-        /* <<<=== ALTERAÇÃO IMPLEMENTADA AQUI ===>>> */
-        grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         align-items: start;
     }
-    .projects__container {
-       display: grid;
-       /* Ajustando o minmax para permitir mais colunas e cards mais quadrados */
-       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-       gap: 1.5rem; /* Adicionando um gap entre os cards se já não houver */
-       align-items: stretch; /* Para que os cards tenham a mesma altura */
-   }
+    .project-card {
+        position: relative;
+        background-color: var(--body-bg-solid);
+        transition: all 0.4s ease;
+    }
     .project-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
