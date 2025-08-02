@@ -345,7 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
        ========================================================================== */
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project-card, .service__card, .blog__card, .diagnosis__container, .contact__form, .academic__item');
+    // LINHA CORRIGIDA: Adicionado '.testimonial__card' à lista.
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project-card, .service__card, .testimonial__card, .blog__card, .diagnosis__container, .contact__form, .academic__item');
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
