@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Geralmente, isso acontece por falta de estratégia: falta de chamadas para ação (Call-to-Action) claras, navegação confusa ou uma proposta de valor que não fica evidente para o cliente.</p>
 
                 <h3>Conclusão: Reformar é Investir em Crescimento</h3>
-                <p>Se você reconheceu um ou mais desses sinais, não se preocupe. É um problema comum, mas que custa caro quando ignorado. Uma reforma estratégica não se trata apenas de "mudar as cores", mas de repensar seu site para que ele se transforme de uma simples página online na sua mais poderosa ferramenta para atrair clientes e gerar crescimento.</p>
+                <p>Se você reconheceu um um ou mais desses sinais, não se preocupe. É um problema comum, mas que custa caro quando ignorado. Uma reforma estratégica não se trata apenas de "mudar as cores", mas de repensar seu site para que ele se transforme de uma simples página online na sua mais poderosa ferramenta para atrair clientes e gerar crescimento.</p>
 
                 <div class="cta-final">
                     <p>Identificou algum desses sinais no seu site? Vamos conversar sobre um plano de reforma estratégica que se alinhe aos seus objetivos de negócio e comece a gerar resultados de verdade.</p>
@@ -321,14 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-        if (scrollUp) {
-            scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
-        }
-        if (whatsAppButton) {
-            scrollY >= 400 ? whatsAppButton.classList.add('show') : whatsAppButton.classList.remove('show');
-        }
-    };
-
     function throttle(func, limit) {
         let inThrottle;
         return function() {
@@ -347,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
        ========================================================================== */
-    // LINHA CORRIGIDA: Adicionado '.testimonial__card' à lista.
     const animatedElements = document.querySelectorAll('.section__header, .about__container, .project-card, .service__card, .testimonial__card, .blog__card, .diagnosis__container, .contact__form, .academic__item');
     
     const observer = new IntersectionObserver((entries) => {
