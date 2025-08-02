@@ -527,7 +527,6 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         transform: translateY(0);
     }
     .project-card__content .project__details {
-        flex-grow: 1;
         overflow: hidden;
     }
 }
