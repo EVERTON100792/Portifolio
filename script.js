@@ -125,14 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
 
-        // Adiciona sombra no header ao scrollar
         if (header) {
             scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
         }
 
-        // --- BUG FIX: REMOVIDO CÓDIGO QUE FECHAVA MENU NO SCROLL ---
-
-        // Atualiza o link ativo na navegação
         let currentSectionId = '';
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
@@ -148,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Mostra/esconde o botão de voltar ao topo e WhatsApp
         if (scrollUp) {
             scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
         }
@@ -157,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Otimização de performance: função throttle
     function throttle(func, limit) {
         let inThrottle;
         return function() {
@@ -171,14 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Aplica o throttle ao evento de scroll
     window.addEventListener('scroll', throttle(handleScroll, 100));
 
     /* ==========================================================================
        LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
        ========================================================================== */
-    // AJUSTE AQUI: trocamos '.project__card' por '.project-card'
-    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project-card, .service__card, .diagnosis__container, .contact__form, .academic__item');
+    const animatedElements = document.querySelectorAll('.section__header, .about__container, .project-card, .service__card, .blog__card, .diagnosis__container, .contact__form, .academic__item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
