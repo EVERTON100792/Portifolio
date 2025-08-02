@@ -472,11 +472,13 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
         align-items: start;
     }
-    .project-card {
-        position: relative;
-        background-color: var(--body-bg-solid);
-        transition: all 0.4s ease;
-    }
+    .projects__container {
+       display: grid;
+       /* Ajustando o minmax para permitir mais colunas e cards mais quadrados */
+       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+       gap: 1.5rem; /* Adicionando um gap entre os cards se já não houver */
+       align-items: stretch; /* Para que os cards tenham a mesma altura */
+   }
     .project-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
