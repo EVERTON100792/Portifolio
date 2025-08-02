@@ -371,6 +371,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         transform: none;
         box-shadow: none;
         border: 1px solid var(--accent-color);
+        overflow: visible; /* LINHA ADICIONADA PARA CORRIGIR O BUG */
     }
     .project-card__image {
         position: static; /* Imagem volta ao fluxo normal */
