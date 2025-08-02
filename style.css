@@ -139,83 +139,37 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .service__description { font-size: var(--small-font-size); line-height: 1.6; flex-grow: 1; }
 
 /* ==========================================================================
-   PROJETOS (VERSÃO FINAL E ESTÁVEL)
+   PROJETOS (VERSÃO MOBILE-FIRST, À PROVA DE FALHAS)
    ========================================================================== */
-.projects.section {
-    background-color: var(--container-bg);
-}
 
+/* ESTILOS PADRÃO (MOBILE) */
 .projects__container {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2.5rem;
 }
 
 .project-card {
-    position: relative;
-    height: 340px; /* Altura aumentada para caber o conteúdo */
+    background-color: var(--container-bg);
+    border: 1px solid var(--accent-color);
     border-radius: 1rem;
     overflow: hidden;
-    background-color: var(--accent-color);
-    border: 1px solid transparent;
-    transition: all 0.4s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary-color);
-}
-
-.project-card__image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
 }
 
 .project-card__image img {
-   width: 100%;
-   height: 100%;
-   object-fit: contain; /* Garante que a imagem inteira caiba no container */
-   transition: transform 0.4s ease, opacity 0.4s ease;
-   background-color: var(--accent-color); /* Adiciona uma cor de fundo caso a imagem não preencha todo o espaço */
-}
-
-.project-card:hover .project-card__image img {
-    transform: scale(1.1);
-    opacity: 0.1; /* Imagem fica bem sutil no fundo */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background-color: var(--accent-color);
 }
 
 .project-card__content {
-    position: relative;
-    z-index: 2; /* Conteúdo fica na frente da imagem */
-    width: 100%;
-    height: 100%;
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Alinha o conteúdo na base */
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.7) 70%);
 }
 
 .project-card__content .project__title {
     font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    transition: transform 0.4s ease;
-}
-
-.project-card__content .project__details {
-    opacity: 0; /* Detalhes escondidos por padrão */
-    max-height: 0; /* Ocupa altura zero por padrão */
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-
-.project-card:hover .project__details {
-    opacity: 1;
-    max-height: 200px; /* Altura suficiente para mostrar o conteúdo */
+    margin-bottom: 1rem;
 }
 
 .project-card__content .project__details h4 {
@@ -235,15 +189,14 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 
 .project-card__content .project__tech-list {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
 .project-card__content .project__links {
-    margin-top: auto; /* Empurra os links para o fundo do card */
-    padding-top: 1rem;
+    margin-top: 1.5rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -254,10 +207,11 @@ img, svg { max-width: 100%; height: auto; display: block; }
     font-size: 1.3rem;
     transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .project-card__content .project__links a:hover {
     color: var(--primary-color);
-    transform: scale(1.1);
 }
+
 .project-card__content .project__links .project__link {
     font-size: 0.9rem;
     font-weight: 600;
@@ -289,7 +243,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 
 /* FOOTER & UTILITIES */
 .footer { background-color: var(--container-bg); padding: 2rem 0; text-align: center; position: relative; z-index: 2; }
-.footer__container { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.footer__container { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 .footer__copy { font-size: var(--small-font-size); }
 .footer__socials { display: flex; gap: 1.5rem; }
 .footer__socials a { font-size: 1.25rem; transition: color 0.3s, transform 0.3s; }
@@ -335,6 +289,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .show-menu { right: 0; }
 }
 
+/* ESTILOS PARA DESKTOP */
 @media screen and (min-width: 768px) {
     .nav__list {
         display: flex;
@@ -356,42 +311,48 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .academic__grid { grid-template-columns: 1fr; }
     .diagnosis__questions { grid-template-columns: repeat(3, 1fr); }
     .footer__container { flex-direction: row; justify-content: space-between; align-items: center; }
+
+    /* EFEITO DE HOVER NOS CARDS (APENAS DESKTOP) */
+    .projects__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    }
+    .project-card {
+        position: relative;
+        height: 340px;
+        border-color: transparent;
+    }
+    .project-card__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    .project-card__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0) 20%, rgba(15, 23, 42, 1) 90%);
+    }
+    .project-card__content .project__details {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .project-card:hover .project__details {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .project-card:hover .project-card__image img {
+        transform: scale(1.1);
+        opacity: 0.2;
+    }
 }
 
 @media screen and (min-width: 1024px) {
     .container { margin-left: auto; margin-right: auto; }
     .academic__grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* Responsividade Mobile para os Cards de Projeto */
-@media (max-width: 767px) {
-    .project-card,
-    .project-card:hover {
-        height: auto;
-        transform: none;
-        box-shadow: none;
-        border: 1px solid var(--accent-color);
-        overflow: visible; /* LINHA ADICIONADA PARA CORRIGIR O BUG */
-    }
-    .project-card__image {
-        position: static; /* Imagem volta ao fluxo normal */
-        height: 220px;
-    }
-    .project-card__image img,
-    .project-card:hover .project-card__image img {
-        opacity: 1;
-        transform: none;
-    }
-    .project-card__content {
-        position: static;
-        background: none;
-    }
-    .project-card__content .project__details,
-    .project-card:hover .project__details {
-        opacity: 1;
-        max-height: 100%; /* Mostra todo o conteúdo */
-    }
-    .project-card__content .project__links {
-        margin-top: 1rem;
-    }
 }
