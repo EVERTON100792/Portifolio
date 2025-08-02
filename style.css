@@ -144,7 +144,9 @@ img, svg { max-width: 100%; height: auto; }
 .service__title { font-size: 1.2rem; margin-bottom: 0.75rem; }
 .service__description { font-size: var(--small-font-size); line-height: 1.6; flex-grow: 1; }
 
-/* PROJECTS (EFEITO 3D FLIP CARD) */
+/* ==========================================================================
+   PROJETOS (NOVO EFEITO HOVER)
+   ========================================================================== */
 .projects.section {
     background-color: var(--container-bg);
 }
@@ -154,91 +156,120 @@ img, svg { max-width: 100%; height: auto; }
     gap: 2.5rem;
 }
 
-.project__card {
-    background-color: transparent;
-    height: 280px;
-    perspective: 1000px;
-    border: none;
-}
-
-.project__card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.project__card:hover .project__card-inner {
-    transform: rotateY(180deg);
-}
-
-.project__card-front,
-.project__card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+.project-card {
+    background-color: var(--accent-color);
     border-radius: 1rem;
-    overflow: hidden;
+    overflow: hidden; /* Essencial para o efeito de zoom e overlay */
+    position: relative;
     border: 1px solid var(--accent-color);
+    transition: border-color 0.4s ease;
+    height: 280px; /* Altura fixa para alinhar os cards no grid */
+    display: flex; /* Para garantir alinhamento interno */
 }
 
-.project__card-front {
-    background-color: #2c3a52;
+.project-card:hover {
+    border-color: var(--primary-color);
+}
+
+.project-card__image {
+    width: 100%;
+    height: 100%;
+}
+
+.project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço */
+    transition: transform 0.4s ease-out;
+}
+
+.project-card:hover .project-card__image img {
+    transform: scale(1.1); /* Efeito de zoom na imagem */
+}
+
+.project-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(15, 23, 42, 1) 40%, rgba(15, 23, 42, 0.7) 80%, rgba(15, 23, 42, 0)); /* Gradiente para legibilidade */
+    
+    /* Lógica da animação de subida */
+    transform: translateY(100%); /* Começa totalmente para baixo */
+    transition: transform 0.4s ease-out;
+
+    /* Esconde por padrão o que não for o título */
+    padding-top: 4rem; 
+}
+
+/* O título fica sempre visível, posicionado na base */
+.project-card__overlay .project__title {
+    position: absolute;
+    bottom: 1.5rem; /* Alinha com o padding */
+    left: 1.5rem;
+    margin: 0;
+    transition: all 0.4s ease-out;
+    color: var(--title-color);
+}
+
+/* No hover, o overlay sobe e o título se move para o topo */
+.project-card:hover .project-card__overlay {
+    transform: translateY(0);
+}
+
+.project-card:hover .project-card__overlay .project__title {
+    transform: translateY(-205px); /* Move o título para cima */
+    color: var(--primary-color);
+}
+
+.project-card__overlay .project__details,
+.project-card__overlay .project__tech-list,
+.project-card__overlay .project__links {
+    opacity: 0; /* Esconde os detalhes por padrão */
+    transition: opacity 0.3s ease 0.2s; /* Adiciona delay na aparição */
+}
+
+.project-card:hover .project-card__overlay .project__details,
+.project-card:hover .project-card__overlay .project__tech-list,
+.project-card:hover .project-card__overlay .project__links {
+    opacity: 1; /* Mostra os detalhes no hover */
+}
+
+.project-card__overlay .project__details p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.project-card__overlay .project__tech-list {
+    margin-bottom: 1rem;
+}
+
+/* Links dentro do card */
+.project__links {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-
-.project__card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.project__card-back {
-    background-color: var(--body-bg-solid);
-    transform: rotateY(180deg);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.project__card:hover .project__card-front,
-.project__card:hover .project__card-back {
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
-}
-
-.project__card-back .project__title {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-}
-
-.project__card-back .project__details h4 {
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.25rem;
-}
-
-.project__card-back .project__details p {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-}
-
-.project__card-back .project__tech-list {
-    margin-top: 0.75rem;
-    padding-top: 0;
-}
-
-.project__card-back .project__links {
+    gap: 1rem;
     margin-top: 1rem;
-    padding-top: 0.75rem;
+}
+
+.project__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.project__link:hover {
+    color: var(--primary-color);
+}
+
+.project__link .fa-github {
+    font-size: 1.5rem;
 }
 
 
@@ -272,7 +303,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 .footer__copy { font-size: var(--small-font-size); }
 .footer__socials { display: flex; gap: 1.5rem; }
 .footer__socials a { font-size: 1.25rem; transition: color 0.3s, transform 0.3s; }
-.footer__socials a:hover { color: var(--primary-color); transform: translateY(-3px); }
+.footer__socials a:hover { color: var(--primary-color); } /* Animação de swing aplicada abaixo */
 
 .scrollup { position: fixed; right: 1rem; bottom: -30%; background: var(--primary-gradient); padding: 0.6rem; border-radius: 0.25rem; z-index: var(--z-tooltip); transition: bottom 0.4s, transform 0.3s; }
 .scrollup:hover { transform: translateY(-4px); }
@@ -284,6 +315,32 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 .whatsapp-button:hover { transform: scale(1.1) rotate(10deg); }
 .whatsapp-tooltip { position: absolute; right: 120%; top: 50%; transform: translateY(-50%); background-color: var(--container-bg); color: var(--title-color); padding: 0.5rem 1rem; border-radius: 0.5rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
 .whatsapp-button:hover .whatsapp-tooltip { opacity: 1; visibility: visible; }
+
+/* ==========================================================================
+   MICRO-INTERAÇÕES ADICIONAIS
+   ========================================================================== */
+
+/* Efeito de crescimento para as badges de tecnologia */
+.tech-badge {
+    transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.tech-badge:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% no hover */
+}
+
+/* Efeito de balanço para os ícones sociais do rodapé */
+.footer__socials a:hover {
+    animation: swing 0.6s ease;
+}
+
+@keyframes swing {
+    20% { transform: rotate3d(0, 0, 1, 15deg); }
+    40% { transform: rotate3d(0, 0, 1, -10deg); }
+    60% { transform: rotate3d(0, 0, 1, 5deg); }
+    80% { transform: rotate3d(0, 0, 1, -5deg); }
+    100% { transform: rotate3d(0, 0, 1, 0deg); }
+}
 
 /* ==========================================================================
    MEDIA QUERIES (RESPONSIVIDADE E CORREÇÃO DESKTOP)
@@ -322,63 +379,45 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .academic__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ==========================================================================
-   CORREÇÃO RESPONSIVA PARA OS PROJETOS (MOBILE)
-   ========================================================================== */
-
+/* Responsividade para Mobile (Cards de Projeto) */
 @media (max-width: 767px) {
-
-    /* Desativa o efeito 3D e restaura um layout de card simples */
-    .project__card {
-        height: auto; /* A altura volta a ser automática para caber todo o conteúdo */
-        perspective: none; /* Remove a perspectiva 3D */
-        background-color: var(--body-bg-solid); /* Devolve o fundo ao card principal */
-        border: 1px solid var(--accent-color); /* Devolve a borda */
-        border-radius: 1rem; /* Devolve o arredondamento */
+    .project-card {
+        height: auto; /* Altura automática para caber o conteúdo */
+        display: block; /* Layout de bloco simples */
+        background-color: var(--body-bg-solid);
     }
 
-    .project__card-inner {
-        position: static; /* Posição deixa de ser relativa */
-        transform-style: flat; /* Remove o ambiente 3D */
-        transition: none; /* Remove a transição de giro */
-        height: auto;
+    .project-card__image {
+        height: 200px; /* Altura fixa para a imagem */
     }
 
-    /* Remove o giro no hover para mobile, garantindo que não haja bugs de toque */
-    .project__card:hover .project__card-inner {
-        transform: none;
+    .project-card__image img,
+    .project-card:hover .project-card__image img {
+        transform: none; /* Desativa o zoom */
     }
 
-    /* Faz a frente e o verso se comportarem como blocos normais, um abaixo do outro */
-    .project__card-front,
-    .project__card-back {
-        position: static;
-        -webkit-backface-visibility: visible;
-        backface-visibility: visible;
-        transform: none; /* Remove qualquer rotação do verso */
-        border: none; /* Remove a borda das faces, pois o card principal já tem */
-        box-shadow: none;
-        border-radius: 0;
-        height: auto;
-    }
-
-    /* Ajusta a frente (imagem) para mobile */
-    .project__card-front {
-        height: 200px;
-        background-color: #2c3a52;
-        padding: 1rem;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-    }
-
-    .project__card-front img {
-        object-fit: contain;
+    .project-card__overlay,
+    .project-card:hover .project-card__overlay {
+        position: static; /* Deixa de ser um overlay */
+        transform: none; /* Desativa a animação de subida */
+        background: none; /* Remove o gradiente */
+        padding-top: 1.5rem; /* Padding normal */
     }
     
-    /* Ajusta o verso (conteúdo) para mobile */
-    .project__card-back {
-        background-color: transparent;
-        padding: 1.5rem; /* Garante um bom espaçamento em todos os lados */
-        padding-top: 1rem; /* Diminui um pouco o espaçamento superior */
+    .project-card__overlay .project__title,
+    .project-card:hover .project-card__overlay .project__title {
+        position: static;
+        transform: none;
+        margin-bottom: 1rem;
+        color: var(--title-color); /* Garante a cor padrão */
+    }
+
+    .project-card__overlay .project__details,
+    .project-card__overlay .project__tech-list,
+    .project-card__overlay .project__links,
+    .project-card:hover .project-card__overlay .project__details,
+    .project-card:hover .project-card__overlay .project__tech-list,
+    .project-card:hover .project-card__overlay .project__links {
+        opacity: 1; /* Tudo fica visível */
     }
 }
