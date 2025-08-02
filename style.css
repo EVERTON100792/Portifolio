@@ -175,16 +175,48 @@ picture { display: block; }
 .project-card__content .project__details h4 { color: var(--primary-color); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem; }
 .project-card__content .project__details p { font-size: 0.9rem; line-height: 1.5; margin: 0; }
 .project-card__content .project__tech-list { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.project-card__content .project__links { margin-top: 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
-.project-card__content .project__links a { color: var(--title-color); font-size: 1.3rem; transition: color 0.3s ease, transform 0.3s ease; }
-.project-card__content .project__links a:hover { color: var(--primary-color); }
-.project-card__content .project__links .project__link { font-size: 0.9rem; font-weight: 600; }
+
+/* <<< INÍCIO DA ALTERAÇÃO NOS BOTÕES DE PROJETO >>> */
+.project-card__content .project__links {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
+    align-items: center;
+    gap: 1rem;
+}
+.project-card__content .project__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color); /* Cor do texto alterada para maior contraste */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--accent-color);
+    background-color: var(--accent-color); /* Fundo sutil */
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card__content .project__links a:hover {
+    color: var(--primary-color);
+    background-color: #3f506e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.project-card__content .project__links a i {
+    font-size: 1.1rem;
+}
+/* Remove a regra antiga para evitar conflitos */
+.project-card__content .project__links .project__link {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+/* <<< FIM DA ALTERAÇÃO >>> */
 
 /* DEPOIMENTOS */
 .testimonials.section {
     background-color: var(--body-bg-solid);
-    padding-top: 6rem;    /* Aumenta o espaço acima */
-    padding-bottom: 5rem; /* Aumenta o espaço abaixo */
+    padding-top: 6rem;
+    padding-bottom: 5rem;
 }
 .testimonials__container {
     max-width: 768px;
@@ -348,7 +380,6 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 
 /* ESTILOS PARA DESKTOP */
 @media screen and (min-width: 992px) {
-    /* <<< ALTERAÇÃO PARA CENTRALIZAR O HERO >>> */
     .hero__container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -361,7 +392,6 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .hero__image {
         margin-top: 2rem;
     }
-    /* <<< FIM DA ALTERAÇÃO >>> */
 
     .nav__list { display: flex; flex-direction: row; align-items: center; gap: 2.5rem; }
     .nav__toggle { display: none; }
@@ -383,6 +413,14 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .project-card:hover .project-card__image { opacity: 0.1; }
     .project-card__content { position: relative; z-index: 2; background: transparent; transition: background 0.4s ease; }
     .project-card:hover .project-card__content { background: var(--container-bg); }
+    
+    /* Garante que o hover dos botões funcione corretamente na versão Desktop */
+    .project-card:hover .project-card__content .project__links a:hover {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-color: #3f506e;
+    }
+
     .project-card__content .project__details { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out; }
     .project-card:hover .project-card__content .project__details { max-height: 250px; opacity: 1; margin-top: 1rem; }
 }
