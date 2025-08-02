@@ -468,7 +468,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     /* NOVA LÓGICA FLEXÍVEL DOS CARDS DE PROJETO (APENAS DESKTOP) */
     .projects__container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         align-items: start; /* Impede que os cards estiquem para a mesma altura */
     }
     .project-card {
