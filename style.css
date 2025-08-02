@@ -142,7 +142,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .service__description { font-size: var(--small-font-size); line-height: 1.6; flex-grow: 1; }
 
 /* ==========================================================================
-   PROJETOS (VERSÃO FINAL COM ALTURA FLEXÍVEL)
+   PROJETOS (VERSÃO MOBILE-FIRST, À PROVA DE FALHAS)
    ========================================================================== */
 .projects__container {
     display: flex;
@@ -465,11 +465,11 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .diagnosis__questions { grid-template-columns: repeat(3, 1fr); }
     .footer__container { flex-direction: row; justify-content: space-between; align-items: center; }
 
-    /* NOVA LÓGICA FLEXÍVEL DOS CARDS DE PROJETO (APENAS DESKTOP) */
+    /* LÓGICA DOS CARDS DE PROJETO (APENAS DESKTOP) */
     .projects__container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        align-items: start; /* Impede que os cards estiquem para a mesma altura */
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); /* <-- VALOR AJUSTADO AQUI */
+        align-items: start;
     }
     .project-card {
         position: relative;
@@ -509,7 +509,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
         transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
     }
     .project-card:hover .project-card__content .project__details {
-        max-height: 250px; /* Altura grande o suficiente para o conteúdo */
+        max-height: 250px;
         opacity: 1;
         margin-top: 1rem;
     }
