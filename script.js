@@ -299,25 +299,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handleScroll = () => {
         const scrollY = window.scrollY;
+        // O valor 58 é um offset para compensar a altura do header. Pode ser ajustado se necessário.
+        const scrollThreshold = scrollY + 58; 
 
-        if (header) {
-            scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
-        }
+        let currentSectionId = null;
 
-        let currentSectionId = '';
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 58;
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                currentSectionId = current.getAttribute('id');
+        // Itera sobre as seções para encontrar a última que passou do topo da tela
+        sections.forEach(section => {
+            if (section.offsetTop <= scrollThreshold) {
+                currentSectionId = section.getAttribute('id');
             }
         });
+
         navLinks.forEach(link => {
             link.classList.remove('active-link');
-            if (link.getAttribute('href') === '#' + currentSectionId) {
+            const linkHref = link.getAttribute('href');
+            
+            if (linkHref === '#' + currentSectionId) {
                 link.classList.add('active-link');
             }
         });
+    };
 
         if (scrollUp) {
             scrollY >= 400 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll');
