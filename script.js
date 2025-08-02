@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
         // O valor 58 é um offset para compensar a altura do header. Pode ser ajustado se necessário.
-        const scrollThreshold = scrollY + 58; 
+        const scrollThreshold = scrollY + 150; 
 
         let currentSectionId = null;
 
