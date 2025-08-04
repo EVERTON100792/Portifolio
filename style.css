@@ -176,11 +176,10 @@ picture { display: block; }
 .project-card__content .project__details p { font-size: 0.9rem; line-height: 1.5; margin: 0; }
 .project-card__content .project__tech-list { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-/* <<< INÍCIO DA ALTERAÇÃO NOS BOTÕES DE PROJETO >>> */
 .project-card__content .project__links {
     margin-top: 1.5rem;
     display: flex;
-    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
+    flex-wrap: wrap; 
     align-items: center;
     gap: 1rem;
 }
@@ -188,12 +187,12 @@ picture { display: block; }
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-color); /* Cor do texto alterada para maior contraste */
+    color: var(--text-color); 
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: 1px solid var(--accent-color);
-    background-color: var(--accent-color); /* Fundo sutil */
+    background-color: var(--accent-color); 
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-card__content .project__links a:hover {
@@ -205,12 +204,10 @@ picture { display: block; }
 .project-card__content .project__links a i {
     font-size: 1.1rem;
 }
-/* Remove a regra antiga para evitar conflitos */
 .project-card__content .project__links .project__link {
     font-size: 0.9rem;
     font-weight: 500;
 }
-/* <<< FIM DA ALTERAÇÃO >>> */
 
 /* DEPOIMENTOS */
 .testimonials.section {
@@ -332,11 +329,90 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 .scrollup i { font-size: 1.2rem; color: #0F172A; }
 .show-scroll { bottom: 3rem; }
 
-.whatsapp-button { position: fixed; right: 1rem; bottom: 7rem; background-color: var(--whatsapp-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: var(--z-tooltip); font-size: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s, opacity 0.4s; transform: scale(0); opacity: 0; }
+/* BOTÃO WHATSAPP MOBILE */
+.whatsapp-button {
+    position: fixed;
+    right: 1rem;
+    bottom: 7rem;
+    background-color: var(--whatsapp-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: var(--z-tooltip);
+    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s, opacity 0.4s;
+    transform: scale(0);
+    opacity: 0;
+}
 .whatsapp-button.show { transform: scale(1); opacity: 1; }
 .whatsapp-button:hover { transform: scale(1.1) rotate(10deg); }
 .whatsapp-tooltip { position: absolute; right: 120%; top: 50%; transform: translateY(-50%); background-color: var(--container-bg); color: var(--title-color); padding: 0.5rem 1rem; border-radius: 0.5rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
 .whatsapp-button:hover .whatsapp-tooltip { opacity: 1; visibility: visible; }
+
+/* NOVO BOTÃO WHATSAPP DESKTOP */
+.whatsapp-desktop-button {
+    display: none; /* ESCONDIDO POR PADRÃO */
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: var(--z-tooltip);
+    background-color: var(--whatsapp-color);
+    color: white;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform: scale(0);
+    opacity: 0;
+}
+.whatsapp-desktop-button.show {
+    transform: scale(1);
+    opacity: 1;
+}
+.whatsapp-desktop-button__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.whatsapp-desktop-button__icon {
+    font-size: 2.2rem;
+    padding: 5px;
+    background-color: white;
+    color: var(--whatsapp-color);
+    border-radius: 50%;
+    animation: whatsapp-icon-shake 2.5s infinite ease-in-out;
+}
+@keyframes whatsapp-icon-shake {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30%, 50% { transform: rotate(-10deg); }
+    20%, 40%, 60% { transform: rotate(10deg); }
+    70% { transform: rotate(0deg); }
+}
+.whatsapp-desktop-button__text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: -200px; /* Esconde o texto inicialmente */
+    max-width: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+}
+.whatsapp-desktop-button:hover {
+    padding-right: 25px;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+.whatsapp-desktop-button:hover .whatsapp-desktop-button__text {
+    margin-left: 1rem;
+    max-width: 200px;
+    opacity: 1;
+}
 
 /* ==========================================================================
    MICRO-INTERAÇÕES ADICIONAIS
@@ -414,7 +490,6 @@ textarea.form__input { resize: vertical; min-height: 100px; }
     .project-card__content { position: relative; z-index: 2; background: transparent; transition: background 0.4s ease; }
     .project-card:hover .project-card__content { background: var(--container-bg); }
     
-    /* Garante que o hover dos botões funcione corretamente na versão Desktop */
     .project-card:hover .project-card__content .project__links a:hover {
         color: var(--primary-color);
         border-color: var(--primary-color);
@@ -423,6 +498,14 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 
     .project-card__content .project__details { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out; }
     .project-card:hover .project-card__content .project__details { max-height: 250px; opacity: 1; margin-top: 1rem; }
+    
+    /* <<< CONTROLE DE VISIBILIDADE DOS BOTÕES WHATSAPP >>> */
+    .whatsapp-button {
+        display: none; /* Esconde o botão mobile em telas grandes */
+    }
+    .whatsapp-desktop-button {
+        display: block; /* Mostra o botão desktop em telas grandes */
+    }
 }
 
 @media screen and (min-width: 1024px) {

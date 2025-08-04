@@ -289,33 +289,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       LÓGICA DE SCROLL (HEADER, ACTIVE LINKS, SCROLL-UP)
+       LÓGICA DE SCROLL (HEADER, ACTIVE LINKS, SCROLL-UP, BOTÕES WHATSAPP)
        ========================================================================== */
     const header = document.getElementById('header');
     const scrollUp = document.getElementById('scroll-up');
-    const whatsAppButton = document.getElementById('whatsapp-float-button');
+    const whatsAppMobileButton = document.getElementById('whatsapp-float-button-mobile');
+    const whatsAppDesktopButton = document.getElementById('whatsapp-float-button-desktop');
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav__menu a[href^="#"]');
 
     const handleScroll = () => {
         const scrollY = window.scrollY;
-        // O valor 58 é um offset para compensar a altura do header. Pode ser ajustado se necessário.
+
+        // Efeito do Header
+        if (header) {
+            header.classList.toggle('scroll-header', scrollY >= 50);
+        }
+
+        // Mostrar/Esconder Botão de Voltar ao Topo e Botões WhatsApp
+        if (scrollY >= 400) {
+            scrollUp?.classList.add('show-scroll');
+            whatsAppMobileButton?.classList.add('show');
+            whatsAppDesktopButton?.classList.add('show');
+        } else {
+            scrollUp?.classList.remove('show-scroll');
+            whatsAppMobileButton?.classList.remove('show');
+            whatsAppDesktopButton?.classList.remove('show');
+        }
+
+        // Lógica dos Links Ativos no Menu
+        let currentSectionId = 'hero';
         const scrollThreshold = scrollY + 150; 
 
-        let currentSectionId = null;
-
-        // Itera sobre as seções para encontrar a última que passou do topo da tela
         sections.forEach(section => {
-            if (section.offsetTop <= scrollThreshold) {
+            if (section.offsetTop <= scrollThreshold && section.offsetTop + section.offsetHeight > scrollThreshold) {
                 currentSectionId = section.getAttribute('id');
             }
         });
 
         navLinks.forEach(link => {
             link.classList.remove('active-link');
-            const linkHref = link.getAttribute('href');
-            
-            if (linkHref === '#' + currentSectionId) {
+            if (link.getAttribute('href') === '#' + currentSectionId) {
                 link.classList.add('active-link');
             }
         });
@@ -335,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     window.addEventListener('scroll', throttle(handleScroll, 100));
+    handleScroll(); // Executa uma vez no carregamento da página
 
     /* ==========================================================================
        LÓGICA DO OBSERVER PARA ANIMAÇÕES AO SCROLLAR
