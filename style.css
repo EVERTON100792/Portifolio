@@ -119,7 +119,7 @@ picture { display: block; }
 .about.section { background-color: var(--container-bg); }
 .about__container { align-items: flex-start; gap: 3rem; }
 .about__image-container { width: 250px; height: 250px; justify-self: center; border-radius: 50%; overflow: hidden; border: 5px solid var(--primary-color); box-shadow: 0 0 25px rgba(50, 222, 138, 0.2); flex-shrink: 0;}
-.about__photo { width: 100%; height: 100%; object-fit: cover; }
+.about__photo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 .about__content h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 .about__description { line-height: 1.7; margin-bottom: 0; }
 .info-group__title { display: flex; align-items: center; gap: 0.75rem; color: var(--title-color); font-size: 1.1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--accent-color); }
