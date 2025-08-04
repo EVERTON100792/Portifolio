@@ -324,7 +324,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 .footer__socials { display: flex; gap: 1.5rem; }
 .footer__socials a { font-size: 1.25rem; transition: color 0.3s, transform 0.3s; }
 
-.scrollup { position: fixed; right: 1rem; bottom: -30%; background: var(--primary-gradient); padding: 0.6rem; border-radius: 0.25rem; z-index: var(--z-tooltip); transition: bottom 0.4s, transform 0.3s; }
+.scrollup { position: fixed; left: 1rem; bottom: -30%; background: var(--primary-gradient); padding: 0.6rem; border-radius: 0.25rem; z-index: var(--z-tooltip); transition: bottom 0.4s, transform 0.3s; }
 .scrollup:hover { transform: translateY(-4px); }
 .scrollup i { font-size: 1.2rem; color: #0F172A; }
 .show-scroll { bottom: 3rem; }
@@ -332,7 +332,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 /* BOTÃO WHATSAPP MOBILE */
 .whatsapp-button {
     position: fixed;
-    left: 1rem;
+    right: 1rem;
     bottom: 7rem;
     background-color: var(--whatsapp-color);
     color: white;
