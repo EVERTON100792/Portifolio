@@ -332,7 +332,7 @@ textarea.form__input { resize: vertical; min-height: 100px; }
 /* BOTÃO WHATSAPP MOBILE */
 .whatsapp-button {
     position: fixed;
-    right: 1rem;
+    left: 1rem;
     bottom: 7rem;
     background-color: var(--whatsapp-color);
     color: white;
